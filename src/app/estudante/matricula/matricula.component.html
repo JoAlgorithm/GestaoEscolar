@@ -1,0 +1,258 @@
+<mat-horizontal-stepper [linear]="true" #stepper>
+
+  <mat-step [stepControl]="firstFormGroup">
+    <form [formGroup]="firstFormGroup">
+      <ng-template matStepLabel>DADOS MESTRES</ng-template>
+      
+      <!--ANO DO ESTUDANTE-->      
+      <mat-form-field style="width: 33%">
+          <mat-select placeholder="Ano" formControlName="ano" [(ngModel)]="ano" (change)="filtrarTurma(ano)"  required >
+              <mat-option *ngFor="let ano of anos" [value]="ano.value">
+                  {{ano.viewValue}}
+              </mat-option>
+          </mat-select>
+        </mat-form-field>
+  
+      <!--ESTUDANTE-->        
+      <mat-form-field style="width: 33%">
+           <mat-select placeholder="Estudante" formControlName="estudante" [(ngModel)]="estudante"  required >
+              <mat-option *ngFor="let estudante of estudantes" [value]="estudante">
+                  {{estudante.encarregado.nome}}
+              </mat-option>
+          </mat-select>
+      </mat-form-field>
+          
+      <!--TURMA-->        
+      <mat-form-field style="width: 33%">
+        <mat-select placeholder="Turma" formControlName="turma" [(ngModel)]="turma" required [disabled]="ano == null" >
+            <mat-option *ngFor="let turma of turmasFilter" [value]="turma">
+                {{turma.nome}} - {{turma.ano}}
+                
+            </mat-option>
+        </mat-select>
+      </mat-form-field>
+
+      <!--TRANSPORTE-->
+      <section>
+          Serviços extras:
+      </section>
+      <section>
+        <mat-slide-toggle
+        style="width: 33%"
+          class="example-margin"
+          [color]="color"
+          [checked]="transporte_checked"
+          [disabled]="turma.transporte ==null || turma.transporte == 0">
+          <span *ngIf="turma.transporte == '' || turma.transporte == null">Sem opção de transporte</span> <span *ngIf="!turma.transporte == 0">Transporte - {{turma.transporte}} MZN</span>
+        </mat-slide-toggle> 
+        
+
+        <mat-slide-toggle
+        style="width: 33%"
+          class="example-margin"
+          [color]="color"
+          [checked]="alimentacao_checked"
+          [disabled]="turma.alimentacao ==null || turma.alimentacao == 0">
+          <span *ngIf="turma.alimentacao == '' || turma.alimentacao == null">Sem opção de alimentação</span> <span *ngIf="!turma.alimentacao == 0">Alimentação - {{turma.transporte}} MZN</span>
+        </mat-slide-toggle>
+
+        <mat-slide-toggle 
+          class="example-margin"
+          [color]="color"
+          [checked]="estudo_orientado_checked"
+          [disabled]="turma.estudo_orientado ==null || turma.estudo_orientado == 0">
+          <span *ngIf="turma.estudo_orientado == '' || turma.estudo_orientado == null">Sem opção de estudo orientado</span> <span *ngIf="!turma.estudo_orientado == 0">Estudo orientado - {{turma.estudo_orientado}} MZN</span>
+        </mat-slide-toggle>
+      </section>
+      
+      <br>        
+
+      <div>
+      <button mat-button matStepperNext>SEGUINTE</button>
+      </div>
+    </form>
+  </mat-step>
+
+  <mat-step>
+    <ng-template matStepLabel>CONFIRMAÇÃO</ng-template>
+    
+   
+        <!--<mat-card-content>
+          <div class="mb-1">
+            <h6 class="mt-0"><strong>COMPROVATIVO DE MATRICULA</strong></h6>
+            <!--<a href="javascript:;">{{estudante.nome}}</a>
+          </div>
+      
+          <div fxLayout="row wrap">
+            <div fxFlex.gt-xs="50" fxFlex="100">
+              <h4 class="my-0">{{estudante.nome | uppercase }}</h4>
+              <div fxLayout="column">
+                <span>{{turma.nome}} - {{turma.ano}}</span>
+                <span>{{turma.regime}}</span>
+                <span>Date de: 01 Jun 2017</span>
+                <span>Due date: 31 May 2017</span>
+              </div>
+            </div>
+            <div fxFlex.gt-xs="50" fxFlex="100" class="text-sm-right text-xs-left">
+              <h4 class="my-0">{{user.escola}}</h4>
+              <div fxLayout="column">
+              <span>{{user.email}}</span>
+              <span>{{user.provincia}}</span>
+              <span>{{user.cidade}}</span>
+              <span>{{user.endereco}}</span>
+            </div>
+            </div>
+          </div>
+        </mat-card-content>
+
+        <mat-card-content class="pl-0 pr-0">
+
+            <table mat-table class="mat-elevation-z8">
+              <!--- Note that these columns can be defined in any order.
+              The actual rendered columns are set as a property on the row definition" --
+              <!-- Position Column 
+              <ng-container>
+                <!--<th mat-header-cell> No. </th>--
+                <td mat-header-cell > TAXAS MENSAIS </td>
+              </ng-container>
+              <!-- Name Column --
+              <ng-container>
+                <!--<th mat-header-cell > Name </th>--
+                <td mat-header-cell > VALOR A PAGAR </td>
+              </ng-container>
+              <!-- Weight Column --
+              <ng-container >
+                <!--<th mat-header-cell > MO </th>--
+                <td mat-header-cell > MOEDA </td>
+              </ng-container>
+              <!-- Symbol Column --
+              <ng-container matColumnDef="symbol">
+                <!--<th mat-header-cell > Symbol </th>--
+                <td mat-header-cell > DATA CORTE DE PAGAMENTO </td>
+              </ng-container>
+              <tr mat-header-row></tr>
+              <tr mat-row >
+                <td mat-cell > <strong>Propina Mensal</strong>  </td>
+                <td mat-cell ><strong>{{turma.mensalidade}}</strong> </td>
+                <td mat-cell > <strong>MZN</strong> </td>
+                <td mat-cell > <strong>Ultimo dia do mes</strong> </td>
+              </tr>
+              <tr mat-row >
+                  <td mat-cell > <strong>Propina Mensal</strong>  </td>
+                  <td mat-cell ><strong>{{turma.transporte}}</strong> </td>
+                  <td mat-cell > <strong>MZN</strong> </td>
+                  <td mat-cell > <strong>Ultimo dia do mes</strong> </td>
+                </tr>
+            </table></mat-card-content>
+                
+            <hr>
+            <mat-card-content>
+              <div fxLayout="row wrap">
+                <div fxFlex.gt-sm="25" fxFlex.gt-xs="50" fxFlex="100" class="mt-1 mb-1">
+                  <h6 class="text-uppercase text-md ma-0 text-bold">Subtotal</h6>
+                  <h1 class="ma-0">3,633.61 MZN</h1>
+                </div>
+                <div fxFlex.gt-sm="25" fxFlex.gt-xs="50" fxFlex="100" class="mt-1 mb-1 text-sm-right text-md-left">
+                  <h6 class="text-uppercase text-md ma-0 text-bold">Tax (15%)</h6>
+                  <h1 class="ma-0">$545.04</h1>
+                </div>
+                <div fxFlex.gt-sm="25" fxFlex.gt-xs="50" fxFlex="100" class="mt-1 mb-1">
+                  <h6 class="text-uppercase text-md ma-0 text-bold">Discount</h6>
+                  <h1 class="ma-0">$0.00</h1>
+                </div>
+                <div fxFlex.gt-sm="25" fxFlex.gt-xs="50" fxFlex="100" class="mt-1 mb-1 text-xs-left text-sm-right">
+                  <h6 class="text-uppercase text-sm ma-0 text-bold">Total</h6>
+                  <h1 class="ma-0 mat-text-accent">$4,178.65</h1>
+                </div>
+              </div>
+            </mat-card-content>
+
+            <!--<ngx-datatable
+              class="material"
+              [rows]="invoiceItems"
+              [columnMode]="'flex'"
+              [headerHeight]="50"
+              [footerHeight]="0"
+              [rowHeight]="'auto'">
+
+              <ngx-datatable-column name="Description" [flexGrow]="4">
+                  <ng-template ngx-datatable-cell-template let-row="row">
+                    <strong>TITULO</strong><br/><span class="mat-text-muted">subtitulo</span>
+                  </ng-template>
+              </ngx-datatable-column>
+              <ngx-datatable-column name="Unit Price" [flexGrow]="1">
+                  <ng-template ngx-datatable-cell-template let-row="row">
+                    <strong>PRECO MZN</strong>
+                  </ng-template>
+              </ngx-datatable-column>
+              <ngx-datatable-column name="Quantity" [flexGrow]="1">
+                  <ng-template ngx-datatable-cell-template let-row="row">
+                    <strong>QUANTIDADE</strong>
+                  </ng-template>
+              </ngx-datatable-column>
+              <ngx-datatable-column name="Amount" [flexGrow]="1">
+                  <ng-template ngx-datatable-cell-template let-row="row">
+                    <strong>PRECO TOT</strong>
+                  </ng-template>
+              </ngx-datatable-column>
+
+            </ngx-datatable
+          ></mat-card-content>
+          >
+          </mat-card-content>-->
+      
+      
+
+
+    <mat-card-content>
+        <h4 class="mt-0 mb-1">Dados Pessoais</h4>
+        <div fxLayout="row" layout-align="center">
+
+            <div class="pr-1" fxFlex>
+                <div fxLayout="column" class="mb-1">
+                  <span class="text-md">ESTUDANTE</span>
+                  <strong>{{estudante.nome}}</strong>
+                </div>
+                <div fxLayout="column">
+                    <span class="text-md">REGIME</span>
+                    <strong>{{turma.regime}}</strong>
+                  </div>
+            </div>
+
+            <div class="pl-1" fxFlex>
+                <div fxLayout="column" class="mb-1">
+                    <span class="text-md">TRANSPORTE</span>
+                    <strong *ngIf="turma.estudo_orientado == '' || turma.estudo_orientado == null">Sem estudo orientado</strong> <strong *ngIf="!turma.estudo_orientado == 0">Com Estudo orientado no valor de {{turma.estudo_orientado}} MZN</strong>
+                  </div>
+                 
+                <div fxLayout="column">
+                  <span class="text-md">Email</span>
+                  <strong>email</strong>
+                </div>
+              </div> 
+        </div>
+    </mat-card-content>
+
+    
+    
+    <div>
+    <button mat-button matStepperPrevious>Back</button>
+    <button mat-button (click)="stepper.reset()">CADASTRAR</button>
+    </div>
+  </mat-step>
+</mat-horizontal-stepper>
+    
+
+
+<!--<mat-card>
+<mat-card-title>Form validation</mat-card-title>
+  <mat-card-subtitle>Matricula</mat-card-subtitle>
+  <form [formGroup]="firstFormGroup">
+      <mat-card-content>
+
+        
+            
+      </mat-card-content>
+  </form>
+</mat-card>-->
+    
