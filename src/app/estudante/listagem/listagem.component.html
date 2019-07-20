@@ -9,11 +9,11 @@
 <div class="example-container mat-elevation-z8">
 <mat-table [dataSource]="dataSourse" matSort>
 
-    <!-- ID Column -->
+    <!-- ID Column 
     <ng-container matColumnDef="id">
       <mat-header-cell *matHeaderCellDef mat-sort-header> ID </mat-header-cell>
       <mat-cell *matCellDef="let row"> {{row.id}} </mat-cell>
-    </ng-container>
+    </ng-container>-->
 
     <!-- Progress Column -->
     <ng-container matColumnDef="nome">
@@ -21,23 +21,45 @@
       <mat-cell *matCellDef="let row"> {{row.nome}}</mat-cell>
     </ng-container>
 
-    <ng-container matColumnDef="genero">
+    <!--<ng-container matColumnDef="genero">
         <mat-header-cell *matHeaderCellDef mat-sort-header> Genero </mat-header-cell>
         <mat-cell *matCellDef="let row"> {{row.genero}}</mat-cell>
-      </ng-container>
-      <ng-container matColumnDef="Detalhe">
-          <mat-header-cell *matHeaderCellDef mat-sort-header> Detalhes </mat-header-cell>
-          <mat-cell *matCellDef="let row"> <button mat-icon-button (click)="detalhes(row)">
-              <mat-icon>list</mat-icon>
-            </button></mat-cell>
-        </ng-container>
+    </ng-container>-->
 
-      <ng-container matColumnDef="Editar">
-          <mat-header-cell *matHeaderCellDef mat-sort-header> Editar </mat-header-cell>
-          <mat-cell *matCellDef="let row"> <button mat-icon-button (click)="editar(row)">
-              <mat-icon>create</mat-icon>
-            </button></mat-cell>
-        </ng-container>
+    <ng-container matColumnDef="turma">
+        <mat-header-cell *matHeaderCellDef mat-sort-header> Turma </mat-header-cell>
+        <mat-cell *matCellDef="let row">{{row.turma?.nome ? row.turma?.nome : 'Sem matrícula'}}</mat-cell>
+    </ng-container>
+
+    <ng-container matColumnDef="nivel">
+        <mat-header-cell *matHeaderCellDef mat-sort-header> Nivel </mat-header-cell>
+        <mat-cell *matCellDef="let row">{{row.turma?.nivel ? row.turma?.nivel : 'Sem matrícula'}}</mat-cell>
+    </ng-container>
+
+    <ng-container matColumnDef="regime">
+        <mat-header-cell *matHeaderCellDef mat-sort-header> Regime </mat-header-cell>
+        <mat-cell *matCellDef="let row">{{row.turma?.regime ? row.turma?.regime : 'Sem matrícula'}}</mat-cell>
+    </ng-container>
+
+    <ng-container matColumnDef="contacto">
+        <mat-header-cell *matHeaderCellDef mat-sort-header> Telefone </mat-header-cell>
+        <mat-cell *matCellDef="let row"> {{row.encarregado.telefone1}}</mat-cell>
+    </ng-container>
+
+
+    <ng-container matColumnDef="Detalhe">
+        <mat-header-cell *matHeaderCellDef mat-sort-header> Detalhes </mat-header-cell>
+        <mat-cell *matCellDef="let row"> <button mat-icon-button (click)="detalhes(row)">
+            <mat-icon>list</mat-icon>
+          </button></mat-cell>
+    </ng-container>
+
+    <ng-container matColumnDef="Editar">
+        <mat-header-cell *matHeaderCellDef mat-sort-header> Editar </mat-header-cell>
+        <mat-cell *matCellDef="let row"> <button mat-icon-button (click)="editar(row)">
+            <mat-icon>create</mat-icon>
+          </button></mat-cell>
+    </ng-container>
       
     
     

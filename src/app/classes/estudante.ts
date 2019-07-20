@@ -40,6 +40,9 @@ export class Estudante {
     encarregado: Encarregado;
     
     turma?: Turma; //A turma corrente do estudante persistida na ultima matricula
+    transporte_checked?: boolean = false; //variavel que serve para verificar se estudante aderiu transporte
+    alimentacao_checked?: boolean = false; //variavel que serve para verificar se estudante aderiu transporte
+    estudo_orientado_checked?: boolean = false; //variavel que serve para verificar se estudante aderiu transporte
 
     /*constructor(
         id?: string,

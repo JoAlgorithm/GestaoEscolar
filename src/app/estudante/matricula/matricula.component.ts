@@ -34,10 +34,16 @@ export class MatriculaComponent implements OnInit {
     {value: new Date().getFullYear()+1, viewValue: new Date().getFullYear()+1}
   ]
 
+  regimes: string[] = ['Diurno', 'Noturno', 'Todo dia'];
+  regime: string;
+
+  niveis = new Set();
+  nivel: any;
+
   color = 'primary';
-  transporte_checked = false;
-  alimentacao_checked = false;
-  estudo_orientado_checked = false;
+  //transporte_checked = false;
+  //alimentacao_checked = false;
+  //estudo_orientado_checked = false;
   disabled = false;
 
   firstFormGroup: FormGroup;
@@ -46,6 +52,11 @@ export class MatriculaComponent implements OnInit {
   constructor(private _formBuilder: FormBuilder, public snackBar: MatSnackBar,
     private estudanteService: EstudanteService, private authService: AuthService) { 
       this.estudante = new Estudante();
+      this.estudante.transporte_checked = false;
+      this.estudante.alimentacao_checked = false;
+      this.estudante.estudo_orientado_checked = false;
+
+
       this.turma = new Turma();
       
     }
@@ -57,6 +68,8 @@ export class MatriculaComponent implements OnInit {
     this.firstFormGroup = this._formBuilder.group({
       ano: ['', Validators.required],
       estudante: ['', Validators.required],
+      nivel: ['', Validators.required],
+      regime: ['', Validators.required],
       turma: ['', Validators.required],
       transporte: ['']
     });
@@ -70,7 +83,7 @@ export class MatriculaComponent implements OnInit {
         } as Estudante;
       })
       //console.log("ESTUDANTES: "+JSON.stringify(this.estudantes))
-      console.log("Encarregadao: "+this.estudantes[0].encarregado.nome)
+      //console.log("Encarregadao: "+this.estudantes[0].encarregado.nome)
     })
 
     this.estudanteService.getTurmas().subscribe(data => {
@@ -80,13 +93,67 @@ export class MatriculaComponent implements OnInit {
           ...e.payload.doc.data()
         } as Turma;
       })
+      this.turmas.forEach(element => {
+        //if(this.niveis.indexOf(element) === -1) {
+          this.niveis.add(element.nivel);
+        //}
+        
+      });
+       
     })
 
     this.user = this.authService.get_user;
   }
 
-  filtrarTurma(ano){
-    this.turmasFilter = this.turmas.filter(e => e.ano == ano);
+  filtrarTurma(ano, regime, nivel){
+    this.turmasFilter = this.turmas.filter(e => e.ano == ano && e.regime == regime && e.nivel == nivel);
+  }
+
+  /*filtrarRegime(regime){
+    this.turmasFilter = this.turmas.filter(e => e.regime == regime);
+  }*/
+
+
+  setEstudoOrientado(e){
+    if(e.checked){
+      this.estudante.estudo_orientado_checked = true;
+    }else{
+      this.estudante.estudo_orientado_checked = false;
+    }
+  }
+
+  setAlimentacao(e){
+    if(e.checked){
+      this.estudante.alimentacao_checked = true;
+    }else{
+      this.estudante.alimentacao_checked = false;
+    }
+  }
+
+  setTransporte(e){
+    if(e.checked){
+      this.estudante.transporte_checked = true;
+    }else{
+      this.estudante.transporte_checked = false;
+    }
+  }
+
+  registar(){
+    //matricula consiste em atualizar a turma do estudante e incluir o estudante na turma
+    //na proxima matricula a turma do estudante é substituída e o historico das turmas dele ficam na turma
+
+    this.estudante.turma = Object.assign({}, this.turma);
+    let data = Object.assign({}, this.estudante);
+
+    this.estudanteService.updateEstudante(data);
+    this.estudanteService.addEstudanteTurma(this.turma.id, data);
+    
+    /*.then( res => {
+      //this.openSnackBar("Estudante cadastrado com sucesso");
+    }).catch( err => {
+      console.log("ERRO: " + err.message)
+    });*/
+
   }
 
 }

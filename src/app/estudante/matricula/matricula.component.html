@@ -3,35 +3,54 @@
   <mat-step [stepControl]="firstFormGroup">
     <form [formGroup]="firstFormGroup">
       <ng-template matStepLabel>DADOS MESTRES</ng-template>
-      
-      <!--ANO DO ESTUDANTE-->      
+
+      <!--ESTUDANTE-->        
+      <mat-form-field style="width: 66%">
+          <mat-select placeholder="Estudante" formControlName="estudante" [(ngModel)]="estudante"  required >
+             <mat-option *ngFor="let estudante of estudantes" [value]="estudante">
+                 {{estudante.nome}} - {{estudante.documento_identificacao}}: {{estudante.nr_documento}}
+             </mat-option>
+         </mat-select>
+     </mat-form-field>
+
+     <!--ANO DO ESTUDANTE-->      
       <mat-form-field style="width: 33%">
-          <mat-select placeholder="Ano" formControlName="ano" [(ngModel)]="ano" (change)="filtrarTurma(ano)"  required >
+          <mat-select placeholder="Ano" formControlName="ano" [(ngModel)]="ano" required >
               <mat-option *ngFor="let ano of anos" [value]="ano.value">
                   {{ano.viewValue}}
               </mat-option>
           </mat-select>
         </mat-form-field>
-  
-      <!--ESTUDANTE-->        
+
+      <!--NIVEL DO ESTUDANTE-->      
       <mat-form-field style="width: 33%">
-           <mat-select placeholder="Estudante" formControlName="estudante" [(ngModel)]="estudante"  required >
-              <mat-option *ngFor="let estudante of estudantes" [value]="estudante">
-                  {{estudante.encarregado.nome}}
+          <mat-select placeholder="Nivel" formControlName="nivel" [(ngModel)]="nivel" required [disabled]="ano == null" >
+              <mat-option *ngFor="let nivel of niveis" [value]="nivel">
+                  {{nivel}}
               </mat-option>
           </mat-select>
-      </mat-form-field>
+        </mat-form-field>
+
+      <!--REGIME DO ESTUDANTE-->      
+      <mat-form-field style="width: 33%">
+          <mat-select placeholder="Regime" formControlName="regime" [(ngModel)]="regime"  (change)="filtrarTurma(ano, regime, nivel)"  required [disabled]="nivel == null" >
+              <mat-option *ngFor="let regime of regimes" [value]="regime">
+                  {{regime}}
+              </mat-option>
+          </mat-select>
+        </mat-form-field>
           
       <!--TURMA-->        
       <mat-form-field style="width: 33%">
-        <mat-select placeholder="Turma" formControlName="turma" [(ngModel)]="turma" required [disabled]="ano == null" >
+        <mat-select placeholder="Turma" formControlName="turma" [(ngModel)]="turma" required [disabled]="regime == null" >
             <mat-option *ngFor="let turma of turmasFilter" [value]="turma">
                 {{turma.nome}} - {{turma.ano}}
-                
             </mat-option>
         </mat-select>
+        <mat-hint *ngIf="turmasFilter?.length == 0">Sem turmas disponiveis nesse regime</mat-hint>
       </mat-form-field>
 
+    <p></p>
       <!--TRANSPORTE-->
       <section>
           Serviços extras:
@@ -41,7 +60,8 @@
         style="width: 33%"
           class="example-margin"
           [color]="color"
-          [checked]="transporte_checked"
+          [checked]="estudante.transporte_checked === 'true' ? true : false"
+          (change)="setTransporte($event)"
           [disabled]="turma.transporte ==null || turma.transporte == 0">
           <span *ngIf="turma.transporte == '' || turma.transporte == null">Sem opção de transporte</span> <span *ngIf="!turma.transporte == 0">Transporte - {{turma.transporte}} MZN</span>
         </mat-slide-toggle> 
@@ -51,7 +71,8 @@
         style="width: 33%"
           class="example-margin"
           [color]="color"
-          [checked]="alimentacao_checked"
+          [checked]="estudante.alimentacao_checked === 'true' ? true : false"
+          (change)="setAlimentacao($event)"
           [disabled]="turma.alimentacao ==null || turma.alimentacao == 0">
           <span *ngIf="turma.alimentacao == '' || turma.alimentacao == null">Sem opção de alimentação</span> <span *ngIf="!turma.alimentacao == 0">Alimentação - {{turma.transporte}} MZN</span>
         </mat-slide-toggle>
@@ -59,7 +80,8 @@
         <mat-slide-toggle 
           class="example-margin"
           [color]="color"
-          [checked]="estudo_orientado_checked"
+          [checked]="estudante.estudo_orientado_checked === 'true' ? true : false"
+          (change)="setEstudoOrientado($event)"
           [disabled]="turma.estudo_orientado ==null || turma.estudo_orientado == 0">
           <span *ngIf="turma.estudo_orientado == '' || turma.estudo_orientado == null">Sem opção de estudo orientado</span> <span *ngIf="!turma.estudo_orientado == 0">Estudo orientado - {{turma.estudo_orientado}} MZN</span>
         </mat-slide-toggle>
@@ -237,7 +259,7 @@
     
     <div>
     <button mat-button matStepperPrevious>Back</button>
-    <button mat-button (click)="stepper.reset()">CADASTRAR</button>
+    <button mat-button (click)="registar()">CADASTRAR</button>
     </div>
   </mat-step>
 </mat-horizontal-stepper>

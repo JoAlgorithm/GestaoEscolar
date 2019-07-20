@@ -6,6 +6,7 @@ import { Encarregado } from '../../classes/encarregado';
 import { MatTableDataSource, MatPaginator, MatSort } from '@angular/material';
 import { Inject} from '@angular/core';
 import {MatDialog, MatDialogRef, MAT_DIALOG_DATA} from '@angular/material/dialog';
+import { Turma } from '../../classes/turma';
 
 
 
@@ -24,7 +25,7 @@ export class ListagemComponent implements OnInit {
   editarverificar=false;
 detalhesverificar=false;
   dataSourse: MatTableDataSource<Estudante>;
-  displayedColumns = ['id', 'nome','genero','Detalhe','Editar'];
+  displayedColumns = ['nome', 'turma', 'nivel', 'regime', 'contacto', 'Detalhe','Editar'];
   @ViewChild(MatPaginator) paginator: MatPaginator;
 @ViewChild(MatSort) sort: MatSort;
 
@@ -39,6 +40,7 @@ detalhesverificar=false;
         return {
           id: e.payload.doc.id,
           encarregado: e.payload.doc.data()['encarregado'] as Encarregado,
+          turma: e.payload.doc.data()['turma'] as Turma,
           ...e.payload.doc.data(),
         } as Estudante;
       })

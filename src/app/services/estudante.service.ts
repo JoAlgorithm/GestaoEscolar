@@ -10,29 +10,39 @@ export class EstudanteService {
 
   constructor(private firestore: AngularFirestore, private authService: AuthService) { }
 
+
+  //METODOS RELACIONADOS A ENTIDADE ESTUDANTE
+
   //Retorna a lista de estudantes
   getEstudantes() {
     return this.firestore.collection('escolas/'+this.authService.get_escola_id + '/estudantes').snapshotChanges();
   }
+
+  //Cadastra o estudante
+  createEstudante(estudante: Estudante){
+    return this.firestore.collection('escolas/'+this.authService.get_escola_id + '/estudantes').add(estudante);
+  }
+
+  updateEstudante(estudante: Estudante){
+    //delete estudante.id;
+    alert('CAMINHO: escolas/'+this.authService.get_escola_id + '/estudantes/' + estudante.id)
+    this.firestore.doc('escolas/'+this.authService.get_escola_id + '/estudantes/' + estudante.id).update(estudante);
+  }
+
+  deleteEstudante(estudante: Estudante){
+    this.firestore.doc('escolas/'+this.authService.get_escola_id + '/estudantes/' + estudante.id).delete();
+  }
+
+  //METODOS RELACIONADOS A ENTIDADE TURMA
 
   //Retorna a lista de turmas
   getTurmas() {
     return this.firestore.collection('escolas/'+this.authService.get_escola_id + '/turmas').snapshotChanges();
   }
 
-  //Cadastra o estudante
-  createEstudante(estudante: Estudante){
-    
-    return this.firestore.collection('escolas/'+this.authService.get_escola_id + '/estudantes').add(estudante);
+  //Adicionar estudante na turma
+  addEstudanteTurma(turmaid, estudante:Estudante){
+    return this.firestore.collection('escolas/'+ this.authService.get_escola_id + '/turmas/'+ turmaid +'/estudantes').add(estudante);
   }
-
-  updateEstudante(estudante: Estudante){
-    delete estudante.nr_estudante;
-    this.firestore.doc('escolas/'+this.authService.get_escola_id + '/estudantes/' + estudante.nr_estudante).update(estudante);
-  }
-
-  deleteEstudante(nr_estudante: string){
-    this.firestore.doc('escolas/'+this.authService.get_escola_id + '/estudantes/' + nr_estudante).delete();
-  }
-
+  
 }

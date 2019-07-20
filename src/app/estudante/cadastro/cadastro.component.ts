@@ -162,8 +162,11 @@ export class CadastroComponent implements OnInit {
   registarEstudante(){
     //let data = Object.assign({}, this.firstFormGroup.value);
 
-    this.estudante.id = "2343"
+    //this.estudante.id = "2343"
     this.estudante.anexo_documento = "";
+    this.estudante.alimentacao_checked = false;
+    this.estudante.estudo_orientado_checked = false;
+    this.estudante.transporte_checked = false;
     this.estudante.encarregado = Object.assign({}, this.encarregado);
     let data = Object.assign({}, this.estudante);
 
