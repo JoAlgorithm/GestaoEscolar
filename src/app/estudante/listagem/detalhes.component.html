@@ -1,0 +1,74 @@
+<!--
+<table table style="width:100%">
+    
+    <tr>
+            <th>Nome</th>
+            <th>Genero</th>
+            <th>Documento</th>
+            <th>Numero de Documento</th>
+            <th>Local de Emissao</th>
+            <th>Nacionalidade</th>
+            <th>Nome do Encarregado</th>
+    </tr>
+    <tr>
+    <td>{{data.nome}}</td>   
+      <td>{{data.genero}}</td>
+      <td>{{data.documento}}</td>
+      <td>{{data.nr_documento}}</td>
+      <td>{{data.local_emissao}}</td>
+      <td>{{data.nacionalidade}}</td>
+      <td>{{data.nome_encarregado}}</td>
+      </tr>
+  </table>-->
+
+
+  <div class="modal-dialog modal-lg" style="padding:0px;margin:0px;" >
+    <div class="modal-content">
+        <div class="modal-header">
+            <h4 class="modal-title">Dados do Estudante</h4>
+        </div>
+        <div class="modal-body">
+          <table table style="width:100%">
+    
+            <tr>
+            <th>Nome:</th>
+            <td>{{data.nome}}</td>  
+                  </tr>  
+                  <tr>
+            <th>Data de Nascimento:</th>
+            <td>{{data.datanascimento.toDate() | date: 'dd/MM/yyyy'}}</td>  
+                  </tr> 
+<tr>
+              <th>Genero:</th>
+              <td>{{data.genero}}</td>   
+</tr>
+<tr>
+              <th>Documento:</th> 
+              <td>{{data.documento}}</td>
+</tr>
+<tr>
+              <th>Numero do documento:</th>
+              <td>{{data.nr_documento}}</td>
+</tr>
+<tr>
+              <th>Local de Emissao:</th>
+              <td>{{data.local_emissao}}</td>
+</tr>
+<tr>
+                    <th>Nacionalidade:</th>
+                    <td>{{data.nacionalidade}}</td>
+
+                    </tr>
+                    <tr>
+                    <th>Nome do Encarregado:</th>
+                    <td>{{data.nome_encarregado}}</td>         
+      </tr>
+          </table>
+        </div>
+        <div class="modal-footer">
+            <button type="button" class="btn btn-default" data-dismiss="modal" (click)="closeModal()">Close</button>
+        </div>
+    </div>
+</div>
+
+

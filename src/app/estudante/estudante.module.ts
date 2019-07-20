@@ -13,6 +13,7 @@ import {OverlayModule} from '@angular/cdk/overlay';
 import {PlatformModule} from '@angular/cdk/platform';
 import {ObserversModule} from '@angular/cdk/observers';
 import {PortalModule} from '@angular/cdk/portal';
+import { NgxPaginationModule } from 'ngx-pagination';
 
 import {
   MatAutocompleteModule,
@@ -57,9 +58,10 @@ import { EstudanteRoutes } from './estudante.routing';
 
 //import {AutocompleteDemoComponent} from './autocomplete/autocomplete-demo';
 import {CadastroComponent} from './cadastro/cadastro.component';
-import { ListagemComponent } from './listagem/listagem.component';
 import { EstudanteService } from '../services/estudante.service';
+import { ListagemComponent, DialogOverviewExampleDialog , DialogEditar} from './listagem/listagem.component';
 import { AngularFirestore } from '@angular/fire/firestore';
+import { from } from 'rxjs';
 import { MatriculaComponent } from './matricula/matricula.component';
 
 
@@ -104,7 +106,7 @@ import { MatriculaComponent } from './matricula/matricula.component';
     ReactiveFormsModule,
     FlexLayoutModule,
     CdkTableModule,
-
+    NgxPaginationModule ,
     //LayoutModule,
     //TableDemoModule,
 
@@ -120,14 +122,19 @@ import { MatriculaComponent } from './matricula/matricula.component';
   providers: [
     {provide: OverlayContainer, useClass: FullscreenOverlayContainer},
     EstudanteService,
-    AngularFirestore
+    AngularFirestore,
+    
   ],
   declarations: [
     CadastroComponent,
     ListagemComponent,
-    MatriculaComponent
+    MatriculaComponent,
+    DialogOverviewExampleDialog,
+    DialogEditar
   ],
   entryComponents: [
+    DialogOverviewExampleDialog,
+    DialogEditar
     /*ContentElementDialogComponent,
     IFrameDialogComponent,
     JazzDialogComponent*/
