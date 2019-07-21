@@ -22,7 +22,7 @@ export interface Menu {
 
 const MENUITEMS = [
   {
-    state: '/',
+    state: 'dashboard',
     //state: 'home',
     name: 'INICIO',
     type: 'link',

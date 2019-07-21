@@ -6,6 +6,11 @@ import { FlexLayoutModule } from '@angular/flex-layout';
 
 import { DashboardComponent } from './dashboard.component';
 import { DashboardRoutes } from './dashboard.routing';
+import { EstudanteService } from '../services/estudante.service';
+import { AngularFirestore } from '@angular/fire/firestore';
+
+import { ChartsModule } from 'ng2-charts/ng2-charts';
+import { AgmCoreModule } from '@agm/core';
 
 @NgModule({
   imports: [
@@ -17,7 +22,15 @@ import { DashboardRoutes } from './dashboard.routing';
     MatListModule,
     MatProgressBarModule,
     MatMenuModule,
-    FlexLayoutModule
+    FlexLayoutModule,
+    ChartsModule,
+    AgmCoreModule
+  ],
+  providers: [
+    //{provide: OverlayContainer, useClass: FullscreenOverlayContainer},
+    EstudanteService,
+    AngularFirestore,
+    
   ],
   declarations: [ DashboardComponent ]
 })
