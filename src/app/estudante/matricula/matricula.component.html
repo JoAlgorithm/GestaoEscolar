@@ -24,7 +24,7 @@
 
       <!--NIVEL DO ESTUDANTE-->      
       <mat-form-field style="width: 33%">
-          <mat-select placeholder="Nivel" formControlName="nivel" [(ngModel)]="nivel" required [disabled]="ano == null" >
+          <mat-select placeholder="Classe" formControlName="nivel" [(ngModel)]="nivel" required [disabled]="ano == null" >
               <mat-option *ngFor="let nivel of niveis" [value]="nivel">
                   {{nivel}}
               </mat-option>
@@ -259,7 +259,7 @@
     
     <div>
     <button mat-button matStepperPrevious>Back</button>
-    <button mat-button (click)="registar()">CADASTRAR</button>
+    <button mat-button (click)="registar()">MATRICULAR</button>
     </div>
   </mat-step>
 </mat-horizontal-stepper>

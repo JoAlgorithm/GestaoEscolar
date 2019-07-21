@@ -1,2 +1,26 @@
-<p>{{data.nome}}</p>
-<p>{{data.genero}}</p>
+
+<!--<form class="example-form">
+    <mat-form-field class="example-full-width">
+      <input matInput placeholder="Nome" value="data.nome">
+    </mat-form-field>
+  
+    <mat-form-field class="example-full-width">
+      <textarea matInput placeholder="Leave a comment"></textarea>
+    </mat-form-field>
+  </form>-->
+  <mat-horizontal-stepper [linear]="true" #stepper>
+
+    <mat-step [stepControl]="firstFormGroup">
+      <form [formGroup]="firstFormGroup">
+        <ng-template matStepLabel>DADOS MESTRES</ng-template>
+  
+        <!--ESTUDANTE-->        
+        <mat-form-field style="width: 66%">
+            <mat-select placeholder="Estudante" formControlName="estudante" [(ngModel)]="estudante"  required >
+               <mat-option *ngFor="let estudante of estudantes" [value]="estudante">
+                   {{data.nome}} 
+               </mat-option>
+           </mat-select>
+       </mat-form-field>
+       
+  

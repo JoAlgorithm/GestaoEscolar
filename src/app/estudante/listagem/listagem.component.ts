@@ -7,6 +7,8 @@ import { MatTableDataSource, MatPaginator, MatSort } from '@angular/material';
 import { Inject} from '@angular/core';
 import {MatDialog, MatDialogRef, MAT_DIALOG_DATA} from '@angular/material/dialog';
 import { Turma } from '../../classes/turma';
+import {FormBuilder, FormGroup, Validators,FormControl} from '@angular/forms';
+
 
 
 
@@ -19,22 +21,28 @@ import { Turma } from '../../classes/turma';
 export class ListagemComponent implements OnInit {
   //private alunos:any []=[];
   estudantes: Estudante[];
+  isLinear = true;
   //public paginaAtual = 1;
  // filter: any;
   //estudantesfilter: Estudante[];
-  editarverificar=false;
-detalhesverificar=false;
+  //firstFormGroup: FormGroup;
+
   dataSourse: MatTableDataSource<Estudante>;
   displayedColumns = ['nome', 'turma', 'nivel', 'regime', 'contacto', 'Detalhe','Editar'];
   @ViewChild(MatPaginator) paginator: MatPaginator;
 @ViewChild(MatSort) sort: MatSort;
 
+firstFormGroup: FormGroup;
 
  
-  constructor( public dialog: MatDialog, private estudanteSevice: EstudanteService) { 
+  constructor( private _formBuilder: FormBuilder, public dialog: MatDialog, private estudanteSevice: EstudanteService) { 
     
   }
   ngOnInit() {
+    this.firstFormGroup = this._formBuilder.group({
+      nome: ['', Validators.required],
+      
+    });
     this.estudanteSevice.getEstudantes().subscribe(data => {
       this.estudantes = data.map(e => {
         return {
