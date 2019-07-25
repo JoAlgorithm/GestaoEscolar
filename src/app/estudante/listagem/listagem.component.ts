@@ -3,7 +3,7 @@ import { Estudante } from '../../classes/estudante';
 import { CadastroComponent } from '../cadastro/cadastro.component';
 import { EstudanteService } from '../../services/estudante.service';
 import { Encarregado } from '../../classes/encarregado';
-import { MatTableDataSource, MatPaginator, MatSort } from '@angular/material';
+import { MatTableDataSource, MatPaginator, MatSort, MatSnackBar } from '@angular/material';
 import { Inject} from '@angular/core';
 import {MatDialog, MatDialogRef, MAT_DIALOG_DATA} from '@angular/material/dialog';
 import { Turma } from '../../classes/turma';
@@ -59,7 +59,9 @@ export class ListagemComponent implements OnInit {
     {value: 'Niassa', viewValue: 'Niassa'},
     {value: 'Zambezia', viewValue: 'Zambezia'}
   ]
+  data_emissao: Date;
   data_nascimento: Date;
+  data_validade:Date;
   dataSourse: MatTableDataSource<Estudante>;
   displayedColumns = ['nome', 'turma', 'nivel', 'regime', 'contacto', 'Detalhe','Editar'];
   @ViewChild(MatPaginator) paginator: MatPaginator;
@@ -68,12 +70,13 @@ export class ListagemComponent implements OnInit {
 firstFormGroup: FormGroup;
 estudante: Estudante;
  
-  constructor(  private _formBuilder: FormBuilder, public dialog: MatDialog, private estudanteSevice: EstudanteService) { 
+  constructor(  private _formBuilder: FormBuilder, public dialog: MatDialog,
+     private estudanteService: EstudanteService,public snackBar: MatSnackBar) { 
     
   }
   ngOnInit() {
     
-    this.estudanteSevice.getEstudantes().subscribe(data => {
+    this.estudanteService.getEstudantes().subscribe(data => {
       this.estudantes = data.map(e => {
         return {
           id: e.payload.doc.id,
@@ -91,6 +94,17 @@ estudante: Estudante;
      // console.log("Encarregadao: "+this.estudantes[0].encarregado.nome)
     })
 
+  }
+ 
+  
+  openSnackBar(mensagem) {
+    /*this.snackBar.openFromComponent(null, {
+    duration: 2000,
+    announcementMessage: mensagem
+    });*/
+    this.snackBar.open(mensagem, null,{
+      duration: 2000
+    })
   }
   
   applyFilter(filterValue: string) {
@@ -116,11 +130,16 @@ estudante: Estudante;
  });
  
   }
-  editar(aluno: Estudante){
+  guardardados(){
+
+
+
+  }
+  editar(aluno: Estudante, Encarregadao: Encarregado){
 
   const dialogRef = this.dialog.open(DialogEditar, {
     width: '1000px',
-    data:{estudante: aluno, data_nascimento:new Date(aluno.data_nascimento),  generos: this.generos, provincias: this.provincias, documentos_identificacao: this.documentos_identificacao}
+    data:{estudante: aluno,data_validade:this.data_validade= new Date(), data_nascimento: this.data_nascimento=new Date(),data_emissao:this.data_emissao=new Date(),  generos: this.generos, provincias: this.provincias, documentos_identificacao: this.documentos_identificacao}
     //data: {estudante_nome: aluno.nome, genero: aluno.genero, documento: aluno.documento_identificacao,nacionalidade: aluno.nacionalidade,nr_documento: aluno.nr_documento,
     // local_emissao: aluno.local_emissao,nome_encarregado: aluno.encarregado.nome,datanascimento: aluno.data_nascimento}
   });

@@ -8,11 +8,12 @@
       <textarea matInput placeholder="Leave a comment"></textarea>
     </mat-form-field>
   </form>-->
+ 
   <mat-horizontal-stepper [linear]="true" #stepper>
-
+  
   <mat-step [stepControl]="firstFormGroup">
     
-      <ng-template matStepLabel>DADOS MESTRES</ng-template>
+      <ng-template matStepLabel>DADOS DO ESTUDANTE {{data.estudante.data_validade.toDate() | date: 'dd/MM/yyyy'}}</ng-template>
       <mat-form-field style="width: 33%">
         <input matInput placeholder="Nome completo"  [(ngModel)]="data.estudante.nome" required>
     </mat-form-field>
@@ -56,14 +57,14 @@
 
     <!--DATA DE EMISSAO-->
     <mat-form-field style="width: 33%">
-        <input matInput [matDatepicker]="picker3" placeholder="Data de missao" [(ngModel)]="data.estudante.data_emissao" required>
+        <input matInput [matDatepicker]="picker3" placeholder="Data de missao" [(ngModel)]="data.data_emissao" required>
         <mat-datepicker-toggle matSuffix [for]="picker3"></mat-datepicker-toggle>
         <mat-datepicker #picker3></mat-datepicker>      
     </mat-form-field>
 
     <!--DATA DE VALIDADE-->
     <mat-form-field style="width: 33%">
-        <input matInput [matDatepicker]="picker4" placeholder="Data de validade" [(ngModel)]="data.estudante.data_validade">
+        <input matInput [matDatepicker]="picker4" placeholder="Data de validade" [(ngModel)]="data.data_validade">
         <mat-datepicker-toggle matSuffix [for]="picker4"></mat-datepicker-toggle>
         <mat-datepicker #picker4></mat-datepicker>
     </mat-form-field>
@@ -91,13 +92,23 @@
     <mat-form-field style="width: 33%">
         <input matInput placeholder="Endereco"  [(ngModel)]="data.estudante.endereco" required>
     </mat-form-field>
+     <!--ENCARREGADO-->
+     <mat-form-field style="width: 33%">
+        <input matInput placeholder="Encarregado"  [(ngModel)]="data.estudante.encarregado.nome" required>
+    </mat-form-field>
+    <mat-form-field style="width: 33%">
+        <input matInput placeholder="Telefone do Encarregado"  [(ngModel)]="data.estudante.encarregado.telefone1" required>
+    </mat-form-field>
+    <div>
 
-     <div>
-        <button mat-button matStepperNext>GUARDAR</button>
-        </div>
-    
-    </mat-step>
-    </mat-horizontal-stepper>
+        <button mat-button (click)="registarEstudante(estudante)">Guardar</button>
+
+      </div>
+</mat-step>
+     
+   
   
+    </mat-horizontal-stepper>
+     
        
   
