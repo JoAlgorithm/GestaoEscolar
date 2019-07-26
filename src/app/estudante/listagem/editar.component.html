@@ -13,7 +13,7 @@
   
   <mat-step [stepControl]="firstFormGroup">
     
-      <ng-template matStepLabel>DADOS DO ESTUDANTE {{data.estudante.data_validade.toDate() | date: 'dd/MM/yyyy'}}</ng-template>
+      <ng-template matStepLabel>DADOS DO ESTUDANTE</ng-template>
       <mat-form-field style="width: 33%">
         <input matInput placeholder="Nome completo"  [(ngModel)]="data.estudante.nome" required>
     </mat-form-field>
@@ -99,9 +99,14 @@
     <mat-form-field style="width: 33%">
         <input matInput placeholder="Telefone do Encarregado"  [(ngModel)]="data.estudante.encarregado.telefone1" required>
     </mat-form-field>
+    <mat-form-field style="width: 33%">
+        <input matInput placeholder="Email do Encarregado"  [(ngModel)]="data.estudante.encarregado.email" required>
+    </mat-form-field>
     <div>
-
-        <button mat-button (click)="registarEstudante(estudante)">Guardar</button>
+       
+        <button mat-button (click)="GuardarDados()">GUARDAR</button>
+       
+        <button mat-button (click)="closeModal()">FECHAR</button>
 
       </div>
 </mat-step>

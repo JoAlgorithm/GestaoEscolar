@@ -129,13 +129,8 @@ estudante: Estudante;
   
  });
  
-  }
-  guardardados(){
-
-
-
-  }
-  editar(aluno: Estudante, Encarregadao: Encarregado){
+  }  
+  editar(aluno: Estudante){
 
   const dialogRef = this.dialog.open(DialogEditar, {
     width: '1000px',
@@ -143,17 +138,23 @@ estudante: Estudante;
     //data: {estudante_nome: aluno.nome, genero: aluno.genero, documento: aluno.documento_identificacao,nacionalidade: aluno.nacionalidade,nr_documento: aluno.nr_documento,
     // local_emissao: aluno.local_emissao,nome_encarregado: aluno.encarregado.nome,datanascimento: aluno.data_nascimento}
   });
-
  dialogRef.afterClosed().subscribe(result => {
+  
   console.log('The dialog was closed');
+  
   // this.animal = result;
   
  });
+ 
 
   }
- 
-}
+  GuardarDados(){
+    let data = Object.assign({}, this.estudante);
+    this.estudanteService.updateEstudante(data);
 
+  }
+  
+} 
 
 export interface DialogData {
   animal: string;
@@ -183,6 +184,7 @@ export class DialogOverviewExampleDialog {
  
     this.dialogRef.close();
   }
+  
 }
 
 
@@ -194,10 +196,11 @@ export class DialogOverviewExampleDialog {
 
 export class DialogEditar{
 
-  constructor(
+  constructor(private _formBuilder: FormBuilder, public dialog: MatDialog,
+    private estudanteService: EstudanteService,public snackBar: MatSnackBar,
     public dialogRef: MatDialogRef<DialogEditar>,
     @Inject(MAT_DIALOG_DATA) public data: DialogData) {}
-
+    estudantes: Estudante[];
   onNoClick(): void {
     this.dialogRef.close();
   }
@@ -206,6 +209,8 @@ export class DialogEditar{
  
     this.dialogRef.close();
   }
+ 
+ 
 }
 
 
