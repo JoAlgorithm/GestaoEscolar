@@ -47,23 +47,87 @@
   <input matInput placeholder="Multa" formControlName="multa" [(ngModel)]="mensalidade.multa" required >
 </mat-form-field>
 <div>
-  <button mat-button matStepperNext>SEGUINTE</button>
+  <button mat-button matStepperNext (click)="prencherpagamento()">SEGUINTE</button>
   </div>
      </form>
     </mat-step>
 
-    <mat-step [stepControl]="secondFormGroup">
-      <form [formGroup]="secondFormGroup">
+    <mat-step>
+      
       <ng-template matStepLabel>CONFIRMAR DADOS</ng-template>
-      {{estudante.turma.id}}
-        <!--NOME DO ESTUDANTE-->
-        <mat-form-field style="width: 33%">
-            <input matInput placeholder="Nome completo" formControlName="estudante" [(ngModel)]="estudante.nome" required>
-        </mat-form-field>
+      <mat-card>
+        <mat-card-content>
+          <div class="mb-1">
+            <h1 class="mt-0"><strong>CONFIRMACAO DE PAGAMENTO</strong></h1>
+          </div>
+
+          <div fxLayout="row wrap">
+            <div fxFlex.gt-xs="50" fxFlex="100">
+              <h4 class="my-0">Client</h4>
+              <div fxLayout="column">
+                <span>Invoice No: #0001</span>
+                <span>Date issued: 01 Jun 2017</span>
+                <span>Due date: 31 May 2017</span>
+              </div>
+            </div>
+
+            <div fxFlex.gt-xs="50" fxFlex="100" class="text-sm-right text-xs-left">
+              <h4 class="my-0">Company LLC</h4>
+              <div fxLayout="column">
+              <span>company@address.com</span>
+              <span>1234 Main</span>
+              <span>Apt. 4B</span>
+            </div>
+            </div>
+          </div>
+
+          </mat-card-content>
+
+
+
+
+          <mat-card-content class="pl-0 pr-0">
+            <ngx-datatable
+              class="material"
+              [rows]="pagamentos"
+              [columnMode]="'flex'"
+              [headerHeight]="50"
+              [footerHeight]="0"
+              [rowHeight]="'auto'">
+              <ngx-datatable-column name="Descricao" [flexGrow]="2">
+                <ng-template ngx-datatable-cell-template let-row="row">
+                  <strong>{{row.descricao}}</strong>
+                </ng-template>
+              </ngx-datatable-column>
+              <ngx-datatable-column name="Preco Unitario" [flexGrow]="1">
+                <ng-template ngx-datatable-cell-template let-row="row">
+                  <strong>{{row.valor | currency:'MZN ':'symbol':'1.2-2'}}</strong>
+                </ng-template>
+              </ngx-datatable-column>
+
+            </ngx-datatable>
+          </mat-card-content>
+
+
+        <!--  <hr>
+          <mat-card-content>
+            <div fxLayout="row wrap">
+            
+              <div fxFlex.gt-sm="25" fxFlex.gt-xs="50" fxFlex="100" class="mt-1 mb-1 text-xs-left text-sm-right">
+                <h6 class="text-uppercase text-sm ma-0 text-bold">Total</h6>
+                <h1 class="ma-0 mat-text-accent">200</h1>
+              </div>
+            </div>
+          </mat-card-content>-->
+        <hr>
+
         <div>
           <button mat-button (click)="confirmar()">CONFIRMAR</button>
           </div>
-        </form>
+
+          </mat-card>
+        
+      
         </mat-step>
 
      </mat-horizontal-stepper>

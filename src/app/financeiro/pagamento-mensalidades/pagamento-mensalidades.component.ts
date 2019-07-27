@@ -5,7 +5,7 @@ import { MatSnackBar } from '@angular/material';
 import { DatePipe } from '@angular/common';
 import { EstudanteService } from './../../services/estudante.service';
 import { Estudante } from '../../classes/estudante';
-
+import { MatTableDataSource, MatPaginator, MatSort} from '@angular/material';
 import {Observable} from 'rxjs';
 import { Turma } from '../../classes/turma';
 import { Encarregado } from '../../classes/encarregado';
@@ -42,6 +42,8 @@ export class PagamentoMensalidadesComponent implements OnInit {
     {value: 'Dezembro', viewValue: 'Dezembro'}
   ]
 
+pagamentos: any []=[];
+  
   constructor(private _formBuilder: FormBuilder, public snackBar: MatSnackBar,
     private estudanteService: EstudanteService, private authService: AuthService) { 
       this.estudante = new Estudante();
@@ -76,17 +78,7 @@ export class PagamentoMensalidadesComponent implements OnInit {
 
 
     this.secondFormGroup = this._formBuilder.group({
-      ano: ['', Validators.required],
-      estudante: ['', Validators.required],
-      nivel: ['', Validators.required],
-      regime: ['', Validators.required],
-      turma: ['', Validators.required],
-      transporte: [''],
-      mes: ['', Validators.required],
-      multa: ['', Validators.required],
-      mensalidade: ['', Validators.required],
-      alimentacao: ['', Validators.required],
-      estudo_orientado: ['', Validators.required],
+     
     });
     this.estudanteService.getEstudantes().subscribe(data => {
       this.estudantes = data.map(e => {
@@ -127,9 +119,39 @@ if(estudante.alimentacao_checked==false){
     this.mensalidade.ano=this.estudante.turma.ano;
     this.mensalidade.data_pagamento= new Date();
    this.mensalidade.estudante = Object.assign({},this.estudante);
-    this.mensalidade.turma= Object.assign({},this.turma);
+    this.mensalidade.turma= Object.assign({},this.estudante.turma);
     let data = Object.assign({}, this.mensalidade);
     this.estudanteService.createMensalidade(data);
+    
+   
+
+  }
+  prencherpagamento(){
+    this.pagamentos=[{ 
+"descricao":"Mensalidade",
+"valor":this.estudante.turma.mensalidade
+    },
+   { 
+  "descricao":"Taxa de Alimentacao",
+  "valor":this.estudante.turma.alimentacao
+          },
+   { 
+   "descricao":"Taxa de Transporte",
+   "valor":this.estudante.turma.transporte
+       },
+        
+ { 
+ "descricao":"Taxa de Estudo orientado",
+ "valor":this.estudante.turma.estudo_orientado
+   },
+   { 
+    "descricao":"Multa",
+    "valor":this.mensalidade.multa
+        },
+
+    
+  
+  ]
 
   }
 
