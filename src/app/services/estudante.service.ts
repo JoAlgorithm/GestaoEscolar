@@ -63,12 +63,12 @@ export class EstudanteService {
     this.firestore.collection('escolas/'+this.authService.get_escola_id + '/mensalidades/').add(mensalidade);
 
     //Registar a mensalidade no estudante
-   // console.log('caminho estudante: '+'escolas/'+this.authService.get_escola_id + '/estudantes/'+ mensalidade.estudante.id + '/mensalidades/');
-   // this.firestore.collection('escolas/'+this.authService.get_escola_id + '/estudantes/'+ mensalidade.estudante.id + '/mensalidades/').add(mensalidade);
+    console.log('caminho estudante: '+'escolas/'+this.authService.get_escola_id + '/estudantes/'+ mensalidade.estudante.id + '/mensalidades/');
+    this.firestore.collection('escolas/'+this.authService.get_escola_id + '/estudantes/'+ mensalidade.estudante.id + '/mensalidades/').add(mensalidade);
     
 
     //Registar a mensalidade na tabela de turmas
-   // console.log('caminho turma: '+'escolas/'+this.authService.get_escola_id + '/turmas/'+ mensalidade.turma.id + '/mensalidades/');
-   // this.firestore.collection('escolas/'+this.authService.get_escola_id + '/turmas/'+ mensalidade.turma.id + '/mensalidades/').add(mensalidade);  }
+    console.log('caminho turma: '+'escolas/'+this.authService.get_escola_id + '/turmas/'+ mensalidade.turma.id + '/mensalidades/');
+    this.firestore.collection('escolas/'+this.authService.get_escola_id + '/turmas/'+ mensalidade.turma.id + '/mensalidades/').add(mensalidade);  }
   }
 }
