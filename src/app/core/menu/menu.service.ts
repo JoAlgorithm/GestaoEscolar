@@ -41,7 +41,23 @@ const MENUITEMS = [
       {state: 'matricula_estudante', name: 'Matrícula'},
       {state: 'listagem_estudante', name: 'Lista'}
     ]
+  },
+  {
+    state: 'estudante',
+    name: 'FINANÇAS',
+    type: 'sub',
+    icon: 'monetization_on',
+    /*badge: [
+      {type: 'red', value: '5'}
+    ],*/
+    children: [
+      {state: 'pagamento_estudante', name: 'Pagamento'}
+    
+     
+    ]
   }/*,
+  
+  /*,
   {
     state: 'http://primer.nyasha.me/docs',
     name: 'DOCS',

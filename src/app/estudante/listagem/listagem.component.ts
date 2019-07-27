@@ -148,11 +148,6 @@ estudante: Estudante;
  
 
   }
-  GuardarDados(){
-    let data = Object.assign({}, this.estudante);
-    this.estudanteService.updateEstudante(data);
-
-  }
   
 } 
 
@@ -209,6 +204,14 @@ export class DialogEditar{
  
     this.dialogRef.close();
   }
+  GuardarDados(estudante){
+    estudante.turma = Object.assign({},estudante.turma);
+    estudante.encarregado = Object.assign({},estudante.encarregado);
+    let data = Object.assign({}, estudante);
+    this.estudanteService.updateEstudante(data);
+
+  }
+  
  
  
 }

@@ -13,7 +13,7 @@
   
   <mat-step [stepControl]="firstFormGroup">
     
-      <ng-template matStepLabel>DADOS DO ESTUDANTE</ng-template>
+      <ng-template matStepLabel>DADOS DO ESTUDANTE </ng-template>
       <mat-form-field style="width: 33%">
         <input matInput placeholder="Nome completo"  [(ngModel)]="data.estudante.nome" required>
     </mat-form-field>
@@ -104,7 +104,7 @@
     </mat-form-field>
     <div>
        
-        <button mat-button (click)="GuardarDados()">GUARDAR</button>
+        <button mat-button (click)="GuardarDados(data.estudante)">GUARDAR</button>
        
         <button mat-button (click)="closeModal()">FECHAR</button>
 
