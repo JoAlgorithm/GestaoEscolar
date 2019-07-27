@@ -48,8 +48,8 @@ const MENUITEMS:Menu[] = [
     type: 'sub',
     icon: 'monetization_on',
     children: [
-      {state: 'pagamento_mensalidades', name: 'Registar pagamento'},
-      {state: 'lista_mensalidades', name: 'Lista de pagamentos'}
+      {state: 'pagamento_mensalidades', name: 'Mensalidade'},
+      {state: 'lista_mensalidades', name: 'Relatório'}
     ]
   }
   
