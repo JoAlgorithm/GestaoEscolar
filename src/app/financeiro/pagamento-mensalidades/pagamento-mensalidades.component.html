@@ -1,3 +1,37 @@
-<p>
-  pagamento-mensalidades works!
-</p>
+<mat-horizontal-stepper [linear]="true" #stepper>
+
+  <mat-step [stepControl]="firstFormGroup">
+    <form [formGroup]="firstFormGroup">
+      <ng-template matStepLabel>PAGAMENTO/MENSALIDADE</ng-template>
+
+      <!--ESTUDANTE-->        
+      <mat-form-field style="width: 33%">
+          <mat-select placeholder="Estudante" formControlName="estudante" [(ngModel)]="estudante"  required >
+             <mat-option *ngFor="let estudante of estudantes" [value]="estudante">
+                 {{estudante.nome}}
+             </mat-option>
+         </mat-select>
+     </mat-form-field>
+     <mat-form-field style="width: 33%">
+      <input matInput placeholder="Turma" formControlName="turma" [(ngModel)]="estudante.turma.nome" required >
+  </mat-form-field>
+  <mat-form-field style="width: 33%">
+    <input matInput placeholder="Classe" formControlName="nivel" [(ngModel)]="estudante.turma.nivel" required >
+</mat-form-field>
+  <mat-form-field style="width: 33%">
+      <input matInput placeholder="Regime" formControlName="regime" [(ngModel)]="estudante.turma.regime" required >
+  </mat-form-field>
+  <mat-form-field style="width: 33%">
+    <input matInput placeholder="Ano" formControlName="ano" [(ngModel)]="estudante.turma.ano" required >
+</mat-form-field>
+<mat-form-field style="width: 33%">
+  <mat-select placeholder="Mes" formControlName="mes" [(ngModel)]="mes" required >
+      <mat-option *ngFor="let mes of meses" [value]="mes.value">
+          {{mes.viewValue}}
+      </mat-option>
+  </mat-select>
+</mat-form-field>
+     </form>
+     </mat-step>
+     </mat-horizontal-stepper>
+     
