@@ -46,7 +46,7 @@ const MENUITEMS:Menu[] = [
     state: 'financeiro',
     name: 'FINANÇAS',
     type: 'sub',
-    icon: 'attach_money',
+    icon: 'monetization_on',
     children: [
       {state: 'pagamento_mensalidades', name: 'Registar pagamento'},
       {state: 'lista_mensalidades', name: 'Lista de pagamentos'}
