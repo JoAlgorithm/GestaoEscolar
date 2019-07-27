@@ -57,6 +57,9 @@ import { AppComponent } from './app.component';
 import { AngularFirestore } from '@angular/fire/firestore';
 import { AuthService } from './services/auth.service';
 import { AngularFireAuth } from '@angular/fire/auth';
+//mport { FinanceiroComponent } from './financeiro/financeiro.component';
+//import { PagamentoMensalidadesComponent } from './financeiro/pagamento-mensalidades/pagamento-mensalidades.component';
+//import { ListaMensalidadesComponent } from './financeiro/lista-mensalidades/lista-mensalidades.component';
 //import { EstudanteComponent } from './estudante/estudante/estudante.component';
 //import { CadastroComponent } from './estudante/cadastro/cadastro.component';
 //import { EstudanteComponentsModule } from './estudante/estudante.module';
@@ -84,7 +87,7 @@ const DEFAULT_PERFECT_SCROLLBAR_CONFIG: PerfectScrollbarConfigInterface = {
     AuthLayoutComponent,
     AccordionAnchorDirective,
     AccordionLinkDirective,
-    AccordionDirective
+    AccordionDirective,
   ],
   imports: [
     BrowserModule,

@@ -25,8 +25,12 @@ export const AppRoutes: Routes = [{
   {
     path: 'estudante',
     loadChildren: './estudante/estudante.module#EstudanteComponentsModule'
+  },
+  {
+    path: 'financeiro',
+    loadChildren: './financeiro/financeiro.module#FinanceiroComponentsModule'
   }],
-  
+
 }, {
   path: '**',
   redirectTo: 'session/404'

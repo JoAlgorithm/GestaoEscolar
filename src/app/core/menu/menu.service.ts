@@ -20,7 +20,7 @@ export interface Menu {
   children?: ChildrenItems[];
 }
 
-const MENUITEMS = [
+const MENUITEMS:Menu[] = [
   {
     state: 'dashboard',
     //state: 'home',
@@ -41,7 +41,19 @@ const MENUITEMS = [
       {state: 'matricula_estudante', name: 'Matrícula'},
       {state: 'listagem_estudante', name: 'Lista'}
     ]
-  }/*,
+  },
+  {
+    state: 'financeiro',
+    name: 'FINANÇAS',
+    type: 'sub',
+    icon: 'attach_money',
+    children: [
+      {state: 'pagamento_mensalidades', name: 'Registar pagamento'},
+      {state: 'lista_mensalidades', name: 'Lista de pagamentos'}
+    ]
+  }
+  
+  /*,
   {
     state: 'http://primer.nyasha.me/docs',
     name: 'DOCS',
