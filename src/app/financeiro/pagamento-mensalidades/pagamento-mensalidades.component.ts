@@ -11,6 +11,7 @@ import { Turma } from '../../classes/turma';
 import { Encarregado } from '../../classes/encarregado';
 import { User } from '../../classes/user';
 import { AuthService } from '../../services/auth.service';
+import { Mensalidade } from '../../classes/mensalidade';
 
 @Component({
   selector: 'app-pagamento-mensalidades',
@@ -24,7 +25,7 @@ export class PagamentoMensalidadesComponent implements OnInit {
   estudante: Estudante;
   turma: Turma;
   desabiltitar= true;
-  mes: any;
+ mensalidade: Mensalidade;
   meses = [
     {value: 'Janeiro', viewValue: 'Janeiro'},
     {value: 'Fevereiro', viewValue: 'Fevereiro'},
@@ -45,6 +46,8 @@ export class PagamentoMensalidadesComponent implements OnInit {
       this.estudante = new Estudante();
       this.turma = new Turma();
       this.estudante.turma=this.turma;
+      this.mensalidade= new Mensalidade();
+      this.mensalidade.multa=0;
     }
 
   ngOnInit() {

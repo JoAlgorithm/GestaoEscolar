@@ -25,7 +25,7 @@
     <input matInput placeholder="Ano" formControlName="ano" [(ngModel)]="estudante.turma.ano" required >
 </mat-form-field>
 <mat-form-field style="width: 33%">
-  <mat-select placeholder="Mes" formControlName="mes" [(ngModel)]="mes" required >
+  <mat-select placeholder="Mes" formControlName="mes" [(ngModel)]="mensalidade.mes" required >
       <mat-option *ngFor="let mes of meses" [value]="mes.value">
           {{mes.viewValue}}
       </mat-option>
