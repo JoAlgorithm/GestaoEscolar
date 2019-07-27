@@ -59,8 +59,8 @@ export class EstudanteService {
     //alert('CAMINHO: escolas/'+this.authService.get_escola_id + '/estudantes/' + matricula.estudante.id + )
     
     //Registar a mensalidade na tabela de mensalidades
-    console.log('caminho mensalidade: '+'escolas/'+this.authService.get_escola_id + '/mensalidade');
-    this.firestore.collection('escolas/'+this.authService.get_escola_id + '/mensalidade').add(mensalidade);
+    console.log('caminho mensalidade: '+'escolas/'+this.authService.get_escola_id + '/mensalidades/');
+    this.firestore.collection('escolas/'+this.authService.get_escola_id + '/mensalidades/').add(mensalidade);
 
     //Registar a mensalidade no estudante
    // console.log('caminho estudante: '+'escolas/'+this.authService.get_escola_id + '/estudantes/'+ mensalidade.estudante.id + '/mensalidades/');
