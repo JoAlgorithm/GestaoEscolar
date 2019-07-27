@@ -60,6 +60,7 @@ import { FinanceiroRoutes } from './financeiro.routing';
 import {ListaMensalidadesComponent} from './lista-mensalidades/lista-mensalidades.component';
 import { PagamentoMensalidadesComponent } from './pagamento-mensalidades/pagamento-mensalidades.component';
 import { AngularFirestore } from '@angular/fire/firestore';
+import { EstudanteService } from '../services/estudante.service';
 //import { from } from 'rxjs';
 
 
@@ -120,7 +121,7 @@ import { AngularFirestore } from '@angular/fire/firestore';
   ],
   providers: [
     {provide: OverlayContainer, useClass: FullscreenOverlayContainer},
-    //EstudanteService,
+    EstudanteService,
     AngularFirestore,
     
   ],
