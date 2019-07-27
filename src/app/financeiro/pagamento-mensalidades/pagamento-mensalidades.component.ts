@@ -20,6 +20,7 @@ import { Mensalidade } from '../../classes/mensalidade';
 })
 export class PagamentoMensalidadesComponent implements OnInit {
   firstFormGroup: FormGroup;
+  secondFormGroup: FormGroup;
   estudantes: Estudante[];
   turmas: Turma[];
   estudante: Estudante;
@@ -59,11 +60,34 @@ export class PagamentoMensalidadesComponent implements OnInit {
       turma: ['', Validators.required],
       transporte: [''],
       mes: ['', Validators.required],
+      multa: ['', Validators.required],
+      mensalidade: ['', Validators.required],
+      alimentacao: ['', Validators.required],
+      estudo_orientado: ['', Validators.required],
     });
+    this.firstFormGroup.get('mensalidade').disable();
+    this.firstFormGroup.get('transporte').disable();
+    this.firstFormGroup.get('alimentacao').disable();
+    this.firstFormGroup.get('estudo_orientado').disable();
     this.firstFormGroup.get('regime').disable();
     this.firstFormGroup.get('turma').disable();
     this.firstFormGroup.get('nivel').disable();
     this.firstFormGroup.get('ano').disable();
+
+
+    this.secondFormGroup = this._formBuilder.group({
+      ano: ['', Validators.required],
+      estudante: ['', Validators.required],
+      nivel: ['', Validators.required],
+      regime: ['', Validators.required],
+      turma: ['', Validators.required],
+      transporte: [''],
+      mes: ['', Validators.required],
+      multa: ['', Validators.required],
+      mensalidade: ['', Validators.required],
+      alimentacao: ['', Validators.required],
+      estudo_orientado: ['', Validators.required],
+    });
     this.estudanteService.getEstudantes().subscribe(data => {
       this.estudantes = data.map(e => {
         return {
@@ -90,6 +114,23 @@ export class PagamentoMensalidadesComponent implements OnInit {
      // });
        
     })
+  }
+  verficarPagamentos(estudante){
+if(estudante.transporte_checked==false){
+estudante.turma.transporte=0;}
+if(estudante.alimentacao_checked==false){
+  estudante.turma.alimentacao=0;}
+  if(estudante.estudo_orientado_checked==false){
+    estudante.turma.estudo_orientado=0;}
+  }
+  confirmar(){
+    this.mensalidade.ano=this.estudante.turma.ano;
+    this.mensalidade.data_pagamento= new Date();
+   this.mensalidade.estudante = Object.assign({},this.estudante);
+    this.mensalidade.turma= Object.assign({},this.turma);
+    let data = Object.assign({}, this.mensalidade);
+    this.estudanteService.createMensalidade(data);
+
   }
 
 }

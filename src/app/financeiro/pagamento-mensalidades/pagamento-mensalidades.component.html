@@ -6,7 +6,7 @@
 
       <!--ESTUDANTE-->        
       <mat-form-field style="width: 33%">
-          <mat-select placeholder="Estudante" formControlName="estudante" [(ngModel)]="estudante"  required >
+          <mat-select placeholder="Estudante" formControlName="estudante" [(ngModel)]="estudante"  required (change)='verficarPagamentos(estudante)'>
              <mat-option *ngFor="let estudante of estudantes" [value]="estudante">
                  {{estudante.nome}}
              </mat-option>
@@ -31,7 +31,40 @@
       </mat-option>
   </mat-select>
 </mat-form-field>
+<mat-form-field style="width: 33%">
+  <input matInput placeholder="Mensalidade" formControlName="mensalidade" [(ngModel)]="estudante.turma.mensalidade" required >
+</mat-form-field>
+<mat-form-field style="width: 33%">
+  <input matInput placeholder="Transporte" formControlName="transporte" [(ngModel)]="estudante.turma.transporte" required >
+</mat-form-field>
+<mat-form-field style="width: 33%">
+  <input matInput placeholder="Alimentacao" formControlName="alimentacao" [(ngModel)]="estudante.turma.alimentacao" required >
+</mat-form-field>
+<mat-form-field style="width: 33%">
+  <input matInput placeholder="Estudo orientado" formControlName="estudo_orientado" [(ngModel)]="estudante.turma.estudo_orientado" required >
+</mat-form-field>
+<mat-form-field style="width: 15%">
+  <input matInput placeholder="Multa" formControlName="multa" [(ngModel)]="mensalidade.multa" required >
+</mat-form-field>
+<div>
+  <button mat-button matStepperNext>SEGUINTE</button>
+  </div>
      </form>
-     </mat-step>
+    </mat-step>
+
+    <mat-step [stepControl]="secondFormGroup">
+      <form [formGroup]="secondFormGroup">
+      <ng-template matStepLabel>CONFIRMAR DADOS</ng-template>
+      {{estudante.turma.id}}
+        <!--NOME DO ESTUDANTE-->
+        <mat-form-field style="width: 33%">
+            <input matInput placeholder="Nome completo" formControlName="estudante" [(ngModel)]="estudante.nome" required>
+        </mat-form-field>
+        <div>
+          <button mat-button (click)="confirmar()">CONFIRMAR</button>
+          </div>
+        </form>
+        </mat-step>
+
      </mat-horizontal-stepper>
      
