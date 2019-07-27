@@ -58,26 +58,25 @@
       <mat-card>
         <mat-card-content>
           <div class="mb-1">
-            <h4 class="mt-0"><strong>CONFIRMAÇÃO DE PAGAMENTO</strong></h4>
+            <h4 class="mt-0" ><strong>CONFIRMAÇÃO DE PAGAMENTO</strong></h4>
           </div>
 
           <div fxLayout="row wrap">
             <div fxFlex.gt-xs="50" fxFlex="100">
-              <h4 class="my-0">Dados Estudante:</h4>
+              <h3 class="my-0">DADOS DO ESTUDANTE</h3>
               <div fxLayout="column">
-                <span>{{estudante.nome}}</span>
-                <span>{{estudante.turma.nome}}</span>
-                <span>{{estudante.turma.nivel}}</span>
-                <span>{{estudante.turma.ano}}</span>
+                <h4>Nome: <span>{{estudante.nome}}</span></h4>
+                <h4>Turma: <span>{{estudante.turma.nome}}</span></h4>
+                <h4>Classe:<span>{{estudante.turma.nivel}}</span></h4>
+                <h4>Ano: <span>{{estudante.turma.ano}}</span></h4>
               </div>
             </div>
 
             <div fxFlex.gt-xs="50" fxFlex="100" class="text-sm-right text-xs-left">
               <h4 class="my-0">{{nomeEscola}}</h4>
               <div fxLayout="column">
-              <span></span>
-              <span>{{mensalidade.mes}}</span>
-              <span>{{dataatual | date:'dd/MM/yyyy'}}</span>
+              <h4>Pagamento do mês de : <span>{{mensalidade.mes}}</span></h4>
+              <h4>Efetuou Pagamento no dia: <span>{{dataatual | date:'dd/MM/yyyy'}}</span></h4>
             </div>
             </div>
           </div>
