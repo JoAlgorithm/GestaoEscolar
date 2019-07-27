@@ -2,7 +2,7 @@ import { Estudante } from "./estudante";
 import { Turma } from "./turma";
 
 export class Mensalidade {
-    
+    id:string;
     estudante?: Estudante;
     turma?: Turma;
     ano:number; //ano para o qual a mensalidade foi paga

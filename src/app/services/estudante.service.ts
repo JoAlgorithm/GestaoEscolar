@@ -71,4 +71,8 @@ export class EstudanteService {
     console.log('caminho turma: '+'escolas/'+this.authService.get_escola_id + '/turmas/'+ mensalidade.turma.id + '/mensalidades/');
     this.firestore.collection('escolas/'+this.authService.get_escola_id + '/turmas/'+ mensalidade.turma.id + '/mensalidades/').add(mensalidade);  
   }
+
+  getMensalidades(){
+    return this.firestore.collection('escolas/'+this.authService.get_escola_id + '/mensalidades').snapshotChanges();
+  }
 }
