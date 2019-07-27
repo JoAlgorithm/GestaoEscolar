@@ -43,6 +43,8 @@ export class PagamentoMensalidadesComponent implements OnInit {
   ]
 
 pagamentos: any []=[];
+nomeEscola: any;
+dataatual=new Date();
   
   constructor(private _formBuilder: FormBuilder, public snackBar: MatSnackBar,
     private estudanteService: EstudanteService, private authService: AuthService) { 
@@ -54,6 +56,7 @@ pagamentos: any []=[];
     }
 
   ngOnInit() {
+    this.nomeEscola = this.authService.get_escola_nome;
     this.firstFormGroup = this._formBuilder.group({
       ano: ['', Validators.required],
       estudante: ['', Validators.required],

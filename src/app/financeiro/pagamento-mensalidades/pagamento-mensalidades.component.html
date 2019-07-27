@@ -58,25 +58,26 @@
       <mat-card>
         <mat-card-content>
           <div class="mb-1">
-            <h1 class="mt-0"><strong>CONFIRMACAO DE PAGAMENTO</strong></h1>
+            <h4 class="mt-0"><strong>CONFIRMAÇÃO DE PAGAMENTO</strong></h4>
           </div>
 
           <div fxLayout="row wrap">
             <div fxFlex.gt-xs="50" fxFlex="100">
-              <h4 class="my-0">Client</h4>
+              <h4 class="my-0">Dados Estudante:</h4>
               <div fxLayout="column">
-                <span>Invoice No: #0001</span>
-                <span>Date issued: 01 Jun 2017</span>
-                <span>Due date: 31 May 2017</span>
+                <span>{{estudante.nome}}</span>
+                <span>{{estudante.turma.nome}}</span>
+                <span>{{estudante.turma.nivel}}</span>
+                <span>{{estudante.turma.ano}}</span>
               </div>
             </div>
 
             <div fxFlex.gt-xs="50" fxFlex="100" class="text-sm-right text-xs-left">
-              <h4 class="my-0">Company LLC</h4>
+              <h4 class="my-0">{{nomeEscola}}</h4>
               <div fxLayout="column">
-              <span>company@address.com</span>
-              <span>1234 Main</span>
-              <span>Apt. 4B</span>
+              <span></span>
+              <span>{{mensalidade.mes}}</span>
+              <span>{{dataatual | date:'dd/MM/yyyy'}}</span>
             </div>
             </div>
           </div>
@@ -113,6 +114,7 @@
 
 
         <div>
+            <button mat-button matStepperPrevious>VOLTAR</button>
           <button mat-button (click)="confirmar()">CONFIRMAR</button>
           </div>
 
