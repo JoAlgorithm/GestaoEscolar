@@ -148,6 +148,10 @@ if(estudante.alimentacao_checked==false){
     "descricao":"Multa",
     "valor":this.mensalidade.multa
         },
+        { 
+          "descricao":"TOTAL",
+          "valor": +this.mensalidade.multa + +this.estudante.turma.estudo_orientado + +this.estudante.turma.transporte + +this.estudante.turma.alimentacao + +this.estudante.turma.mensalidade
+              },
 
     
   
