@@ -64,6 +64,8 @@ import { AngularFireAuth } from '@angular/fire/auth';
 //import { CadastroComponent } from './estudante/cadastro/cadastro.component';
 //import { EstudanteComponentsModule } from './estudante/estudante.module';
 
+
+
 export function createTranslateLoader(http: HttpClient) {
   return new TranslateHttpLoader(http, './assets/i18n/', '.json');
 }

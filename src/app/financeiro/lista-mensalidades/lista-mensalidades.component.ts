@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { SampleModule } from 'angular-pdf-generator';
 
 @Component({
   selector: 'app-lista-mensalidades',
