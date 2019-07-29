@@ -1,5 +1,4 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
-import { SampleModule } from 'angular-pdf-generator';
 import { MatTableDataSource, MatPaginator, MatSort, MatSnackBar } from '@angular/material';
 import { Mensalidade } from '../../classes/mensalidade';
 import { EstudanteService } from '../../services/estudante.service';

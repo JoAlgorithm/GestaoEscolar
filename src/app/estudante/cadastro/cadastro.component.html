@@ -286,12 +286,12 @@
 
       <div>
       <button mat-button matStepperPrevious>VOLTAR</button>
-      <button mat-button (click)="registarEstudante(estudante)">CADASTRAR</button>
+      <button mat-button (click)="registarEstudante(estudante)" [routerLink]="['/estudante/listagem_estudante']">CADASTRAR</button>
+      <!--[routerLink]="['/estudante/listagem_estudante']
+       
       <!--<button mat-button (click)="stepper.reset()">Reset</button>-->
+
       </div>
-
-      
-
     </mat-step>
   </mat-horizontal-stepper>
   

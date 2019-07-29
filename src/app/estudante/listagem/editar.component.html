@@ -93,7 +93,17 @@
         <input matInput placeholder="Endereco"  [(ngModel)]="data.estudante.endereco" required>
     </mat-form-field>
      <!--ENCARREGADO-->
-     <mat-form-field style="width: 33%">
+     
+    <mat-form-field style="width: 33%">
+        <input matInput placeholder="Classe"  [(ngModel)]="data.estudante.turma.nivel" required>
+    </mat-form-field>
+    <mat-form-field style="width: 33%">
+        <input matInput placeholder="Turma"  [(ngModel)]="data.estudante.turma.nome" required>
+    </mat-form-field>
+    <mat-form-field style="width: 33%">
+        <input matInput placeholder="Regime"  [(ngModel)]="data.estudante.turma.regime" required>
+    </mat-form-field>
+    <mat-form-field style="width: 33%">
         <input matInput placeholder="Encarregado"  [(ngModel)]="data.estudante.encarregado.nome" required>
     </mat-form-field>
     <mat-form-field style="width: 33%">
@@ -102,6 +112,7 @@
     <mat-form-field style="width: 33%">
         <input matInput placeholder="Email do Encarregado"  [(ngModel)]="data.estudante.encarregado.email" required>
     </mat-form-field>
+   
     <div>
        
         <button mat-button (click)="GuardarDados(data.estudante)">GUARDAR</button>

@@ -8,7 +8,7 @@ import { CustomValidators } from 'ng2-validation';
 import { EstudanteService } from './../../services/estudante.service';
 import {MatSnackBar} from '@angular/material';
 import { format } from 'url';
-
+import {Router} from '@angular/router'
 @Component({
   selector: 'app-cadastro',
   templateUrl: './cadastro.component.html',
@@ -177,6 +177,7 @@ export class CadastroComponent implements OnInit {
       console.log("ERRO: " + err.message)
     });
 
+
   }
 
   openSnackBar(mensagem) {
@@ -185,10 +186,11 @@ export class CadastroComponent implements OnInit {
     announcementMessage: mensagem
     });*/
     this.snackBar.open(mensagem, null,{
-      duration: 2000
+      duration: 4000
+     
     })
   }
-
+ 
   
 
 }

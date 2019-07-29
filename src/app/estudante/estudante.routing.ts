@@ -10,7 +10,7 @@ export const EstudanteRoutes: Routes = [
   {
     path: '',
     children: [
-      {path: 'cadastro_estudante', component: CadastroComponent},
+      {path: 'cadastro_estudante', component: CadastroComponent,},
       {path: 'matricula_estudante', component: MatriculaComponent},
       {path: 'listagem_estudante', component: ListagemComponent}
     ]
