@@ -12,6 +12,8 @@ import { Encarregado } from '../../classes/encarregado';
 import { User } from '../../classes/user';
 import { AuthService } from '../../services/auth.service';
 import { Mensalidade } from '../../classes/mensalidade';
+import {ViewChild, ElementRef } from '@angular/core';
+import * as jsPDF from 'jspdf';
 
 @Component({
   selector: 'app-pagamento-mensalidades',
@@ -45,6 +47,25 @@ export class PagamentoMensalidadesComponent implements OnInit {
 pagamentos: any []=[];
 nomeEscola: any;
 dataatual=new Date();
+@ViewChild('content') content: ElementRef;
+public downloadPDF(){
+let doc = new jsPDF;
+
+let specialElementHandlers ={
+'#editor': function(element,renderer){
+return true;
+}
+
+};
+let content = this.content.nativeElement;
+doc.fromHTML(content.innerHTML, 15, 15,{
+'width':190,
+'elementHandlers': specialElementHandlers
+
+});
+doc.save('test.pdf');
+
+}
   
   constructor(private _formBuilder: FormBuilder, public snackBar: MatSnackBar,
     private estudanteService: EstudanteService, private authService: AuthService) { 

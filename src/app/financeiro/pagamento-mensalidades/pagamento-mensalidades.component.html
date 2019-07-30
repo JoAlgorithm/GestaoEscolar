@@ -56,10 +56,13 @@
       
       <ng-template matStepLabel>CONFIRMAR DADOS</ng-template>
       <mat-card>
+         
+       
         <mat-card-content>
           <div class="mb-1">
             <h4 class="mt-0" ><strong>CONFIRMAÇÃO DE PAGAMENTO</strong></h4>
           </div>
+        
 
           <div fxLayout="row wrap">
             <div fxFlex.gt-xs="50" fxFlex="100">
@@ -82,8 +85,8 @@
           </div>
 
           </mat-card-content>
-
-
+  
+          
 
 
           <mat-card-content class="pl-0 pr-0">
@@ -107,20 +110,21 @@
 
             </ngx-datatable>
           </mat-card-content>
-
-
+  
+     
 
 
 
         <div>
             <button mat-button matStepperPrevious>VOLTAR</button>
           <button mat-button (click)="confirmar()">CONFIRMAR</button>
+          <button mat-button (click)="downloadPDF()">IMPRIMIR</button>
           </div>
 
           </mat-card>
         
       
         </mat-step>
-
-     </mat-horizontal-stepper>
      
+     </mat-horizontal-stepper>
+   

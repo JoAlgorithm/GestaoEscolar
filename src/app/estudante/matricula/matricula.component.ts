@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild, ElementRef } from '@angular/core';
 import { FormBuilder, FormGroup, Validators, FormControl } from '@angular/forms';
 import { MatSnackBar } from '@angular/material';
 import { DatePipe } from '@angular/common';
@@ -10,6 +10,7 @@ import { Turma } from '../../classes/turma';
 import { Encarregado } from '../../classes/encarregado';
 import { User } from '../../classes/user';
 import { AuthService } from '../../services/auth.service';
+import * as jsPDF from 'jspdf';
 
 @Component({
   selector: 'app-matricula',
@@ -17,6 +18,25 @@ import { AuthService } from '../../services/auth.service';
   styleUrls: ['./matricula.component.scss']
 })
 export class MatriculaComponent implements OnInit {
+  @ViewChild('content') content: ElementRef;
+  public downloadPDF(){
+let doc = new jsPDF;
+
+let specialElementHandlers ={
+'#editor': function(element,renderer){
+  return true;
+}
+
+};
+let content = this.content.nativeElement;
+doc.fromHTML(content.innerHTML, 15, 15,{
+'width':190,
+'elementHandlers': specialElementHandlers
+
+});
+doc.save('test.pdf');
+
+  }
 
   displayedColumns = ['position', 'name', 'weight', 'symbol'];
 
