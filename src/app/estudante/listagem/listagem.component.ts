@@ -118,7 +118,7 @@ estudante: Estudante;
  // value = 50;
  detalhes(aluno){
   const dialogRef = this.dialog.open(DialogOverviewExampleDialog, {
-    width: '500px',
+    width: '1000px',
     data: {nome: aluno.nome, genero: aluno.genero, documento: aluno.documento_identificacao,nacionalidade: aluno.nacionalidade,nr_documento: aluno.nr_documento,
       local_emissao: aluno.local_emissao,nome_encarregado: aluno.encarregado.nome,datanascimento: aluno.data_nascimento}
   });
@@ -209,7 +209,18 @@ export class DialogEditar{
     estudante.encarregado = Object.assign({},estudante.encarregado);
     let data = Object.assign({}, estudante);
     this.estudanteService.updateEstudante(data);
-
+      this.openSnackBar("Dados Guardados com sucesso");
+    
+  }
+  openSnackBar(mensagem) {
+    /*this.snackBar.openFromComponent(null, {
+    duration: 2000,
+    announcementMessage: mensagem
+    });*/
+    this.snackBar.open(mensagem, null,{
+      duration: 4000
+     
+    })
   }
   
  

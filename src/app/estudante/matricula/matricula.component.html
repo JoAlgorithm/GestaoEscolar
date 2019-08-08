@@ -74,7 +74,7 @@
           [checked]="estudante.alimentacao_checked === 'true' ? true : false"
           (change)="setAlimentacao($event)"
           [disabled]="turma.alimentacao ==null || turma.alimentacao == 0">
-          <span *ngIf="turma.alimentacao == '' || turma.alimentacao == null">Sem opção de alimentação</span> <span *ngIf="!turma.alimentacao == 0">Alimentação - {{turma.transporte}} MZN</span>
+          <span *ngIf="turma.alimentacao == '' || turma.alimentacao == null">Sem opção de alimentação</span> <span *ngIf="!turma.alimentacao == 0">Alimentação - {{turma.alimentacao}} MZN</span>
         </mat-slide-toggle>
 
         <mat-slide-toggle 
@@ -225,7 +225,7 @@
       
       
 
-          <div id="content" #content>
+         <div id="content" #content>
     <mat-card-content>
         <h4 class="mt-0 mb-1">Dados Pessoais</h4>
         <div fxLayout="row" layout-align="center">
@@ -239,18 +239,31 @@
                     <span class="text-md">REGIME</span>
                     <strong>{{turma.regime}}</strong>
                   </div>
+                  <div fxLayout="column">
+                    <span class="text-md">ANO</span>
+                    <strong>{{turma.ano}}</strong>
+                  </div>
+                  <div fxLayout="column">
+                    <span class="text-md">ClASSE</span>
+                    <strong>{{turma.nivel}}</strong>
+                  </div>
             </div>
 
             <div class="pl-1" fxFlex>
                 <div fxLayout="column" class="mb-1">
+                    <span class="text-md">ESTUDO</span>
+                    <strong *ngIf="estudante.estudo_orientado_checked == false">Sem estudo orientado</strong> <strong *ngIf="estudante.estudo_orientado_checked == true">Com Estudo orientado no valor de {{turma.estudo_orientado}} MZN</strong>
+                  </div>
+                  <div fxLayout="column" class="mb-1">
                     <span class="text-md">TRANSPORTE</span>
-                    <strong *ngIf="turma.estudo_orientado == '' || turma.estudo_orientado == null">Sem estudo orientado</strong> <strong *ngIf="!turma.estudo_orientado == 0">Com Estudo orientado no valor de {{turma.estudo_orientado}} MZN</strong>
+                    <strong *ngIf="estudante.transporte_checked== false">Sem transporte</strong> <strong *ngIf="estudante.transporte_checked == true">Com Transporte no valor de {{turma.transporte}} MZN</strong>
+                  </div>
+                  <div fxLayout="column" class="mb-1">
+                    <span class="text-md">ALIMENTACAO</span>
+                    <strong *ngIf="estudante.alimentacao_checked== false">Sem alimentacao</strong> <strong *ngIf="estudante.alimentacao_checked == true">Com alimentacao no valor de {{turma.alimentacao}} MZN</strong>
                   </div>
                  
-                <div fxLayout="column">
-                  <span class="text-md">Email</span>
-                  <strong>email</strong>
-                </div>
+    
               </div> 
         </div>
      
@@ -260,23 +273,15 @@
     
     <div>
     <button mat-button matStepperPrevious>BACK</button>
-    <button mat-button (click)="registar()">MATRICULAR</button>
-    <button mat-button (click)="downloadPDF()">IMPRIMIR</button>
+    <button mat-button (click)="registar()" mat-button (click)="downloadPDF()">MATRICULAR</button>
     </div>
   </mat-step>
 </mat-horizontal-stepper>
-    
 
 
-<!--<mat-card>
-<mat-card-title>Form validation</mat-card-title>
-  <mat-card-subtitle>Matricula</mat-card-subtitle>
-  <form [formGroup]="firstFormGroup">
-      <mat-card-content>
 
-        
-            
-      </mat-card-content>
-  </form>
-</mat-card>-->
+
+
+
+
     

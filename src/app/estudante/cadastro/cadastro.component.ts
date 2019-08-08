@@ -8,13 +8,34 @@ import { CustomValidators } from 'ng2-validation';
 import { EstudanteService } from './../../services/estudante.service';
 import {MatSnackBar} from '@angular/material';
 import { format } from 'url';
-import {Router} from '@angular/router'
+import {Router} from '@angular/router';
+import * as jsPDF from 'jspdf';
+import { ViewChild, ElementRef } from '@angular/core';
 @Component({
   selector: 'app-cadastro',
   templateUrl: './cadastro.component.html',
   styleUrls: ['./cadastro.component.scss']
 })
 export class CadastroComponent implements OnInit {
+  @ViewChild('content') content: ElementRef;
+  public downloadPDF(){
+let doc = new jsPDF;
+
+let specialElementHandlers ={
+'#editor': function(element,renderer){
+  return true;
+}
+
+};
+let content = this.content.nativeElement;
+doc.fromHTML(content.innerHTML, 50, 20,{
+'width':100,
+'elementHandlers': specialElementHandlers
+
+});
+doc.save('Cadastro.pdf');
+
+  }
 
   isLinear = true;
   estudante:  Estudante;

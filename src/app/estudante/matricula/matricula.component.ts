@@ -29,12 +29,12 @@ let specialElementHandlers ={
 
 };
 let content = this.content.nativeElement;
-doc.fromHTML(content.innerHTML, 15, 15,{
-'width':190,
+doc.fromHTML(content.innerHTML,5, 20 , {
+'width':1000,
 'elementHandlers': specialElementHandlers
 
 });
-doc.save('test.pdf');
+doc.save('Matricula.pdf');
 
   }
 
@@ -70,7 +70,8 @@ doc.save('test.pdf');
   showActions: boolean = false;  
   
   constructor(private _formBuilder: FormBuilder, public snackBar: MatSnackBar,
-    private estudanteService: EstudanteService, private authService: AuthService) { 
+    private estudanteService: EstudanteService, private authService: AuthService,
+    ) { 
       this.estudante = new Estudante();
       this.estudante.transporte_checked = false;
       this.estudante.alimentacao_checked = false;
@@ -166,7 +167,13 @@ doc.save('test.pdf');
     let data = Object.assign({}, this.estudante);
 
     this.estudanteService.updateEstudante(data);
-    this.estudanteService.addEstudanteTurma(this.turma.id, data);
+    this.estudanteService.addEstudanteTurma(this.turma.id, data)
+    .then( res => {
+      this.openSnackBar("Estudante Matriculado com sucesso");
+      this.downloadPDF;
+    }).catch( err => {
+      console.log("ERRO: " + err.message) 
+    });
     
     /*.then( res => {
       //this.openSnackBar("Estudante cadastrado com sucesso");
@@ -174,6 +181,16 @@ doc.save('test.pdf');
       console.log("ERRO: " + err.message)
     });*/
 
+  }
+  openSnackBar(mensagem) {
+    /*this.snackBar.openFromComponent(null, {
+    duration: 2000,
+    announcementMessage: mensagem
+    });*/
+    this.snackBar.open(mensagem, null,{
+      duration: 4000
+     
+    })
   }
 
 }

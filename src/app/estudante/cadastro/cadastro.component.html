@@ -213,8 +213,9 @@
     </mat-step>
 
     <mat-step>
-      <ng-template matStepLabel>CONFIRMAÇÁO</ng-template>
       
+      <ng-template matStepLabel>CONFIRMAÇÁO</ng-template>
+      <div id="content" #content>
       <mat-card-content>
         <h4 class="mt-0 mb-1">Dados Pessoais</h4>
         <div fxLayout="row" layout-align="center">            
@@ -278,12 +279,11 @@
               <span class="text-md">Email</span>
               <strong>{{encarregado.email}}</strong>
             </div>
-
+          
           </div>
         </div>
       </mat-card-content>
-      
-
+      </div>
       <div>
       <button mat-button matStepperPrevious>VOLTAR</button>
       <button mat-button (click)="registarEstudante(estudante)" [routerLink]="['/estudante/listagem_estudante']">CADASTRAR</button>

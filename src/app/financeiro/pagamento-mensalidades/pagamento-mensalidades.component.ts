@@ -63,7 +63,7 @@ doc.fromHTML(content.innerHTML, 15, 15,{
 'elementHandlers': specialElementHandlers
 
 });
-doc.save('test.pdf');
+doc.save('Mensalidade.pdf');
 
 }
   
@@ -145,8 +145,10 @@ if(estudante.alimentacao_checked==false){
    this.mensalidade.estudante = Object.assign({},this.estudante);
     this.mensalidade.turma= Object.assign({},this.estudante.turma);
     let data = Object.assign({}, this.mensalidade);
-    this.estudanteService.createMensalidade(data);
-    
+    this.estudanteService.createMensalidade(data)
+      this.openSnackBar("Pagamento com sucesso");
+      this.downloadPDF;
+        
    
 
   }
@@ -181,6 +183,16 @@ if(estudante.alimentacao_checked==false){
   
   ]
 
+  }
+  openSnackBar(mensagem) {
+    /*this.snackBar.openFromComponent(null, {
+    duration: 2000,
+    announcementMessage: mensagem
+    });*/
+    this.snackBar.open(mensagem, null,{
+      duration: 4000
+     
+    })
   }
 
 }

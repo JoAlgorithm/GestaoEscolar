@@ -63,7 +63,7 @@
             <h4 class="mt-0" ><strong>CONFIRMAÇÃO DE PAGAMENTO</strong></h4>
           </div>
         
-
+          <div id="content" #content>
           <div fxLayout="row wrap">
             <div fxFlex.gt-xs="50" fxFlex="100">
               <h3 class="my-0">DADOS DO ESTUDANTE</h3>
@@ -83,7 +83,7 @@
             </div>
             </div>
           </div>
-
+</div>
           </mat-card-content>
   
           
@@ -117,8 +117,7 @@
 
         <div>
             <button mat-button matStepperPrevious>VOLTAR</button>
-          <button mat-button (click)="confirmar()">CONFIRMAR</button>
-          <button mat-button (click)="downloadPDF()">IMPRIMIR</button>
+          <button mat-button (click)="confirmar()" mat-button (click)="downloadPDF()" [routerLink]="['/financeiro/lista_mensalidades']">CONFIRMAR</button>
           </div>
 
           </mat-card>
