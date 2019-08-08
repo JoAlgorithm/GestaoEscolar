@@ -17,7 +17,7 @@ export class ListaMensalidadesComponent implements OnInit {
 
   //Variaveis da tabela
   dataSourse: MatTableDataSource<Mensalidade>;
-  displayedColumns = ['estudante', 'turma', 'mes', 'ano', 'mensalidade','alimentacao' ,'transporte'];
+  displayedColumns = ['estudante', 'turma', 'mes', 'ano', 'mensalidade','multa','estudo_orientado','alimentacao' ,'transporte'];
   //displayedColumns = ['estudante', 'turma', 'mes', 'ano', 'mensalidade', 'transporte','aimentacao', 'estudo_orientado'];
   @ViewChild(MatPaginator) paginator: MatPaginator;
   @ViewChild(MatSort) sort: MatSort;

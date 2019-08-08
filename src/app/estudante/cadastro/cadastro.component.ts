@@ -84,34 +84,35 @@ doc.save('Cadastro.pdf');
     public snackBar: MatSnackBar) {
 
     this.estudante = new Estudante();
-    this.estudante.nome = "Luis"
-    this.estudante.genero = "Masculino"
-    this.estudante.documento_identificacao = "DIRE"
-    this.estudante.nr_documento = "AL12234"
-    this.estudante.local_emissao = "mpt"
-    this.estudante.nacionalidade = "Mocambicana"
-    this.estudante.provincia = "Nampula"
-    this.estudante.cidade = "Nacala"
-    this.estudante.endereco = "Mocone"
+    this.encarregado = new Encarregado();
+   /* this.estudante.nome = ""
+    this.estudante.genero = ""
+    this.estudante.documento_identificacao = ""
+    this.estudante.nr_documento = ""
+    this.estudante.local_emissao = ""
+    this.estudante.nacionalidade = ""
+    this.estudante.provincia = ""
+    this.estudante.cidade = ""
+    this.estudante.endereco = ""
     this.estudante.data_nascimento = new Date();
     this.estudante.data_validade = new Date();
     this.estudante.data_emissao = new Date();
-    this.estudante.nr_estudante = "12345";
+    this.estudante.nr_estudante = "";
     //this.estudante.escola = this.user.esco
     
-    this.encarregado = new Encarregado();
+   
     this.encarregado.telefone1 = 258;
 
     
 
-    this.encarregado.nome = "Joao"
-    this.encarregado.genero = "Masculino"
-    this.encarregado.nacionalidade = "Mocambicana"
-    this.encarregado.telefone1 = 258828498183
-    this.encarregado.email = "antoni@gmail.com"
-    this.encarregado.nr_documento = "AJK243"
+    this.encarregado.nome = ""
+    this.encarregado.genero = ""
+    this.encarregado.nacionalidade = ""
+    this.encarregado.telefone1 = 258
+    this.encarregado.email = ""
+    this.encarregado.nr_documento = ""
     this.encarregado.data_nascimento = new Date();
-    this.encarregado.documento_identificacao = "DIRE";
+    this.encarregado.documento_identificacao = "";
     this.encarregado.telefone2 = 258848059711
 
     //this.encarregado. = ""

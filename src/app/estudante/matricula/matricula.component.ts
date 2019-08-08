@@ -18,6 +18,7 @@ import * as jsPDF from 'jspdf';
   styleUrls: ['./matricula.component.scss']
 })
 export class MatriculaComponent implements OnInit {
+  datatualmatricula=new Date();
   @ViewChild('content') content: ElementRef;
   public downloadPDF(){
 let doc = new jsPDF;
@@ -34,6 +35,7 @@ doc.fromHTML(content.innerHTML,5, 20 , {
 'elementHandlers': specialElementHandlers
 
 });
+
 doc.save('Matricula.pdf');
 
   }
@@ -92,6 +94,7 @@ doc.save('Matricula.pdf');
       nivel: ['', Validators.required],
       regime: ['', Validators.required],
       turma: ['', Validators.required],
+     
       transporte: ['']
     });
 
@@ -165,7 +168,8 @@ doc.save('Matricula.pdf');
 
     this.estudante.turma = Object.assign({}, this.turma);
     let data = Object.assign({}, this.estudante);
-
+    
+    this.estudante.datamatricula = new Date();
     this.estudanteService.updateEstudante(data);
     this.estudanteService.addEstudanteTurma(this.turma.id, data)
     .then( res => {

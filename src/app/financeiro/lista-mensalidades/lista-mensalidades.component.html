@@ -39,7 +39,11 @@
       <mat-header-cell *matHeaderCellDef mat-sort-header> Mensalidade </mat-header-cell>
       <mat-cell *matCellDef="let row">{{row.turma.mensalidade}}</mat-cell>
     </ng-container>
-
+    <!-- Multa -->
+    <ng-container matColumnDef="multa">
+        <mat-header-cell *matHeaderCellDef mat-sort-header> Multa </mat-header-cell>
+        <mat-cell *matCellDef="let row">{{row.multa}}</mat-cell>
+      </ng-container>
    <!-- Alimentacao -->
    <ng-container matColumnDef="alimentacao">
       <mat-header-cell *matHeaderCellDef mat-sort-header> Alimentacao </mat-header-cell>
@@ -51,7 +55,12 @@
       <mat-header-cell *matHeaderCellDef mat-sort-header> Transporte </mat-header-cell>
       <mat-cell *matCellDef="let row">{{row.turma.transporte}}</mat-cell>
     </ng-container>
-    
+   
+      <!-- Estudo orientado -->
+  <ng-container matColumnDef="estudo_orientado">
+      <mat-header-cell *matHeaderCellDef mat-sort-header> Estudo Orientado </mat-header-cell>
+      <mat-cell *matCellDef="let row">{{row.turma.estudo_orientado}}</mat-cell>
+    </ng-container>
         
     <!--Cabecalho da tabela--> 
     <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>

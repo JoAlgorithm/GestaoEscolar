@@ -262,7 +262,10 @@
                     <span class="text-md">ALIMENTACAO</span>
                     <strong *ngIf="estudante.alimentacao_checked== false">Sem alimentacao</strong> <strong *ngIf="estudante.alimentacao_checked == true">Com alimentacao no valor de {{turma.alimentacao}} MZN</strong>
                   </div>
-                 
+                  <div fxLayout="column">
+                      <span class="text-md">DATA DE MATRICULA</span>
+                      <strong>{{datatualmatricula | date:'dd/MM/yyyy'}}</strong>
+                    </div>
     
               </div> 
         </div>

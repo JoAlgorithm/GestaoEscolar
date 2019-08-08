@@ -33,7 +33,7 @@ export class Estudante {
     //True significa que o estudante esta ATIVO e false significa que estudante esta INATIVO
     //Por padrao o campo vira preenchido como true
     status: boolean; 
-
+datamatricula?: Date;
     //Anexos
     foto?: string;  
 

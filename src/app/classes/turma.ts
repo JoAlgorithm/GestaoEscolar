@@ -23,7 +23,7 @@ export class Turma {
     regime:string;
 
     estudantes?: Estudante[];
-
+taxa_matricula?: number;
     //Limite de estudantes da turma
     limite: number;
 
