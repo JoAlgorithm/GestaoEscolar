@@ -1,4 +1,5 @@
 import { Estudante } from "./estudante";
+import { Data } from "@angular/router";
 
 export class Turma {
 
@@ -26,7 +27,6 @@ export class Turma {
 taxa_matricula?: number;
     //Limite de estudantes da turma
     limite: number;
-
     transporte: number;
     alimentacao: number;
     estudo_orientado: number;

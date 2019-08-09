@@ -4,7 +4,7 @@ import { MatSnackBar } from '@angular/material';
 import { DatePipe } from '@angular/common';
 import { EstudanteService } from './../../services/estudante.service';
 import { Estudante } from '../../classes/estudante';
-
+import { MatTableDataSource, MatPaginator, MatSort} from '@angular/material';
 import {Observable} from 'rxjs';
 import { Turma } from '../../classes/turma';
 import { Encarregado } from '../../classes/encarregado';
@@ -18,7 +18,8 @@ import * as jsPDF from 'jspdf';
   styleUrls: ['./matricula.component.scss']
 })
 export class MatriculaComponent implements OnInit {
-  datatualmatricula=new Date();
+  datatual= new Date();
+  pagamentos: any []=[];
   @ViewChild('content') content: ElementRef;
   public downloadPDF(){
 let doc = new jsPDF;
@@ -50,6 +51,7 @@ doc.save('Matricula.pdf');
 
   estudante: Estudante;
   turma: Turma;
+  
 
   anos = [
     {value: new Date().getFullYear(), viewValue: new Date().getFullYear()},
@@ -78,8 +80,6 @@ doc.save('Matricula.pdf');
       this.estudante.transporte_checked = false;
       this.estudante.alimentacao_checked = false;
       this.estudante.estudo_orientado_checked = false;
-
-
       this.turma = new Turma();
       
     }
@@ -94,7 +94,6 @@ doc.save('Matricula.pdf');
       nivel: ['', Validators.required],
       regime: ['', Validators.required],
       turma: ['', Validators.required],
-     
       transporte: ['']
     });
 
@@ -184,6 +183,46 @@ doc.save('Matricula.pdf');
     }).catch( err => {
       console.log("ERRO: " + err.message)
     });*/
+
+  }
+  prencherpagamento(){
+    let preco_alimentacao = 0;
+    if (this.estudante.alimentacao_checked==true){
+      preco_alimentacao =this.estudante.turma.alimentacao
+    }
+    let preco_transporte = 0;
+    if (this.estudante.transporte_checked==true){
+      preco_transporte =this.estudante.turma.transporte
+    }
+    let preco_estudo = 0;
+    if (this.estudante.estudo_orientado_checked==true){
+      preco_transporte =this.estudante.turma.estudo_orientado
+    }
+
+    this.pagamentos=[{ 
+"descricao":"Matricula",
+"valor":this.estudante.turma.taxa_matricula
+    },
+   { 
+  "descricao":"Taxa de Alimentacao",
+  "valor": preco_alimentacao
+  
+          },
+   { 
+   "descricao":"Taxa de Transporte",
+   "valor":preco_transporte
+       },
+        
+ { 
+ "descricao":"Taxa de Estudo orientado",
+ "valor":preco_estudo
+   },
+   { 
+    "descricao":"Total",
+    "valor":+this.estudante.turma.taxa_matricula+ +preco_alimentacao+ +preco_transporte+ +preco_estudo
+      },
+
+  ]
 
   }
   openSnackBar(mensagem) {

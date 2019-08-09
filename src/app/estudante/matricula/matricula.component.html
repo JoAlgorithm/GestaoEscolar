@@ -90,7 +90,7 @@
       <br>        
 
       <div>
-      <button mat-button matStepperNext>SEGUINTE</button>
+      <button mat-button matStepperNext (click)="prencherpagamento()">SEGUINTE</button>
       </div>
     </form>
   </mat-step>
@@ -264,13 +264,38 @@
                   </div>
                   <div fxLayout="column">
                       <span class="text-md">DATA DE MATRICULA</span>
-                      <strong>{{datatualmatricula | date:'dd/MM/yyyy'}}</strong>
+                      <strong>{{datatual | date:'dd/MM/yyyy'}}</strong>
+                    </div>
+                    <div fxLayout="column">
+                      <span class="text-md">TAXA DE MATRICULA</span>
+                      <strong>{{turma.taxa_matricula}}</strong>
                     </div>
     
               </div> 
         </div>
      
      </mat-card-content>
+     <mat-card-content class="pl-0 pr-0">
+      <ngx-datatable
+        class="material"
+        [rows]="pagamentos"
+        [columnMode]="'flex'"
+        [headerHeight]="50"
+        [footerHeight]="0"
+        [rowHeight]="'auto'">
+        <ngx-datatable-column name="Descricao" [flexGrow]="2">
+          <ng-template ngx-datatable-cell-template let-row="row">
+            <strong>{{row.descricao}}</strong>
+          </ng-template>
+        </ngx-datatable-column>
+        <ngx-datatable-column name="Preco Unitario" [flexGrow]="1">
+          <ng-template ngx-datatable-cell-template let-row="row">
+            <strong>{{row.valor | currency:'MZN ':'symbol':'1.2-2'}}</strong>
+          </ng-template>
+        </ngx-datatable-column>
+
+      </ngx-datatable>
+    </mat-card-content>
     </div>
 
     
@@ -281,10 +306,3 @@
   </mat-step>
 </mat-horizontal-stepper>
 
-
-
-
-
-
-
-    

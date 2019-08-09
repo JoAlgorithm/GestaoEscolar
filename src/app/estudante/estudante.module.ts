@@ -15,6 +15,7 @@ import {ObserversModule} from '@angular/cdk/observers';
 import {PortalModule} from '@angular/cdk/portal';
 import { NgxPaginationModule } from 'ngx-pagination';
 
+import { NgxDatatableModule } from '@swimlane/ngx-datatable';
 import {
   MatAutocompleteModule,
   MatButtonModule,
@@ -109,7 +110,7 @@ import { MatriculaComponent } from './matricula/matricula.component';
     NgxPaginationModule ,
     //LayoutModule,
     //TableDemoModule,
-
+    NgxDatatableModule,
     CdkTableModule,
     A11yModule,
     BidiModule,
