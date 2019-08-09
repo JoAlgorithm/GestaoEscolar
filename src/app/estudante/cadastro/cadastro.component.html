@@ -185,7 +185,7 @@
 
         <!--TELEFONE2-->
         <mat-form-field style="width: 33%">
-            <input matInput placeholder="Telefone alternativo" formControlName="encarregado_telefone2" [(ngModel)]="encarregado.telefone2">
+            <input matInput placeholder="Telefone alternativo" formControlName="encarregado_telefone2" [(ngModel)]="encarregado.telefone2 " minlength="12" maxlength="12" required>
             <mat-hint>Inclua o prefixo do seu Pais (ex: 258)</mat-hint>
         </mat-form-field>
 

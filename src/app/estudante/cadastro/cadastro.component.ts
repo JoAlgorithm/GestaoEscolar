@@ -166,7 +166,7 @@ doc.save('Cadastro.pdf');
       encarregado_nr_documento: ['', Validators.required],
       encarregado_nacionalidade: ['', Validators.required],
       encarregado_telefone1: ['',Validators.compose([Validators.required, Validators.minLength(12), Validators.maxLength(12)])],
-      encarregado_telefone2: [''],
+      encarregado_telefone2: ['',Validators.compose([Validators.required, Validators.minLength(12), Validators.maxLength(12)])],
       encarregado_email: ['', Validators.compose([Validators.required, CustomValidators.email])],
     });
 

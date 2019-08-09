@@ -166,9 +166,9 @@ doc.save('Matricula.pdf');
     //na proxima matricula a turma do estudante é substituída e o historico das turmas dele ficam na turma
 
     this.estudante.turma = Object.assign({}, this.turma);
+    this.estudante.datamatricula = new Date();
     let data = Object.assign({}, this.estudante);
     
-    this.estudante.datamatricula = new Date();
     this.estudanteService.updateEstudante(data);
     this.estudanteService.addEstudanteTurma(this.turma.id, data)
     .then( res => {
