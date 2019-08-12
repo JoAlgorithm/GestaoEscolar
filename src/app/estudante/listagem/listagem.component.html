@@ -7,7 +7,7 @@
   </mat-form-field>
 </div>
 <div class="example-container mat-elevation-z8">
-<mat-table [dataSource]="dataSourse" matSort>
+<mat-table [dataSource]="dataSourse" matSort >
 
     <!-- ID Column 
     <ng-container matColumnDef="id">
@@ -18,7 +18,7 @@
     <!-- Progress Column -->
     <ng-container matColumnDef="nome">
       <mat-header-cell *matHeaderCellDef mat-sort-header> Nome </mat-header-cell>
-      <mat-cell *matCellDef="let row"> {{row.nome}}</mat-cell>
+      <mat-cell *matCellDef="let row" > {{row.nome}}</mat-cell>
     </ng-container>
 
     <!--<ng-container matColumnDef="genero">

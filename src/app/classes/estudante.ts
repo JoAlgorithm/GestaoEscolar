@@ -38,7 +38,7 @@ datamatricula?: Date;
     foto?: string;  
 
     encarregado: Encarregado;
-    
+    alimentacao_estudo_orientado_checked?: boolean = false;
     turma?: Turma; //A turma corrente do estudante persistida na ultima matricula
     transporte_checked?: boolean = false; //variavel que serve para verificar se estudante aderiu transporte
     alimentacao_checked?: boolean = false; //variavel que serve para verificar se estudante aderiu transporte
