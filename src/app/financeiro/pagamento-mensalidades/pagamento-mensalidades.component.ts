@@ -46,10 +46,12 @@ export class PagamentoMensalidadesComponent implements OnInit {
 
 pagamentos: any []=[];
 nomeEscola: any;
-dataatual=new Date();
+dataatual = new Date();
 @ViewChild('content') content: ElementRef;
 public downloadPDF(){
 let doc = new jsPDF;
+let nomepdf:String;
+nomepdf = "Mensalidade "+ this.estudante.nome+" " + this.mensalidade.mes+" " + this.mensalidade.ano;
 
 let specialElementHandlers ={
 '#editor': function(element,renderer){
@@ -63,7 +65,7 @@ doc.fromHTML(content.innerHTML, 15, 15,{
 'elementHandlers': specialElementHandlers
 
 });
-doc.save('Mensalidade.pdf');
+doc.save(nomepdf);
 
 }
   

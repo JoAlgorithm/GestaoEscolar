@@ -1,0 +1,40 @@
+
+<div class="example-header">
+  <!--Campo filtro-->
+  <mat-form-field>
+    <input matInput (keyup)="applyFilter($event.target.value)" placeholder="Pesquisar">
+    <mat-icon matSuffix>search</mat-icon>
+  </mat-form-field>
+</div>
+
+<div class="example-container mat-elevation-z8">
+  <mat-table [dataSource]="dataSourse" matSort>
+    
+    <!-- Estudante -->
+    <ng-container matColumnDef="estudante">
+      <mat-header-cell *matHeaderCellDef mat-sort-header> Estudante </mat-header-cell>
+      <mat-cell *matCellDef="let row"> {{row.estudante.nome}}</mat-cell>
+    </ng-container> 
+    
+    <!-- Turma -->
+    <ng-container matColumnDef="turma">
+      <mat-header-cell *matHeaderCellDef mat-sort-header> Turma </mat-header-cell>
+      <mat-cell *matCellDef="let row">{{row.turma.nome}}</mat-cell>
+    </ng-container>
+
+    <!-- Mes -->
+    <ng-container matColumnDef="mes">
+      <mat-header-cell *matHeaderCellDef mat-sort-header> Mes </mat-header-cell>
+      <mat-cell *matCellDef="let row">{{row.mes}}</mat-cell>
+    </ng-container>
+
+   
+        
+    <!--Cabecalho da tabela--> 
+    <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+    <mat-row *matRowDef="let row; columns: displayedColumns;">
+    </mat-row>
+  </mat-table>
+  <mat-paginator [pageSizeOptions]="[5, 10, 25, 100]"></mat-paginator>
+    
+  </div>

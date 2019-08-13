@@ -86,7 +86,7 @@ estudante: Estudante;
         } as Estudante;
       })
      // this.estudantesfilter=this.estudantes;
-      this.dataSourse=new MatTableDataSource(this.estudantes.sort((a,b) => a.nome < b.nome ? -1: 1));
+      this.dataSourse=new MatTableDataSource(this.estudantes);
       this.dataSourse.paginator = this.paginator;
     this.dataSourse.sort = this.sort;
       
