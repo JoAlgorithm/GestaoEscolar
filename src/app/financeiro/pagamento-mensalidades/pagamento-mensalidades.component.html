@@ -27,8 +27,8 @@
 <mat-form-field style="width: 33%">
   <mat-select placeholder="Mes" formControlName="mes" [(ngModel)]="mensalidade.mes" required >
       <mat-option *ngFor="let mes of meses" [value]="mes.value">
-          {{mes.viewValue =teste}}
-          </mat-option>
+          {{mes.viewValue}}
+      </mat-option>
   </mat-select>
 </mat-form-field>
 <mat-form-field style="width: 33%">
