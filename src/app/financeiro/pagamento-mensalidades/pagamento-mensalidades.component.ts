@@ -43,6 +43,16 @@ export class PagamentoMensalidadesComponent implements OnInit {
     {value: 'Novembro', viewValue: 'Novembro'},
     {value: 'Dezembro', viewValue: 'Dezembro'}
   ]
+/*if (mes.value = this.mensalidades.mes) 
+
+this.meses.value = af.database.object('/Mensalidade.mes', { preserveSnapshot: true });
+
+this.meses.value.subscribe(snapshot => {
+if(snapshot.exists()) {  
+console.loh(meses.value)
+} else {
+ //object doesnt exist 
+}*/
 
 pagamentos: any []=[];
 nomeEscola: any;
@@ -142,6 +152,7 @@ if(estudante.alimentacao_checked==false){
     estudante.turma.estudo_orientado=0;}
   }
   confirmar(){
+   
     this.mensalidade.ano=this.estudante.turma.ano;
     this.mensalidade.data_pagamento= new Date();
    this.mensalidade.estudante = Object.assign({},this.estudante);
@@ -150,8 +161,7 @@ if(estudante.alimentacao_checked==false){
     this.estudanteService.createMensalidade(data)
       this.openSnackBar("Pagamento com sucesso");
       this.downloadPDF;
-        
-   
+      
 
   }
   prencherpagamento(){
