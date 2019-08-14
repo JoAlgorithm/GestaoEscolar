@@ -12,35 +12,69 @@ import { User } from '../../classes/user';
 import { AuthService } from '../../services/auth.service';
 import * as jsPDF from 'jspdf';
 
+
+
+
 @Component({
   selector: 'app-matricula',
   templateUrl: './matricula.component.html',
   styleUrls: ['./matricula.component.scss']
 })
+
 export class MatriculaComponent implements OnInit {
-  datatual= new Date();
-  pagamentos: any []=[];
   @ViewChild('content') content: ElementRef;
-  public downloadPDF(){
-let doc = new jsPDF;
+  @ViewChild('content1') content1: ElementRef;
+    public downloadPDF(){
+  let doc = new jsPDF({
+    orientation: 'l',
+    unit: 'px',
+    format: 'a4',
+    putOnlyUsedFonts:true,
+    
 
-let specialElementHandlers ={
-'#editor': function(element,renderer){
-  return true;
-}
+   });
+   let doc1 = new jsPDF();
+  let specialElementHandlers ={
+  '#editor': function(element,renderer){
+    return true;
+  }
+  
+  };
+  let content = this.content.nativeElement;
+  let content1 = this.content1.nativeElement;
+  doc.setFont("Courier");
+  doc.setFontStyle("bold"); 
+  doc.setFontSize(8);
+  doc.fromHTML(content.innerHTML, 50, 60,{
+    'width':10,
+    'elementHandlers': specialElementHandlers,
+   
+    });
+    doc.fromHTML(content1.innerHTML, 420, 135,{
+      'width':100,
+      'elementHandlers': specialElementHandlers,
+     
+      });
+    doc.text("--------------------------------------------------------------------------------------------",1, 200);
+    doc.setTextColor(0, 0, 0);
+    doc.text("ESCOLA PRIMÁRIA COMPLETA NENÉ", 180, 25);
+    doc.text("Ensino Particular", 220, 40);
+    doc.text("Recibo de Matricula", 216, 55);
+    doc.text("Secretaria:", 50, 150);
+    doc.text("Matricula efetuada no dia:", 230, 150);
+    doc.text("__________________", 50, 170);
+  
+  doc.save('Matricula.pdf');
+  
 
-};
-let content = this.content.nativeElement;
-doc.fromHTML(content.innerHTML,5, 20 , {
-'width':1000,
-'elementHandlers': specialElementHandlers
+  
+    
 
-});
-
-doc.save('Matricula.pdf');
 
   }
-
+  datatual= new Date();
+  pagamentos: any []=[];
+ 
   displayedColumns = ['position', 'name', 'weight', 'symbol'];
 
   estudantes: Estudante[];
@@ -87,6 +121,11 @@ doc.save('Matricula.pdf');
 
   /*filteredOptions: Observable<Estudante[]>;
   estudante = new FormControl();*/
+
+    
+
+
+
 
   ngOnInit() {
     this.firstFormGroup = this._formBuilder.group({
@@ -180,7 +219,7 @@ doc.save('Matricula.pdf');
     this.estudanteService.addEstudanteTurma(this.turma.id, data)
     .then( res => {
       this.openSnackBar("Estudante Matriculado com sucesso");
-      this.downloadPDF;
+     
     }).catch( err => {
       console.log("ERRO: " + err.message) 
     });

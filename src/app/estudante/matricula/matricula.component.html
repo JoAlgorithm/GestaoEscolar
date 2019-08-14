@@ -94,8 +94,9 @@
       </div>
     </form>
   </mat-step>
-
-  <mat-step>
+  
+  <mat-step  >
+    
     <ng-template matStepLabel>CONFIRMAÇÃO</ng-template>
     
    
@@ -224,10 +225,28 @@
           </mat-card-content>-->
       
       
+     
+          
+    <mat-card-content >
+        <div id="content" #content>
+          
+        <table>
+            <tr>
+              <td>Nome</td>
+              <td>Regime</td>
+              <td>Ano</td>
+              <td>Classe</td>
+            </tr>
+            <tr>
+              <td>{{estudante.nome}}</td>
+              <td>{{turma.regime}}</td>
+              <td>{{turma.ano}}</td>
+              <td>{{turma.nivel}}</td>
+            </tr>
+          </table>
+        </div>
 
-         <div id="content" #content>
-    <mat-card-content>
-        <h4 class="mt-0 mb-1">Dados Pessoais</h4>
+       <!-- <h4 class="mt-0 mb-1">Dados Pessoais</h4>
         <div fxLayout="row" layout-align="center">
 
             <div class="pr-1" fxFlex>
@@ -250,14 +269,7 @@
             </div>
 
             <div class="pl-1" fxFlex>
-               <!--<div fxLayout="column" class="mb-1">
-                    <span class="text-md">ESTUDO</span>
-                    <strong *ngIf="estudante.estudo_orientado_checked == false">Sem estudo orientado</strong> <strong *ngIf="estudante.estudo_orientado_checked == true">Com Estudo orientado no valor de {{turma.estudo_orientado}} MZN</strong>
-                  </div>
-                  <div fxLayout="column" class="mb-1">
-                    <span class="text-md">TRANSPORTE</span>
-                    <strong *ngIf="estudante.transporte_checked== false">Sem transporte</strong> <strong *ngIf="estudante.transporte_checked == true">Com Transporte no valor de {{turma.transporte}} MZN</strong>
-                  </div>-->
+              
                   <div fxLayout="column" class="mb-1">
                     <span class="text-md">ALIMENTACAO E ESTUDO ORIENTADO</span>
                     <strong *ngIf="estudante.alimentacao_estudo_orientado_checked== false">Sem Alimentacao e Esdudo Orientado</strong> <strong *ngIf="estudante.alimentacao_estudo_orientado_checked== true">Com alimentacao no valor de {{turma.alimentacao_estudo_orientado}} MZN</strong>
@@ -272,21 +284,29 @@
                     </div>
     
               </div> 
-        </div>
+        </div> -->
+       
+        <div fxLayout="column">
+            <span class="text-md">Data da Matricula</span>
+            <div id="content1" #content1>
+            <strong>{{datatual | date:'dd/MM/yyyy HH:mm:ss'}}</strong>
+          </div>
+          </div>
      
      </mat-card-content>
-     <mat-card-content class="pl-0 pr-0">
-      <ngx-datatable
+     
+     <mat-card-content  class="pl-0 pr-0">
+      <ngx-datatable 
         class="material"
         [rows]="pagamentos"
         [columnMode]="'flex'"
         [headerHeight]="50"
         [footerHeight]="0"
-        [rowHeight]="'auto'">
-        <ngx-datatable-column name="Descricao" [flexGrow]="2">
+        [rowHeight]="'auto'" >
+        <ngx-datatable-column  name="Descricao" [flexGrow]="2">
           <ng-template ngx-datatable-cell-template let-row="row">
             <strong>{{row.descricao}}</strong>
-          </ng-template>
+          </ng-template >
         </ngx-datatable-column>
         <ngx-datatable-column name="Preco Unitario" [flexGrow]="1">
           <ng-template ngx-datatable-cell-template let-row="row">
@@ -296,13 +316,15 @@
 
       </ngx-datatable>
     </mat-card-content>
-    </div>
+   
 
     
     <div>
     <button mat-button matStepperPrevious>BACK</button>
-    <button mat-button (click)="registar()" mat-button (click)="downloadPDF()">MATRICULAR</button>
+    <button mat-button (click)="registar()" mat-button (click)=" downloadPDF()">MATRICULAR</button>
     </div>
   </mat-step>
+
+
 </mat-horizontal-stepper>
 
