@@ -1,0 +1,129 @@
+<mat-horizontal-stepper [linear]="true" #stepper>
+
+  <mat-step [stepControl]="firstFormGroup">
+    <form [formGroup]="firstFormGroup">
+      <ng-template matStepLabel>PAGAMENTO/MENSALIDADE</ng-template>
+
+      <!--ESTUDANTE-->        
+      <mat-form-field style="width: 33%">
+          <mat-select placeholder="Estudante" formControlName="estudante" [(ngModel)]="estudante"  required (change)='verficarPagamentos(estudante)'>
+             <mat-option *ngFor="let estudante of estudantes" [value]="estudante">
+                 {{estudante.nome}}
+             </mat-option>
+         </mat-select>
+     </mat-form-field>
+     <mat-form-field style="width: 33%">
+      <input matInput placeholder="Turma" formControlName="turma" [(ngModel)]="estudante.turma.nome" required >
+  </mat-form-field>
+  <mat-form-field style="width: 33%">
+    <input matInput placeholder="Classe" formControlName="nivel" [(ngModel)]="estudante.turma.nivel" required >
+</mat-form-field>
+  <mat-form-field style="width: 33%">
+      <input matInput placeholder="Regime" formControlName="regime" [(ngModel)]="estudante.turma.regime" required >
+  </mat-form-field>
+  <mat-form-field style="width: 33%">
+    <input matInput placeholder="Ano" formControlName="ano" [(ngModel)]="estudante.turma.ano" required >
+</mat-form-field>
+<mat-form-field style="width: 33%">
+  <mat-select placeholder="Mes" formControlName="mes" [(ngModel)]="mensalidade.mes" required >
+      <mat-option *ngFor="let mes of meses" [value]="mes.value">
+          {{mes.viewValue}}
+      </mat-option>
+  </mat-select>
+</mat-form-field>
+<mat-form-field style="width: 33%">
+  <input matInput placeholder="Mensalidade" formControlName="mensalidade" [(ngModel)]="estudante.turma.mensalidade" required >
+</mat-form-field>
+<mat-form-field style="width: 33%">
+  <input matInput placeholder="Transporte" formControlName="transporte" [(ngModel)]="estudante.turma.transporte" required >
+</mat-form-field>
+<mat-form-field style="width: 33%">
+  <input matInput placeholder="Alimentacao" formControlName="alimentacao" [(ngModel)]="estudante.turma.alimentacao" required >
+</mat-form-field>
+<mat-form-field style="width: 33%">
+  <input matInput placeholder="Estudo orientado" formControlName="estudo_orientado" [(ngModel)]="estudante.turma.estudo_orientado" required >
+</mat-form-field>
+<mat-form-field style="width: 15%">
+  <input matInput placeholder="Multa" formControlName="multa" [(ngModel)]="mensalidade.multa" required >
+</mat-form-field>
+<div>
+  <button mat-button matStepperNext (click)="prencherpagamento()">SEGUINTE</button>
+  </div>
+     </form>
+    </mat-step>
+
+    <mat-step>
+      
+      <ng-template matStepLabel>CONFIRMAR DADOS</ng-template>
+      <mat-card>
+         
+          <div id="content" #content>
+       
+        <mat-card-content>
+          <div class="mb-1">
+            <h4 class="mt-0" ><strong>CONFIRMAÇÃO DE PAGAMENTO</strong></h4>
+          </div>
+        
+          <div fxLayout="row wrap">
+            <div fxFlex.gt-xs="50" fxFlex="100">
+              <h3 class="my-0">DADOS DO ESTUDANTE</h3>
+              <div fxLayout="column">
+                <h4>Nome: <span>{{estudante.nome}}</span></h4>
+                <h4>Turma: <span>{{estudante.turma.nome}}</span></h4>
+                <h4>Classe:<span>{{estudante.turma.nivel}}</span></h4>
+                <h4>Ano: <span>{{estudante.turma.ano}}</span></h4>
+              </div>
+            </div>
+
+            <div fxFlex.gt-xs="50" fxFlex="100" class="text-sm-right text-xs-left">
+              <h4 class="my-0">{{nomeEscola}}</h4>
+              <div fxLayout="column">
+              <h4>Pagamento do mês de : <span>{{mensalidade.mes}}</span></h4>
+              <h4>Efetuou Pagamento no dia: <span>{{dataatual | date:'dd/MM/yyyy'}}</span></h4>
+            </div>
+            </div>
+          </div>
+
+          </mat-card-content>
+  
+          
+
+
+          <mat-card-content class="pl-0 pr-0">
+            <ngx-datatable
+              class="material"
+              [rows]="pagamentos"
+              [columnMode]="'flex'"
+              [headerHeight]="50"
+              [footerHeight]="0"
+              [rowHeight]="'auto'">
+              <ngx-datatable-column name="Descricao" [flexGrow]="2">
+                <ng-template ngx-datatable-cell-template let-row="row">
+                  <strong>{{row.descricao}}</strong>
+                </ng-template>
+              </ngx-datatable-column>
+              <ngx-datatable-column name="Preco Unitario" [flexGrow]="1">
+                <ng-template ngx-datatable-cell-template let-row="row">
+                  <strong>{{row.valor | currency:'MZN ':'symbol':'1.2-2'}}</strong>
+                </ng-template>
+              </ngx-datatable-column>
+
+            </ngx-datatable>
+          </mat-card-content>
+        </div> <!--fechar div pdf-->
+     
+
+
+
+        <div>
+            <button mat-button matStepperPrevious>VOLTAR</button>
+          <button mat-button (click)="confirmar()" mat-button (click)="downloadPDF()" [routerLink]="['/financeiro/lista_mensalidades']">CONFIRMAR</button>
+          </div>
+
+          </mat-card>
+        
+      
+        </mat-step>
+     
+     </mat-horizontal-stepper>
+   

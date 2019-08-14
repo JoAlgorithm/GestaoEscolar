@@ -114,7 +114,6 @@ export class MatriculaComponent implements OnInit {
       this.estudante.transporte_checked = false;
       this.estudante.alimentacao_checked = false;
       this.estudante.estudo_orientado_checked = false;
-      this.estudante.alimentacao_estudo_orientado_checked = false;
       this.turma = new Turma();
       
     }
@@ -175,13 +174,7 @@ export class MatriculaComponent implements OnInit {
   /*filtrarRegime(regime){
     this.turmasFilter = this.turmas.filter(e => e.regime == regime);
   }*/
-  setAlimentacao_estudo_orientado(e){
-    if(e.checked){
-      this.estudante.alimentacao_estudo_orientado_checked = true;
-    }else{
-      this.estudante.alimentacao_estudo_orientado_checked = false;
-    }
-  }
+
 
   setEstudoOrientado(e){
     if(e.checked){
@@ -232,10 +225,6 @@ export class MatriculaComponent implements OnInit {
 
   }
   prencherpagamento(){
-    let preco_alimentacao_estudos = 0;
-    if (this.estudante.alimentacao_estudo_orientado_checked==true){
-      preco_alimentacao_estudos=this.turma.alimentacao_estudo_orientado
-    }
     let preco_alimentacao = 0;
     if (this.estudante.alimentacao_checked==true){
       preco_alimentacao =this.estudante.turma.alimentacao
@@ -252,14 +241,24 @@ export class MatriculaComponent implements OnInit {
     this.pagamentos=[{ 
 "descricao":"Matricula",
 "valor":this.estudante.turma.taxa_matricula
-    },       
+    },
+   { 
+  "descricao":"Taxa de Alimentacao",
+  "valor": preco_alimentacao
+  
+          },
+   { 
+   "descricao":"Taxa de Transporte",
+   "valor":preco_transporte
+       },
+        
  { 
- "descricao":"Taxa Alimentacao e  Estudo orientado",
- "valor": preco_alimentacao_estudos
+ "descricao":"Taxa de Estudo orientado",
+ "valor":preco_estudo
    },
    { 
     "descricao":"Total",
-    "valor":+this.estudante.turma.taxa_matricula+ +preco_alimentacao_estudos
+    "valor":+this.estudante.turma.taxa_matricula+ +preco_alimentacao+ +preco_transporte+ +preco_estudo
       },
 
   ]

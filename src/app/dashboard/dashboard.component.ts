@@ -3,10 +3,7 @@ import { EstudanteService } from '../services/estudante.service';
 import { Estudante } from '../classes/estudante';
 import { Turma } from '../classes/turma';
 import { Encarregado } from '../classes/encarregado';
-import {MatDialog, MatDialogRef, MAT_DIALOG_DATA} from '@angular/material/dialog';
-import { Inject} from '@angular/core';
-import { MatTableDataSource, MatPaginator, MatSort, MatSnackBar } from '@angular/material';
-import { OnInit, ViewChild } from '@angular/core';
+
 @Component({
   //selector: 'app-dashboard',
   selector: 'dashboard',
@@ -25,13 +22,10 @@ export class DashboardComponent {
   turmas: Turma[];
   turmasFilter: any[];
   naoMatriculdos:any =0 ;
-  dataSourse: MatTableDataSource<Estudante>;
-  displayedColumns = ['nome', 'turma', 'nivel', 'regime', 'contacto', 'Detalhe','Editar'];
-  @ViewChild(MatPaginator) paginator: MatPaginator;
-@ViewChild(MatSort) sort: MatSort;
+
   
 
-  constructor(private estudanteService: EstudanteService, public dialog: MatDialog){
+  constructor(private estudanteService: EstudanteService){
   }
 
   ngOnInit() {
@@ -45,10 +39,6 @@ export class DashboardComponent {
           ...e.payload.doc.data(),
         } as Estudante;
       })
-      this.dataSourse=new MatTableDataSource(this.estudantes.sort((a,b) => a.nome < b.nome ? -1: 1));
-      this.dataSourse.paginator = this.paginator;
-    this.dataSourse.sort = this.sort;
-
       this.estudantesMatriculados = this.estudantes.filter(e => e.turma != null);
       this.naoMatriculdos = this.estudantes.length - this.estudantesMatriculados.length;
 
@@ -69,7 +59,6 @@ export class DashboardComponent {
         } as Turma;
       })       
     })
-  
   }
 
   // Doughnut
@@ -91,8 +80,6 @@ export class DashboardComponent {
   public pieChartLabels: string[] = ['Masculino', 'Feminino'];
   public pieChartData = [this.estudantesMascu, this.estudantesFemininas];
   public pieChartType = 'pie';
-  
-  
 
   
 }

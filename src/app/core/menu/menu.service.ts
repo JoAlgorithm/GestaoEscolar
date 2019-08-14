@@ -28,22 +28,6 @@ const MENUITEMS:Menu[] = [
     type: 'link',
     icon: 'home'
   },
-  /*{
-    state: 'Lista_estudantes',
-    name: 'LISTA DE ESTUDANTES',
-    type: 'sub',
-    icon: 'local_library',
-    /*badge: [
-      {type: 'red', value: '5'}
-    ],
-    children: [
-      {state: 'Total_estudante', name: 'Estudantes'},
-      {state: 'estudante_matriculado', name: 'Matriculados'},
-      {state: 'estudante_nao_matriculado', name: 'Nao Matrícula'},
-      {state: 'turmas', name: 'Turmas'}
-     
-    ]
-  },*/
   {
     state: 'estudante',
     name: 'ESTUDANTES',

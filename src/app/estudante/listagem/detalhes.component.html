@@ -63,12 +63,20 @@
                     <th>Nome do Encarregado</th>
                     <td>{{data.nome_encarregado}}</td>         
       </tr>
-      
+      <tr>
+        <th>Data matricula</th>
+        <td>{{data.datamatricula.toDate() | date: 'dd/MM/yyyy'}}</td>         
+</tr>
+<tr>
+    <th>taxa matricula</th>
+    <td>{{data.taxa_matricula}}</td>         
+</tr>
           </table>
           <br>
         </div>
         <div class="modal-footer">
-            <button type="button" class="btn btn-default" data-dismiss="modal" (click)="closeModal()">CLOSE</button>
+                   
+            <button mat-button class="btn btn-default" data-dismiss="modal" (click)="closeModal()">TERMINAR</button>
         </div>
     </div>
 </div>

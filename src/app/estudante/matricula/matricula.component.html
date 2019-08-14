@@ -56,7 +56,7 @@
           Serviços extras:
       </section>
       <section>
-     <!--   <mat-slide-toggle
+        <mat-slide-toggle
         style="width: 33%"
           class="example-margin"
           [color]="color"
@@ -75,15 +75,15 @@
           (change)="setAlimentacao($event)"
           [disabled]="turma.alimentacao ==null || turma.alimentacao == 0">
           <span *ngIf="turma.alimentacao == '' || turma.alimentacao == null">Sem opção de alimentação</span> <span *ngIf="!turma.alimentacao == 0">Alimentação - {{turma.alimentacao}} MZN</span>
-        </mat-slide-toggle>-->
+        </mat-slide-toggle>
 
         <mat-slide-toggle 
           class="example-margin"
           [color]="color"
-          [checked]="estudante.alimentacao_estudo_orientado_checked === 'true' ? true : false"
-          (change)="setAlimentacao_estudo_orientado($event)"
-          [disabled]="turma.alimentacao_estudo_orientado == null || turma.alimentacao_estudo_orientado == 0">
-          <span *ngIf="turma.alimentacao_estudo_orientado == '' || turma.alimentacao_estudo_orientado == null">Sem opção de Alimentacao e estudo orientado</span> <span *ngIf="!turma.alimentacao_estudo_orientado == 0">Alimentacao e Estudo orientado - {{turma.alimentacao_estudo_orientado}} MZN</span>
+          [checked]="estudante.estudo_orientado_checked === 'true' ? true : false"
+          (change)="setEstudoOrientado($event)"
+          [disabled]="turma.estudo_orientado ==null || turma.estudo_orientado == 0">
+          <span *ngIf="turma.estudo_orientado == '' || turma.estudo_orientado == null">Sem opção de estudo orientado</span> <span *ngIf="!turma.estudo_orientado == 0">Estudo orientado - {{turma.estudo_orientado}} MZN</span>
         </mat-slide-toggle>
       </section>
       
@@ -269,10 +269,21 @@
             </div>
 
             <div class="pl-1" fxFlex>
+<<<<<<< HEAD
               
+=======
+                <div fxLayout="column" class="mb-1">
+                    <span class="text-md">ESTUDO</span>
+                    <strong *ngIf="estudante.estudo_orientado_checked == false">Sem estudo orientado</strong> <strong *ngIf="estudante.estudo_orientado_checked == true">Com Estudo orientado no valor de {{turma.estudo_orientado}} MZN</strong>
+                  </div>
                   <div fxLayout="column" class="mb-1">
-                    <span class="text-md">ALIMENTACAO E ESTUDO ORIENTADO</span>
-                    <strong *ngIf="estudante.alimentacao_estudo_orientado_checked== false">Sem Alimentacao e Esdudo Orientado</strong> <strong *ngIf="estudante.alimentacao_estudo_orientado_checked== true">Com alimentacao no valor de {{turma.alimentacao_estudo_orientado}} MZN</strong>
+                    <span class="text-md">TRANSPORTE</span>
+                    <strong *ngIf="estudante.transporte_checked== false">Sem transporte</strong> <strong *ngIf="estudante.transporte_checked == true">Com Transporte no valor de {{turma.transporte}} MZN</strong>
+                  </div>
+>>>>>>> 16021d572ce9b078f78f169aa7dcd8febb5af0fe
+                  <div fxLayout="column" class="mb-1">
+                    <span class="text-md">ALIMENTACAO</span>
+                    <strong *ngIf="estudante.alimentacao_checked== false">Sem alimentacao</strong> <strong *ngIf="estudante.alimentacao_checked == true">Com alimentacao no valor de {{turma.alimentacao}} MZN</strong>
                   </div>
                   <div fxLayout="column">
                       <span class="text-md">DATA DE MATRICULA</span>
