@@ -24,6 +24,11 @@ import * as jsPDF from 'jspdf';
 export class MatriculaComponent implements OnInit {
   @ViewChild('content') content: ElementRef;
   @ViewChild('content1') content1: ElementRef;
+  @ViewChild('content3') content3: ElementRef;
+  @ViewChild('content4') content4: ElementRef;
+  @ViewChild('content5') content5: ElementRef;
+  
+ 
     public downloadPDF(){
   let doc = new jsPDF({
     orientation: 'l',
@@ -42,32 +47,78 @@ export class MatriculaComponent implements OnInit {
   };
   let content = this.content.nativeElement;
   let content1 = this.content1.nativeElement;
+  let content3 = this.content3.nativeElement;
+  let content4 = this.content4.nativeElement;
+  let content5 = this.content5.nativeElement;
+ 
+  var img = new Image();
+img.src ="../../../assets/images/file-13.jpeg"; 
+doc.addImage(img, 'PNG', 260, 20,30, 30);
   doc.setFont("Courier");
-  doc.setFontStyle("bold"); 
-  doc.setFontSize(8);
-  doc.fromHTML(content.innerHTML, 50, 60,{
-    'width':10,
+  doc.setFontStyle("normal"); 
+  doc.setFontSize(12);
+  doc.fromHTML(content.innerHTML, 150, 123,{
+    'width':100,
     'elementHandlers': specialElementHandlers,
    
     });
-    doc.fromHTML(content1.innerHTML, 420, 135,{
+    doc.fromHTML(content3.innerHTML, 420, 123,{
       'width':100,
       'elementHandlers': specialElementHandlers,
      
       });
-    doc.text("--------------------------------------------------------------------------------------------",1, 200);
+    doc.fromHTML(content1.innerHTML, 420, 102,{
+      'width':100,
+      'elementHandlers': specialElementHandlers,
+     
+      });
+      doc.fromHTML(content4.innerHTML, 85, 152,{
+        'width':100,
+        'elementHandlers': specialElementHandlers,
+       
+        });
+        doc.fromHTML(content5.innerHTML, 85, 137,{
+          'width':100,
+          'elementHandlers': specialElementHandlers,
+         
+          });
+         
+      
+    doc.text("--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------",1, 300);
     doc.setTextColor(0, 0, 0);
-    doc.text("ESCOLA PRIMÁRIA COMPLETA NENÉ", 180, 25);
-    doc.text("Ensino Particular", 220, 40);
-    doc.text("Recibo de Matricula", 216, 55);
-    doc.text("Secretaria:", 50, 150);
-    doc.text("Matricula efetuada no dia:", 230, 150);
-    doc.text("__________________", 50, 170);
+    doc.text("ESCOLA PRIMÁRIA COMPLETA NENÉ", 200, 60);
+    doc.text("Ensino Particular", 230, 75);
+    doc.text("Recibo de Matricula", 224, 90);
+    doc.text("Secretaria:", 70, 250);
+    doc.text("Emitido no dia:", 335, 115);
+    doc.text("__________________", 50, 270);
+    doc.text("Dados do Estudante:", 50, 115);
+    doc.text("Nome Do Estudante:", 50, 135);
+    doc.text("Classe:", 50, 150);
+    doc.text("Regime:", 50, 165);
+    doc.text("Ano:", 400, 135);
+    doc.text("Taxa de Matricula", 80, 197);
+    doc.text("Serviços", 80, 207);
   
+
+    doc.setFontStyle("bold");
+    doc.text("Descrição", 100, 187);
+      doc.text("Preço Unitário", 300, 187);
+      doc.text("Total:", 80, 217);
+   doc.rect ( 50 , 180 , 200 , 20 ); 
+   doc.rect (  50, 190 , 200 , 20 ); 
+   doc.rect (  50, 200 , 200 , 20 ); 
+   doc.rect (  250, 180 , 250 , 20 ); 
+   doc.rect (  250, 190 , 250 , 20 );
+   doc.rect (  250, 200 , 250 , 20 );
+   doc.line(50, 120, 500, 120);
+   doc.line(50, 175, 500, 175);
+  
+   
   doc.save('Matricula.pdf');
   
 
-  
+ 
     
 
 
