@@ -31,7 +31,7 @@
       </mat-option>
   </mat-select>
 </mat-form-field>
-<mat-form-field style="width: 33%">
+<!--<mat-form-field style="width: 33%">
   <input matInput placeholder="Mensalidade" formControlName="mensalidade" [(ngModel)]="estudante.turma.mensalidade" required >
 </mat-form-field>
 <mat-form-field style="width: 33%">
@@ -42,6 +42,9 @@
 </mat-form-field>
 <mat-form-field style="width: 33%">
   <input matInput placeholder="Estudo orientado" formControlName="estudo_orientado" [(ngModel)]="estudante.turma.estudo_orientado" required >
+</mat-form-field>-->
+<mat-form-field style="width: 33%">
+  <input matInput placeholder="Alimentacao e Estudo orientado" formControlName="alimentacao_estudo_orientado" [(ngModel)]="estudante.turma.alimentacao_estudo_orientado" required >
 </mat-form-field>
 <mat-form-field style="width: 15%">
   <input matInput placeholder="Multa" formControlName="multa" [(ngModel)]="mensalidade.multa" required >
@@ -57,7 +60,7 @@
       <ng-template matStepLabel>CONFIRMAR DADOS</ng-template>
       <mat-card>
          
-          <div id="content" #content>
+     
        
         <mat-card-content>
           <div class="mb-1">
@@ -68,18 +71,64 @@
             <div fxFlex.gt-xs="50" fxFlex="100">
               <h3 class="my-0">DADOS DO ESTUDANTE</h3>
               <div fxLayout="column">
-                <h4>Nome: <span>{{estudante.nome}}</span></h4>
-                <h4>Turma: <span>{{estudante.turma.nome}}</span></h4>
-                <h4>Classe:<span>{{estudante.turma.nivel}}</span></h4>
-                <h4>Ano: <span>{{estudante.turma.ano}}</span></h4>
+                 
+                <h4>Nome:  <div id="content" #content>
+                  <span>{{estudante.nome}}</span>
+                </div>
+                </h4>
+              
+                <h4>Turma: 
+                    <div id="content4" #content4>
+                      <span>{{estudante.turma.nome}}</span>
+                    </div>
+                    </h4>
+              
+                <h4>Classe:
+                    <div id="content5" #content5>
+                      <span>{{estudante.turma.nivel}}</span> </div>
+                    </h4>
+               
+                <h4>Ano: 
+                    <div id="content3" #content3>
+                      <span>{{estudante.turma.ano}}</span>
+                    </div>
+                    </h4>
+                    <h4>Taxa Mensalidade: 
+                        <div id="content6" #content6>
+                          <span>{{estudante.turma.mensalidade}}</span>
+                        </div>
+                        </h4>
+                        <h4>Aliment.Estudo: 
+                            <div id="content7" #content7>
+                          <span>{{estudante.turma.alimentacao_estudo_orientado}}</span>
+                            </div>
+                        </h4>
+                        <h4>Multa: 
+                            <div id="content8" #content8>
+                          <span>{{mensalidade.multa}}</span>
+                            </div>
+                        </h4>
+                        <h4>Total: 
+                            <div id="content9" #content9>
+                          <span>{{total}}</span>
+                            </div>
+                        </h4>
               </div>
             </div>
 
             <div fxFlex.gt-xs="50" fxFlex="100" class="text-sm-right text-xs-left">
               <h4 class="my-0">{{nomeEscola}}</h4>
               <div fxLayout="column">
-              <h4>Pagamento do mês de : <span>{{mensalidade.mes}}</span></h4>
-              <h4>Efetuou Pagamento no dia: <span>{{dataatual | date:'dd/MM/yyyy'}}</span></h4>
+              <h4>Pagamento do mês de : 
+                  <div id="content2" #content2>
+                <span>{{mensalidade.mes}}</span>
+                  </div>
+              </h4>
+              <h4>Efetuou Pagamento no dia:
+                 <div id="content1" #content1>
+                 <span>{{dataatual | date:'dd/MM/yyyy'}}</span>
+                 </div>
+                  </h4>
             </div>
             </div>
           </div>
@@ -110,7 +159,7 @@
 
             </ngx-datatable>
           </mat-card-content>
-        </div> <!--fechar div pdf-->
+        
      
 
 

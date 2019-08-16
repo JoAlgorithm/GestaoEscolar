@@ -138,14 +138,7 @@
             <input matInput placeholder="Nome completo" formControlName="encarregado_nome" [(ngModel)]="encarregado.nome" required>
         </mat-form-field>
           
-        <!--DATA DE NASCIMENTO-->
-        <mat-form-field style="width: 33%">
-            <!--<input matInput placeholder="Data de nascimento" formControlName="estudante_data_nascimento" required>-->
-
-            <input matInput [matDatepicker]="picker2" placeholder="Data de nascimento" formControlName="encarregado_data_nascimento" [(ngModel)]="encarregado.data_nascimento" required>
-            <mat-datepicker-toggle matSuffix [for]="picker2"></mat-datepicker-toggle>
-            <mat-datepicker #picker2></mat-datepicker>
-        </mat-form-field>
+      
         
   
         <!--GENERO-->
@@ -157,24 +150,21 @@
           </mat-select>
         </mat-form-field>
 
-        <!--DOCUMNTO IDENTIFICACAO-->
-        <mat-form-field style="width: 33%">
-          <mat-select placeholder="Documento de identificacao" formControlName="encarregado_documento_identificacao" [(ngModel)]="encarregado.documento_identificacao" required >
-              <mat-option *ngFor="let documento_identificacao of documentos_identificacao" [value]="documento_identificacao.value">
-                  {{documento_identificacao.viewValue}}
-              </mat-option>
-          </mat-select>
-        </mat-form-field>
-
-        <!--NR DE IDENTIFICACAO-->
-        <mat-form-field style="width: 33%">
-            <input matInput placeholder="Nr de documento" formControlName="encarregado_nr_documento" [(ngModel)]="encarregado.nr_documento" required>
-        </mat-form-field>
 
         <!--NACIONALIDADE-->
         <mat-form-field style="width: 33%">
             <input matInput placeholder="Nacionalidade" formControlName="encarregado_nacionalidade" [(ngModel)]="encarregado.nacionalidade" required>
         </mat-form-field>
+
+ <!--PROFISSAO-->
+ <mat-form-field style="width: 33%">
+  <input matInput placeholder="Profissao" formControlName="encarregado_profissao" [(ngModel)]="encarregado.Profissao" required>
+</mat-form-field>
+
+ <!--PROFISSAO-->
+ <mat-form-field style="width: 33%">
+  <input matInput placeholder="Local de Trabalho" formControlName="encarregado_local_trabalho" [(ngModel)]="encarregado.local_trabalho" required>
+</mat-form-field>
 
         <!--TELEFONE1-->
         <mat-form-field style="width: 33%">
@@ -191,7 +181,7 @@
 
         <!--EMAIL-->
         <mat-form-field style="width: 33%">
-            <input matInput placeholder="Email" formControlName="encarregado_email" [(ngModel)]="encarregado.email" required>
+            <input matInput placeholder="Email" formControlName="encarregado_email" [(ngModel)]="encarregado.email">
         </mat-form-field>
 
       <div>
@@ -217,7 +207,7 @@
       <ng-template matStepLabel>CONFIRMAÇÁO</ng-template>
       <div id="content" #content>
       <mat-card-content>
-        <h4 class="mt-0 mb-1">Dados Pessoais</h4>
+        <h4 class="mt-0 mb-1">DADOS PESSOAIS</h4>
         <div fxLayout="row" layout-align="center">            
 
           <div class="pr-1" fxFlex>
@@ -250,6 +240,10 @@
               <span class="text-md">Provincia</span>
               <strong>{{estudante.provincia}}</strong>
             </div>
+            <div fxLayout="column">
+              <span class="text-md">Endereco</span>
+              <strong>{{estudante.endereco}}</strong>
+            </div>
 
           </div>
           <div class="pl-1" fxFlex>
@@ -259,15 +253,21 @@
               <strong>{{encarregado.nome}}</strong>
             </div>
 
-            <div fxLayout="column" class="mb-1">
-                <span class="text-md">Documento: {{encarregado.documento_identificacao}}</span>
-                <strong>{{encarregado.nr_documento}}</strong>
-            </div>
-
+        
             <div fxLayout="column" class="mb-1">
                 <span class="text-md">Nacionalidade</span>
                 <strong>{{encarregado.nacionalidade}}</strong>
               </div>
+
+              <div fxLayout="column" class="mb-1">
+                <span class="text-md">Profissao</span>
+                <strong>{{encarregado.Profissao}}</strong>
+            </div>
+              
+            <div fxLayout="column" class="mb-1">
+              <span class="text-md">Local de Trabalho</span>
+              <strong>{{encarregado.local_trabalho}}</strong>
+          </div>
 
             <div fxLayout="column" class="mb-1">
               <span class="text-md">Telefone</span>

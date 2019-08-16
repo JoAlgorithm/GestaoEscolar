@@ -160,14 +160,14 @@ doc.save('Cadastro.pdf');
     
     this.secondFormGroup = this._formBuilder.group({
       encarregado_nome: ['', Validators.required],
-      encarregado_data_nascimento: ['', Validators.required],
+    
       encarregado_genero: ['', Validators.required],
-      encarregado_documento_identificacao: ['', Validators.required],
-      encarregado_nr_documento: ['', Validators.required],
+      encarregado_profissao: ['', Validators.required],
+      encarregado_local_trabalho: ['', Validators.required],
       encarregado_nacionalidade: ['', Validators.required],
       encarregado_telefone1: ['',Validators.compose([Validators.required, Validators.minLength(12), Validators.maxLength(12)])],
       encarregado_telefone2: ['',Validators.compose([Validators.required, Validators.minLength(12), Validators.maxLength(12)])],
-      encarregado_email: ['', Validators.compose([Validators.required, CustomValidators.email])],
+      encarregado_email: ['']
     });
 
     /*this.estudanteService.getEstudante().subscribe(data => {

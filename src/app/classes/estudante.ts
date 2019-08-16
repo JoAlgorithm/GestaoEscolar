@@ -43,7 +43,7 @@ datamatricula?: Date;
     transporte_checked?: boolean = false; //variavel que serve para verificar se estudante aderiu transporte
     alimentacao_checked?: boolean = false; //variavel que serve para verificar se estudante aderiu transporte
     estudo_orientado_checked?: boolean = false; //variavel que serve para verificar se estudante aderiu transporte
-
+    alimentacao_estudo_orientado_checked?: boolean = false; 
     /*constructor(
         id?: string,
         nome?: string,

@@ -56,34 +56,13 @@
           Serviços extras:
       </section>
       <section>
-        <mat-slide-toggle
-        style="width: 33%"
-          class="example-margin"
-          [color]="color"
-          [checked]="estudante.transporte_checked === 'true' ? true : false"
-          (change)="setTransporte($event)"
-          [disabled]="turma.transporte ==null || turma.transporte == 0">
-          <span *ngIf="turma.transporte == '' || turma.transporte == null">Sem opção de transporte</span> <span *ngIf="!turma.transporte == 0">Transporte - {{turma.transporte}} MZN</span>
-        </mat-slide-toggle> 
-        
-
-        <mat-slide-toggle
-        style="width: 33%"
-          class="example-margin"
-          [color]="color"
-          [checked]="estudante.alimentacao_checked === 'true' ? true : false"
-          (change)="setAlimentacao($event)"
-          [disabled]="turma.alimentacao ==null || turma.alimentacao == 0">
-          <span *ngIf="turma.alimentacao == '' || turma.alimentacao == null">Sem opção de alimentação</span> <span *ngIf="!turma.alimentacao == 0">Alimentação - {{turma.alimentacao}} MZN</span>
-        </mat-slide-toggle>
-
         <mat-slide-toggle 
           class="example-margin"
           [color]="color"
-          [checked]="estudante.estudo_orientado_checked === 'true' ? true : false"
-          (change)="setEstudoOrientado($event)"
-          [disabled]="turma.estudo_orientado ==null || turma.estudo_orientado == 0">
-          <span *ngIf="turma.estudo_orientado == '' || turma.estudo_orientado == null">Sem opção de estudo orientado</span> <span *ngIf="!turma.estudo_orientado == 0">Estudo orientado - {{turma.estudo_orientado}} MZN</span>
+          [checked]="estudante.alimentacao_estudo_orientado_checked == true ? true : false"
+          (change)="setAlimentacao_estudoOrientado($event)"
+          [disabled]="turma.alimentacao_estudo_orientado == null || turma.alimentacao_estudo_orientado == 0">
+          <span *ngIf="turma.alimentacao_estudo_orientado == '' || turma.alimentacao_estudo_orientado == null">Sem opção de Alimentacao e estudo orientado</span> <span *ngIf="!turma.alimentacao_estudo_orientado == 0">Alimentacao e Estudo orientado - {{turma.alimentacao_estudo_orientado}} MZN</span>
         </mat-slide-toggle>
       </section>
       
@@ -244,7 +223,8 @@
           </table>
         </div>-->
 
-       <h4 class="mt-0 mb-1">Dados Pessoais</h4>
+       <h4 class="mt-0 mb-1">DADOS PESSOAIS</h4>
+      
         <div fxLayout="row" layout-align="center">
 
             <div class="pr-1" fxFlex>
@@ -277,42 +257,40 @@
             </div>
 
             <div class="pl-1" fxFlex>
-<<<<<<< HEAD
-              
-=======
+
                 <div fxLayout="column" class="mb-1">
-                    <span class="text-md">ESTUDO</span>
-                    <strong *ngIf="estudante.estudo_orientado_checked == false">Sem estudo orientado</strong> <strong *ngIf="estudante.estudo_orientado_checked == true">Com Estudo orientado no valor de {{turma.estudo_orientado}} MZN</strong>
-                  </div>
-                  <div fxLayout="column" class="mb-1">
-                    <span class="text-md">TRANSPORTE</span>
-                    <strong *ngIf="estudante.transporte_checked== false">Sem transporte</strong> <strong *ngIf="estudante.transporte_checked == true">Com Transporte no valor de {{turma.transporte}} MZN</strong>
-                  </div>
->>>>>>> 16021d572ce9b078f78f169aa7dcd8febb5af0fe
-                  <div fxLayout="column" class="mb-1">
-                    <span class="text-md">ALIMENTACAO</span>
-                    <strong *ngIf="estudante.alimentacao_checked== false">Sem alimentacao</strong> <strong *ngIf="estudante.alimentacao_checked == true">Com alimentacao no valor de {{turma.alimentacao}} MZN</strong>
+                    <span class="text-md">ALIMENTACAO E ESTUDO</span>
+                    <strong *ngIf="estudante.alimentacao_estudo_orientado_checked == false">Sem alimentacao e estudo orientado</strong> <strong *ngIf="estudante.alimentacao_estudo_orientado_checked == true">Com Alimentacao Estudo orientado no valor de {{turma.alimentacao_estudo_orientado}} MZN</strong>
                   </div>
                   <div fxLayout="column">
-                      <span class="text-md">DATA DE MATRICULA</span>
-                      <strong>{{datatual | date:'dd/MM/yyyy'}}</strong>
-                    </div>
+                    <span class="text-md">DATA DA MATRICULA</span>
+                    <div id="content1" #content1>
+                    <strong>{{datatual | date:'dd/MM/yyyy HH:mm:ss'}}</strong>
+                  </div>
+                  </div>
                     <div fxLayout="column">
                       <span class="text-md">TAXA DE MATRICULA</span>
-                      
-                      <strong>{{turma.taxa_matricula}}</strong>
-                    
+                      <div id="content6" #content6>
+                      <strong>{{turma.taxa_matricula }}</strong>
+                    </div>
                  </div>
+                 <div fxLayout="column">
+                  <span class="text-md">SERVICOS</span>
+                  <div id="content7" #content7>
+                  <strong>{{alimentacao_estudo_orientado_novo }}</strong>
+              
+                  </div>
+             </div>
+             <div fxLayout="column">
+              <span class="text-md">TOTAL</span>
+              <div id="content8" #content8>
+              <strong>{{total}}</strong>
+          
+              </div>
+         </div>
               </div> 
-        </div> -->
-       
-        <div fxLayout="column">
-            <span class="text-md">Data da Matricula</span>
-            <div id="content1" #content1>
-            <strong>{{datatual | date:'dd/MM/yyyy HH:mm:ss'}}</strong>
-          </div>
-          </div>
-     
+        </div> 
+
      </mat-card-content>
      
      <mat-card-content  class="pl-0 pr-0">

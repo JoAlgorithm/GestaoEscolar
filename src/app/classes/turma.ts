@@ -30,6 +30,7 @@ taxa_matricula?: number;
     transporte: number;
     alimentacao: number;
     estudo_orientado: number;
+    alimentacao_estudo_orientado: number;
 
     constructor(
         id?: string,
@@ -42,7 +43,8 @@ taxa_matricula?: number;
         limite?: number,
         transporte?: number,
         alimentacao?: number,
-        estudo_orientado?: number
+        estudo_orientado?: number,
+        alimentacao_estudo_orientado?: number,
     ){
         this.id = id;
         this.ano = ano;
@@ -55,5 +57,6 @@ taxa_matricula?: number;
         this.transporte= transporte;
         this.alimentacao = alimentacao;
         this.estudo_orientado = estudo_orientado;
+        this.alimentacao_estudo_orientado = alimentacao_estudo_orientado;
     }
 }

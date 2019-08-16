@@ -7,6 +7,6 @@ export class Pagamento {
     
     transporte?: number;
     alimentacao?: number;
-
+    alimentacao_estudo_orientado?: number,
     //atraso
 }

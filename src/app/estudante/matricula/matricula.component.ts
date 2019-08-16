@@ -22,13 +22,16 @@ import * as jsPDF from 'jspdf';
 })
 
 export class MatriculaComponent implements OnInit {
+  alimentacao_estudo_orientado_novo=0;
+  total=0;
   @ViewChild('content') content: ElementRef;
   @ViewChild('content1') content1: ElementRef;
   @ViewChild('content3') content3: ElementRef;
   @ViewChild('content4') content4: ElementRef;
   @ViewChild('content5') content5: ElementRef;
-  
- 
+  @ViewChild('content6') content6: ElementRef;
+  @ViewChild('content7') content7: ElementRef;
+  @ViewChild('content8') content8: ElementRef;
     public downloadPDF(){
   let doc = new jsPDF({
     orientation: 'l',
@@ -50,7 +53,9 @@ export class MatriculaComponent implements OnInit {
   let content3 = this.content3.nativeElement;
   let content4 = this.content4.nativeElement;
   let content5 = this.content5.nativeElement;
- 
+  let content6 = this.content6.nativeElement;
+  let content7= this.content7.nativeElement;
+  let content8= this.content8.nativeElement;
   var img = new Image();
 img.src ="../../../assets/images/file-13.jpeg"; 
 doc.addImage(img, 'PNG', 260, 20,30, 30);
@@ -82,7 +87,21 @@ doc.addImage(img, 'PNG', 260, 20,30, 30);
           'elementHandlers': specialElementHandlers,
          
           });
-         
+          doc.fromHTML(content6.innerHTML, 310, 184,{
+            'width':100,
+            'elementHandlers': specialElementHandlers,
+           
+            });
+            doc.fromHTML(content7.innerHTML, 310, 194,{
+              'width':100,
+              'elementHandlers': specialElementHandlers,
+             
+              });
+              doc.fromHTML(content8.innerHTML, 310, 204,{
+                'width':100,
+                'elementHandlers': specialElementHandlers,
+               
+                });
       
     doc.text("--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------",1, 300);
     doc.setTextColor(0, 0, 0);
@@ -99,11 +118,13 @@ doc.addImage(img, 'PNG', 260, 20,30, 30);
     doc.text("Ano:", 400, 135);
     doc.text("Taxa de Matricula", 80, 197);
     doc.text("Serviços", 80, 207);
-  
-
+    doc.text("MZN", 335, 197);
+    doc.text("MZN", 335, 207);
+    doc.text("MZN", 335, 217);
     doc.setFontStyle("bold");
     doc.text("Descrição", 100, 187);
       doc.text("Preço Unitário", 300, 187);
+    
       doc.text("Total:", 80, 217);
    doc.rect ( 50 , 180 , 200 , 20 ); 
    doc.rect (  50, 190 , 200 , 20 ); 
@@ -165,6 +186,7 @@ doc.addImage(img, 'PNG', 260, 20,30, 30);
       this.estudante.transporte_checked = false;
       this.estudante.alimentacao_checked = false;
       this.estudante.estudo_orientado_checked = false;
+      this.estudante.alimentacao_estudo_orientado_checked= false;
       this.turma = new Turma();
       
     }
@@ -184,7 +206,7 @@ doc.addImage(img, 'PNG', 260, 20,30, 30);
       nivel: ['', Validators.required],
       regime: ['', Validators.required],
       turma: ['', Validators.required],
-      transporte: ['']
+ 
     });
 
     this.estudanteService.getEstudantes().subscribe(data => {
@@ -216,6 +238,8 @@ doc.addImage(img, 'PNG', 260, 20,30, 30);
     })
 
     this.user = this.authService.get_user;
+    this.estudante.alimentacao_estudo_orientado_checked = false;
+    console.log('gomiomit '+this.estudante.alimentacao_estudo_orientado_checked );
   }
 
   filtrarTurma(ano, regime, nivel){
@@ -225,7 +249,13 @@ doc.addImage(img, 'PNG', 260, 20,30, 30);
   /*filtrarRegime(regime){
     this.turmasFilter = this.turmas.filter(e => e.regime == regime);
   }*/
-
+  setAlimentacao_estudoOrientado(e){
+    if(e.checked){
+      this.estudante.alimentacao_estudo_orientado_checked = true;
+    }else{
+      this.estudante.alimentacao_estudo_orientado_checked = false;
+    }
+  }
 
   setEstudoOrientado(e){
     if(e.checked){
@@ -276,6 +306,12 @@ doc.addImage(img, 'PNG', 260, 20,30, 30);
 
   }
   prencherpagamento(){
+    let preco_alimentacao_estudo_orientado = 0;
+    this.alimentacao_estudo_orientado_novo=0;
+    if (this.estudante.alimentacao_estudo_orientado_checked===true){
+      preco_alimentacao_estudo_orientado =this.estudante.turma.alimentacao_estudo_orientado
+     this.alimentacao_estudo_orientado_novo=preco_alimentacao_estudo_orientado
+    }
     let preco_alimentacao = 0;
     if (this.estudante.alimentacao_checked==true){
       preco_alimentacao =this.estudante.turma.alimentacao
@@ -288,32 +324,23 @@ doc.addImage(img, 'PNG', 260, 20,30, 30);
     if (this.estudante.estudo_orientado_checked==true){
       preco_transporte =this.estudante.turma.estudo_orientado
     }
-
+  
     this.pagamentos=[{ 
 "descricao":"Matricula",
 "valor":this.estudante.turma.taxa_matricula
     },
-   { 
-  "descricao":"Taxa de Alimentacao",
-  "valor": preco_alimentacao
-  
-          },
-   { 
-   "descricao":"Taxa de Transporte",
-   "valor":preco_transporte
-       },
         
  { 
  "descricao":"Taxa de Estudo orientado",
- "valor":preco_estudo
+ "valor":preco_alimentacao_estudo_orientado
    },
    { 
     "descricao":"Total",
-    "valor":+this.estudante.turma.taxa_matricula+ +preco_alimentacao+ +preco_transporte+ +preco_estudo
+    "valor":this.total=+this.estudante.turma.taxa_matricula+ +preco_alimentacao_estudo_orientado
       },
 
   ]
-
+ 
   }
   openSnackBar(mensagem) {
     /*this.snackBar.openFromComponent(null, {
