@@ -170,7 +170,7 @@ export class MatriculaComponent implements OnInit {
                    
                     doc.text("Secretaria:", 70, 240);
                     doc.text("Secretaria:", 70, 490);
-                    doc.text("______________________________", 30, 275);
+                    doc.text("______________________________", 30, 255);
                     doc.text("______________________________", 30, 525);
                    
                     doc.text("Nome Do Estudante:", 50, 135);
