@@ -32,15 +32,15 @@ export class MatriculaComponent implements OnInit {
   @ViewChild('content6') content6: ElementRef;
   @ViewChild('content7') content7: ElementRef;
   @ViewChild('content8') content8: ElementRef;
+  @ViewChild('content2') content2: ElementRef;
     public downloadPDF(){
-  let doc = new jsPDF({
-    orientation: 'l',
-    unit: 'px',
-    format: 'a4',
-    putOnlyUsedFonts:true,
+      let doc = new jsPDF({
+        orientation: 'p',
+        unit: 'px',
+        format: 'a4',
+        putOnlyUsedFonts:true,
     
-
-   });
+       });
    let doc1 = new jsPDF();
   let specialElementHandlers ={
   '#editor': function(element,renderer){
@@ -56,84 +56,172 @@ export class MatriculaComponent implements OnInit {
   let content6 = this.content6.nativeElement;
   let content7= this.content7.nativeElement;
   let content8= this.content8.nativeElement;
+  let content2 = this.content2.nativeElement;
   var img = new Image();
-img.src ="../../../assets/images/file-13.jpeg"; 
-doc.addImage(img, 'PNG', 260, 20,30, 30);
+  img.src ="../../../assets/images/file-13.jpeg"; 
+  doc.addImage(img, 'PNG', 200, 10,35, 35);
+  doc.addImage(img, 'PNG', 200, 290,35, 35);
   doc.setFont("Courier");
   doc.setFontStyle("normal"); 
   doc.setFontSize(12);
-  doc.fromHTML(content.innerHTML, 150, 123,{
+  doc.fromHTML(content.innerHTML, 150, 122,{
     'width':100,
     'elementHandlers': specialElementHandlers,
    
     });
-    doc.fromHTML(content3.innerHTML, 420, 123,{
+    doc.fromHTML(content.innerHTML, 150, 381,{
       'width':100,
       'elementHandlers': specialElementHandlers,
      
       });
-    doc.fromHTML(content1.innerHTML, 420, 102,{
-      'width':100,
-      'elementHandlers': specialElementHandlers,
-     
-      });
-      doc.fromHTML(content4.innerHTML, 85, 152,{
+      doc.fromHTML(content1.innerHTML, 310, 103,{
         'width':100,
         'elementHandlers': specialElementHandlers,
        
         });
+        doc.fromHTML(content1.innerHTML, 310, 362,{
+          'width':100,
+          'elementHandlers': specialElementHandlers,
+         
+          });
+          doc.fromHTML(content2.innerHTML, 270, 137,{
+            'width':100,
+            'elementHandlers': specialElementHandlers,
+           
+            });
+            doc.fromHTML(content2.innerHTML, 270, 392,{
+              'width':100,
+              'elementHandlers': specialElementHandlers,
+             
+              });
+      doc.fromHTML(content3.innerHTML, 330, 122,{
+        'width':100,
+        'elementHandlers': specialElementHandlers,
+       
+        });
+        doc.fromHTML(content3.innerHTML, 330, 382,{
+          'width':100,
+          'elementHandlers': specialElementHandlers,
+         
+          });
+    
+          doc.fromHTML(content4.innerHTML, 180, 137,{
+            'width':100,
+            'elementHandlers': specialElementHandlers,
+           
+            });
+            doc.fromHTML(content4.innerHTML, 180, 392,{
+              'width':100,
+              'elementHandlers': specialElementHandlers,
+             
+              });
         doc.fromHTML(content5.innerHTML, 85, 137,{
           'width':100,
           'elementHandlers': specialElementHandlers,
          
           });
-          doc.fromHTML(content6.innerHTML, 310, 184,{
+          doc.fromHTML(content5.innerHTML, 85, 392,{
             'width':100,
             'elementHandlers': specialElementHandlers,
            
             });
-            doc.fromHTML(content7.innerHTML, 310, 194,{
+            doc.fromHTML(content6.innerHTML, 270, 174,{
               'width':100,
               'elementHandlers': specialElementHandlers,
              
               });
-              doc.fromHTML(content8.innerHTML, 310, 204,{
+              doc.fromHTML(content6.innerHTML, 270, 424,{
                 'width':100,
                 'elementHandlers': specialElementHandlers,
                
                 });
+              doc.fromHTML(content7.innerHTML, 270, 184,{
+                'width':100,
+                'elementHandlers': specialElementHandlers,
+               
+                });
+                doc.fromHTML(content7.innerHTML, 270, 434,{
+                  'width':100,
+                  'elementHandlers': specialElementHandlers,
+                 
+                  });
+                doc.fromHTML(content8.innerHTML, 270, 194,{
+                  'width':100,
+                  'elementHandlers': specialElementHandlers,
+                 
+                  });
+                  doc.fromHTML(content8.innerHTML, 270, 444,{
+                    'width':100,
+                    'elementHandlers': specialElementHandlers,
+                   
+                    });
       
-    doc.text("--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------",1, 300);
-    doc.setTextColor(0, 0, 0);
-    doc.text("ESCOLA PRIMÁRIA COMPLETA NENÉ", 200, 60);
-    doc.text("Ensino Particular", 230, 75);
-    doc.text("Recibo de Matricula", 224, 90);
-    doc.text("Secretaria:", 70, 250);
-    doc.text("Emitido no dia:", 335, 115);
-    doc.text("__________________", 50, 270);
-    doc.text("Dados do Estudante:", 50, 115);
-    doc.text("Nome Do Estudante:", 50, 135);
-    doc.text("Classe:", 50, 150);
-    doc.text("Regime:", 50, 165);
-    doc.text("Ano:", 400, 135);
-    doc.text("Taxa de Matricula", 80, 197);
-    doc.text("Serviços", 80, 207);
-    doc.text("MZN", 335, 197);
-    doc.text("MZN", 335, 207);
-    doc.text("MZN", 335, 217);
-    doc.setFontStyle("bold");
-    doc.text("Descrição", 100, 187);
-      doc.text("Preço Unitário", 300, 187);
-    
-      doc.text("Total:", 80, 217);
-   doc.rect ( 50 , 180 , 200 , 20 ); 
-   doc.rect (  50, 190 , 200 , 20 ); 
-   doc.rect (  50, 200 , 200 , 20 ); 
-   doc.rect (  250, 180 , 250 , 20 ); 
-   doc.rect (  250, 190 , 250 , 20 );
-   doc.rect (  250, 200 , 250 , 20 );
-   doc.line(50, 120, 500, 120);
-   doc.line(50, 175, 500, 175);
+                doc.text("--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------",1,285);
+                doc.text("ESCOLA PRIMÁRIA COMPLETA NENÉ", 135, 60);
+                doc.text("ESCOLA PRIMÁRIA COMPLETA NENÉ", 135, 335);
+                    doc.text("Ensino Particular", 165, 75);
+                    doc.text("Ensino Particular", 165, 345);
+                    doc.text("Dados do Estudante:", 50, 115);
+                    doc.text("Dados do Estudante:", 50, 375);
+                    doc.text("Emitido no dia:", 230, 115);
+                    doc.text("Emitido no dia:", 230, 375);
+                    doc.text("RECIBO DE MATRICULA", 160, 90);
+                    doc.text("RECIBO DE MATRICULA", 160, 355);
+                   
+                    doc.text("Secretaria:", 70, 240);
+                    doc.text("Secretaria:", 70, 490);
+                    doc.text("______________________________", 30, 275);
+                    doc.text("______________________________", 30, 525);
+                   
+                    doc.text("Nome Do Estudante:", 50, 135);
+                    doc.text("Nome Do Estudante:", 50, 395);
+                    doc.text("Classe:", 50, 150);
+                    doc.text("Classe:", 50, 405);
+                    doc.text("Turma:", 150, 150);
+                    doc.text("Turma:", 150, 405);
+                    doc.text("Regime:", 230, 150);
+                    doc.text("Regime:", 230, 405);
+                    doc.text("Ano:", 310, 135);
+                    doc.text("Ano:", 310, 395);
+                    doc.text("Matricula e 1ª Mensalidade", 80, 187);
+                    doc.text("Matricula e 1ª Mensalidade", 80, 437);
+                    doc.text(" Alimentação e Estudos Orientado", 55, 197);
+                    doc.text(" Alimentação e Estudos Orientado", 55, 447);
+                    doc.text("MZN", 295, 187);
+                    doc.text("MZN", 295, 197);
+                    doc.text("MZN", 295, 207);
+                  
+                    doc.text("MZN", 295, 437);
+                    doc.text("MZN", 295, 447);
+                    doc.text("MZN", 295, 457);
+                  
+                    doc.setFontStyle("bold");
+                    doc.text("Descrição", 110, 177);
+                    doc.text("Descrição", 110, 427);
+                      doc.text("Preço Unitário", 250, 177);
+                        doc.text("Preço Unitário", 250, 427);
+                    
+                      doc.text("Total:", 110, 207);
+                      doc.text("Total:", 110, 457);
+                
+                    doc.rect ( 60, 170 , 170 , 20 ); 
+                   doc.rect (  60, 180 , 170 , 20 ); 
+                   doc.rect (  60, 190 , 170 , 20 ); 
+                 
+                   doc.rect (  230, 170 , 170 , 20 ); 
+                   doc.rect (  230, 180 , 170 , 20 );
+                   doc.rect (  230, 190 , 170 , 20 );
+                  
+                   doc.rect ( 60, 420 , 170 , 20 ); 
+                   doc.rect ( 60, 430 , 170 , 20 ); 
+                   doc.rect ( 60, 440 , 170 , 20 ); 
+                 
+                   doc.rect (  230, 420 , 170 , 20 ); 
+                   doc.rect (  230, 430 , 170 , 20 ); 
+                   doc.rect (  230, 440 , 170 , 20 ); 
+                
+                   doc.line(50, 120, 400, 120);
+                   doc.line(50, 380, 400, 380);
   
    
   doc.save('Matricula.pdf');

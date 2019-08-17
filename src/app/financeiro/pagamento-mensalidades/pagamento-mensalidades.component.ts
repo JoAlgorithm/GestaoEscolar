@@ -118,46 +118,91 @@ doc.addImage(img, 'PNG', 200, 290,35, 35);
       'elementHandlers': specialElementHandlers,
      
       });
+      doc.fromHTML(content1.innerHTML, 310, 362,{
+        'width':100,
+        'elementHandlers': specialElementHandlers,
+       
+        });
       doc.fromHTML(content2.innerHTML, 320, 137,{
         'width':100,
         'elementHandlers': specialElementHandlers,
        
         });
+        doc.fromHTML(content2.innerHTML, 320, 392,{
+          'width':100,
+          'elementHandlers': specialElementHandlers,
+         
+          });
       doc.fromHTML(content3.innerHTML, 330, 123,{
         'width':100,
         'elementHandlers': specialElementHandlers,
        
         });
+        doc.fromHTML(content3.innerHTML, 330, 383,{
+          'width':100,
+          'elementHandlers': specialElementHandlers,
+         
+          });
         doc.fromHTML(content4.innerHTML, 180, 137,{
           'width':100,
           'elementHandlers': specialElementHandlers,
          
           });
+          doc.fromHTML(content4.innerHTML, 180, 392,{
+            'width':100,
+            'elementHandlers': specialElementHandlers,
+           
+            });
     doc.fromHTML(content5.innerHTML, 85, 137,{
       'width':100,
       'elementHandlers': specialElementHandlers,
      
       });
+      doc.fromHTML(content5.innerHTML, 85, 392,{
+        'width':100,
+        'elementHandlers': specialElementHandlers,
+       
+        });
       doc.fromHTML(content6.innerHTML, 270, 174,{
         'width':100,
         'elementHandlers': specialElementHandlers,
        
         });
+        doc.fromHTML(content6.innerHTML, 270, 424,{
+          'width':100,
+          'elementHandlers': specialElementHandlers,
+         
+          });
         doc.fromHTML(content7.innerHTML, 270, 184,{
           'width':100,
           'elementHandlers': specialElementHandlers,
          
           });
+          doc.fromHTML(content7.innerHTML, 270, 434,{
+            'width':100,
+            'elementHandlers': specialElementHandlers,
+           
+            });
           doc.fromHTML(content8.innerHTML, 270, 194,{
             'width':100,
             'elementHandlers': specialElementHandlers,
            
             });
+            doc.fromHTML(content8.innerHTML, 270, 444,{
+              'width':100,
+              'elementHandlers': specialElementHandlers,
+             
+              });
             doc.fromHTML(content9.innerHTML, 270, 204,{
               'width':100,
               'elementHandlers': specialElementHandlers,
              
               });
+              doc.fromHTML(content9.innerHTML, 270, 454,{
+                'width':100,
+                'elementHandlers': specialElementHandlers,
+               
+                });
   doc.text("--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------",1,285);
 doc.text("ESCOLA PRIMÁRIA COMPLETA NENÉ", 135, 60);
 doc.text("ESCOLA PRIMÁRIA COMPLETA NENÉ", 135, 335);
@@ -171,7 +216,9 @@ doc.text("ESCOLA PRIMÁRIA COMPLETA NENÉ", 135, 335);
     doc.text("PAGAMENTO DE MENSALIDADE", 150, 355);
    
     doc.text("Secretaria:", 70, 240);
-    doc.text("______________________________", 30, 275);
+    doc.text("Secretaria:", 70, 490);
+    doc.text("______________________________", 30, 255);
+    doc.text("______________________________", 30, 525);
    
     doc.text("Nome Do Estudante:", 50, 135);
     doc.text("Nome Do Estudante:", 50, 395);
@@ -183,27 +230,45 @@ doc.text("ESCOLA PRIMÁRIA COMPLETA NENÉ", 135, 335);
     doc.text("Pagamento do Mês:", 230, 405);
     doc.text("Ano:", 310, 135);
     doc.text("Ano:", 310, 395);
-    doc.text("Taxa de Mensalidade", 100, 187);
-    doc.text("Serviços", 100, 197);
+    doc.text("Taxa de Mensalidade ", 100, 187);
+    doc.text("Taxa de Mensalidade", 100, 437);
+    doc.text(" Alimentação e Estudos Orientado", 55, 197);
+    doc.text(" Alimentação e Estudos Orientado", 55, 447);
     doc.text("MZN", 295, 187);
     doc.text("MZN", 295, 197);
     doc.text("MZN", 295, 207);
     doc.text("MZN", 295, 217);
+    doc.text("MZN", 295, 437);
+    doc.text("MZN", 295, 447);
+    doc.text("MZN", 295, 457);
+    doc.text("MZN", 295, 467);
     doc.text("Multa", 100, 207);
+    doc.text("Multa", 100, 457);
     doc.setFontStyle("bold");
     doc.text("Descrição", 110, 177);
+    doc.text("Descrição", 110, 427);
       doc.text("Preço Unitário", 250, 177);
+        doc.text("Preço Unitário", 250, 427);
     
       doc.text("Total:", 110, 217);
+      doc.text("Total:", 110, 467);
 
-    doc.rect ( 80, 170 , 150 , 20 ); 
-   doc.rect (  80, 180 , 150 , 20 ); 
-   doc.rect (  80, 190 , 150 , 20 ); 
-   doc.rect ( 80 , 200 , 150 , 20 ); 
-   doc.rect (  230, 170 , 150 , 20 ); 
-   doc.rect (  230, 180 , 150 , 20 );
-   doc.rect (  230, 190 , 150 , 20 );
-   doc.rect (  230, 200 , 150 , 20 );
+    doc.rect ( 60, 170 , 170 , 20 ); 
+   doc.rect (  60, 180 , 170 , 20 ); 
+   doc.rect (  60, 190 , 170 , 20 ); 
+   doc.rect ( 60 , 200 , 170 , 20 ); 
+   doc.rect (  230, 170 , 170 , 20 ); 
+   doc.rect (  230, 180 , 170 , 20 );
+   doc.rect (  230, 190 , 170 , 20 );
+   doc.rect (  230, 200 , 170 , 20 );
+   doc.rect ( 60, 420 , 170 , 20 ); 
+   doc.rect ( 60, 430 , 170 , 20 ); 
+   doc.rect ( 60, 440 , 170 , 20 ); 
+   doc.rect ( 60, 450 , 170 , 20 ); 
+   doc.rect (  230, 420 , 170 , 20 ); 
+   doc.rect (  230, 430 , 170 , 20 ); 
+   doc.rect (  230, 440 , 170 , 20 ); 
+   doc.rect (  230, 450 , 170 , 20 ); 
    doc.line(50, 120, 400, 120);
    doc.line(50, 380, 400, 380);
 doc.save(nomepdf);
