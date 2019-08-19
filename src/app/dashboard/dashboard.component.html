@@ -1,7 +1,7 @@
 
 <div fxLayout="row wrap" >
         <div fxFlex.gt-sm="25" fxFlex.gt-xs="50" fxFlex="100">
-          <mat-card class="card-widget mat-teal">
+          <mat-card class="card-widget mat-teal" mat-icon-button (click)="detalhes(row)" >
             <div mat-card-widget>
               <div mat-card-float-icon>
                 <mat-icon>person</mat-icon>
@@ -13,8 +13,9 @@
             </div>
           </mat-card>
         </div>
+   
         <div fxFlex.gt-sm="25" fxFlex.gt-xs="50" fxFlex="100">
-          <mat-card class="card-widget mat-purple">
+          <mat-card class="card-widget mat-purple" mat-icon-button (click)="turma(row)" >
             <div mat-card-widget>
               <div mat-card-float-icon>
                 <mat-icon>group</mat-icon>
@@ -27,7 +28,7 @@
           </mat-card>
         </div>
         <div fxFlex.gt-sm="25" fxFlex.gt-xs="50" fxFlex="100">
-          <mat-card class="card-widget mat-indigo">
+          <mat-card class="card-widget mat-indigo"   mat-icon-button (click)="matriculado(row)">
             <div mat-card-widget>
               <div mat-card-float-icon>
                 <mat-icon>event_available</mat-icon>
@@ -40,7 +41,7 @@
           </mat-card>
         </div>
         <div fxFlex.gt-sm="25" fxFlex.gt-xs="50" fxFlex="100">
-          <mat-card class="card-widget mat-red">
+          <mat-card class="card-widget mat-red"   mat-icon-button (click)="naomatriculado(row)">
             <div mat-card-widget>
               <div mat-card-float-icon>
                 <mat-icon>event_busy</mat-icon>

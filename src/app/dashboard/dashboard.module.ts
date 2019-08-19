@@ -11,6 +11,46 @@ import { AngularFirestore } from '@angular/fire/firestore';
 
 import { ChartsModule } from 'ng2-charts/ng2-charts';
 import { AgmCoreModule } from '@agm/core';
+import {  DialogOverviewExampleDialog } from './dashboard.component';
+import {  Dialogturma} from './dashboard.component';
+import {  Dialogmatriculado} from './dashboard.component';
+import {  Dialognaomatriculado} from './dashboard.component';
+import {MatDialogModule} from '@angular/material/dialog';
+import { NgxPaginationModule } from 'ngx-pagination';
+
+import { NgxDatatableModule } from '@swimlane/ngx-datatable';
+import {    MatFormFieldModule } from '@angular/material';
+import {
+  MatAutocompleteModule,
+  MatButtonToggleModule,
+  
+  MatCheckboxModule,
+  MatChipsModule,
+  MatTableModule,
+  MatDatepickerModule,
+
+  MatExpansionModule,
+  MatGridListModule,
+ 
+  MatInputModule,
+ 
+  MatNativeDateModule,
+  MatPaginatorModule,
+
+  MatProgressSpinnerModule,
+  MatRadioModule,
+  MatRippleModule,
+  MatSelectModule,
+  MatSidenavModule,
+  MatSliderModule,
+  MatSlideToggleModule,
+  MatSnackBarModule,
+  MatSortModule,
+  MatTabsModule,
+  MatToolbarModule,
+  MatTooltipModule,
+  MatStepperModule
+} from '@angular/material';
 
 @NgModule({
   imports: [
@@ -24,16 +64,44 @@ import { AgmCoreModule } from '@agm/core';
     MatMenuModule,
     FlexLayoutModule,
     ChartsModule,
-    AgmCoreModule
+    AgmCoreModule,
+    MatDialogModule,
+    NgxPaginationModule ,
+    NgxDatatableModule,
+    MatButtonModule,
+    MatButtonModule,
+    MatInputModule,
+    MatRippleModule,
+    MatFormFieldModule,
+    MatTableModule,
+    MatPaginatorModule,
   ],
   providers: [
     //{provide: OverlayContainer, useClass: FullscreenOverlayContainer},
     EstudanteService,
     AngularFirestore,
-    
+    DialogOverviewExampleDialog,
+    Dialogturma,
+    Dialogmatriculado,
+    Dialognaomatriculado
+   
+
   ],
-  declarations: [ DashboardComponent ]
+  declarations: [ DashboardComponent ,
+    DialogOverviewExampleDialog,
+    Dialogturma,
+    Dialogmatriculado,
+    Dialognaomatriculado
+  ],
+  entryComponents: [
+    DialogOverviewExampleDialog,
+    Dialogturma,
+    Dialogmatriculado,
+    Dialognaomatriculado,
+  ],
 })
+
+
 
 export class DashboardModule {
   
