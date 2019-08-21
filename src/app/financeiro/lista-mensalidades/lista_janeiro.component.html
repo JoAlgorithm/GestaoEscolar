@@ -1,0 +1,23 @@
+
+<div class="example-container mat-elevation-z8">
+        <mat-table [dataSource]="dataSourse" matSort>
+            <ng-container matColumnDef="nome">
+                <mat-header-cell *matHeaderCellDef mat-sort-header> Nome </mat-header-cell>
+                <mat-cell *matCellDef="let row"> {{row.estudante.nome}}</mat-cell>
+              </ng-container>
+              <ng-container matColumnDef="mes">
+                    <mat-header-cell *matHeaderCellDef mat-sort-header> Mes </mat-header-cell>
+                    <mat-cell *matCellDef="let row"> {{row.mes}}</mat-cell>
+                  </ng-container>
+                  <ng-container matColumnDef="ano">
+                      <mat-header-cell *matHeaderCellDef mat-sort-header> Ano </mat-header-cell>
+                      <mat-cell *matCellDef="let row"> {{row.ano}}</mat-cell>
+                    </ng-container>
+      
+              <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+            <mat-row *matRowDef="let row; columns: displayedColumns;">
+            </mat-row>
+            </mat-table>
+            <mat-paginator [pageSizeOptions]="[5, 10, 25, 100]"></mat-paginator>
+        
+          </div>                                                                          

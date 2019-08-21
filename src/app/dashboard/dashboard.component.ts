@@ -15,7 +15,6 @@ import { OnInit, ViewChild } from '@angular/core';
   styleUrls: ['./dashboard.component.scss']
 })
 export class DashboardComponent {
- 
 
   estudantes: Estudante[];
   estudantesMatriculados: any[];
@@ -185,8 +184,8 @@ export class Dialogmatriculado {
         this.estudantes = data.map(e => {
           return {
             id: e.payload.doc.id,
-            estudante: e.payload.doc.data()['estudante'] as Estudante,
-            turma: e.payload.doc.data()['turma'] as Turma,
+           encarregado: e.payload.doc.data()['encarregado'] as Encarregado,
+           turma: e.payload.doc.data()['turma'] as Turma,
             ...e.payload.doc.data(),
           } as Estudante;
         })
@@ -232,7 +231,6 @@ export class Dialognaomatriculado {
         this.estudantes = data.map(e => {
           return {
             id: e.payload.doc.id,
-            estudante: e.payload.doc.data()['estudante'] as Estudante,
             turma: e.payload.doc.data()['turma'] as Turma,
             ...e.payload.doc.data(),
           } as Estudante;
@@ -296,7 +294,7 @@ export class Dialogturma {
         this.turmas = data.map(e => {
           return {
             id: e.payload.doc.id,
-            turma: e.payload.doc.data()['turma'] as Turma,
+      
             ...e.payload.doc.data(),
           } as Turma;
         })

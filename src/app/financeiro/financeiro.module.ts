@@ -14,7 +14,15 @@ import {PlatformModule} from '@angular/cdk/platform';
 import {ObserversModule} from '@angular/cdk/observers';
 import {PortalModule} from '@angular/cdk/portal';
 import { NgxPaginationModule } from 'ngx-pagination';
+import {  DialogOverviewExampleDialog, dialog_naojaneiro} from './lista-mensalidades/lista-mensalidades.component';
+import {dialog_mesfevereiro,dialog_abril,dialog_naoabril,dialog_marco,dialog_naomarco,dialog_naofevereiro,
+  dialog_maio,   dialog_naomaio,  dialog_junho,   dialog_naojunho,  dialog_julho,   dialog_naojulho,
 
+  dialog_agosto,   dialog_naoagosto,dialog_setembro,   dialog_naosetembro,dialog_outubro,  
+   dialog_naooutubro, dialog_novembro,   dialog_naonovembro,dialog_dezembro,   dialog_naodezembro
+
+
+} from './lista-mensalidades/lista-mensalidades.component';
 import { NgxDatatableModule } from '@swimlane/ngx-datatable';
 
 import {
@@ -121,20 +129,60 @@ import { EstudanteService } from '../services/estudante.service';
     OverlayModule,
     PlatformModule,
     PortalModule,
+
   ],
   providers: [
     {provide: OverlayContainer, useClass: FullscreenOverlayContainer},
     EstudanteService,
     AngularFirestore,
-    
+ 
   ],
   declarations: [
     PagamentoMensalidadesComponent,
     ListaMensalidadesComponent,
-  ]/*,
-  entryComponents: [
+    DialogOverviewExampleDialog,
+    dialog_naojaneiro,
+    dialog_mesfevereiro,
+    dialog_naofevereiro,
+    dialog_marco,
+    dialog_naomarco,
+    dialog_abril,
+    dialog_naoabril,
+    dialog_maio,  
+     dialog_naomaio,
+     dialog_junho,  
+      dialog_naojunho, 
+       dialog_julho,   
+       dialog_naojulho,
+       
+  dialog_agosto,   dialog_naoagosto,dialog_setembro,   dialog_naosetembro,dialog_outubro,  
+  dialog_naooutubro, dialog_novembro,   dialog_naonovembro,dialog_dezembro,   dialog_naodezembro
 
-  ],*/
+
+  ],
+  entryComponents: [
+    DialogOverviewExampleDialog, 
+    dialog_naojaneiro,
+    dialog_mesfevereiro,
+    dialog_naofevereiro,
+    dialog_marco,
+    dialog_naomarco,
+    dialog_abril,
+    dialog_naoabril,
+    dialog_maio, 
+      dialog_naomaio,
+      dialog_junho,   
+      dialog_naojunho, 
+       dialog_julho,  
+        dialog_naojulho,
+        
+  dialog_agosto,   dialog_naoagosto,dialog_setembro,   dialog_naosetembro,dialog_outubro,  
+  dialog_naooutubro, dialog_novembro,   dialog_naonovembro,dialog_dezembro,   dialog_naodezembro
+
+
+  
+
+  ]
 })
 
 export class FinanceiroComponentsModule {}

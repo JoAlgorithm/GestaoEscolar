@@ -1,6 +1,71 @@
 
-<div class="example-header">
-  <!--Campo filtro-->
+<h3 align="center"> Relatório de Mensalidades</h3>
+<br>
+ <table table style="width:100%" border="1">
+    
+  <tr>
+      <th> </th>
+  <th >Janeiro</th>
+  <th> Fevereiro</th>
+  <th>Marco </th>
+  <th> Abril</th>
+  <th>Maio</th>
+  <th> Junho</th>
+  <th>Julho </th>
+  <th> Agosto</th>
+  <th>Setembro</th>
+  <th> Outubro</th>
+  <th>Novembro</th>
+  <th> Dezembro</th>
+        </tr>  
+        <tr>
+
+<th> Pago</th>
+<td  mat-icon-button (click)="PagoJaneiro(row)">{{janeiro?.length}}</td>
+  <td mat-icon-button (click)="PagoFevereiro(row)"> {{fevereiro?.length}}</td>
+  <td mat-icon-button (click)="PagoMarco(row)">{{marco?.length}}</td>
+  <td mat-icon-button (click)="PagoAbril(row)">{{abril?.length}} </td>
+  <td mat-icon-button (click)="PagoMaio(row)">{{maio?.length}}</td>
+  <td   mat-icon-button (click)="PagoJunho(row)">{{junho?.length}}</td>
+  <td  mat-icon-button (click)="PagoJulho(row)">{{julho?.length}}</td>
+  <td mat-icon-button (click)="PagoAgosto(row)">{{agosto?.length}}</td>
+  <td mat-icon-button (click)="PagoSetembro(row)">{{setembro?.length}}</td>
+  <td mat-icon-button (click)="PagoOutubro(row)"> {{outubro?.length}}</td>
+  <td mat-icon-button (click)="PagoNovembro(row)">{{novembro?.length}}</td>
+  <td mat-icon-button (click)="PagoDezembro(row)"> {{dezembro?.length}}</td>
+        </tr>
+        <tr>
+
+ <th> Não Pago</th>
+ <td mat-icon-button (click)="NaoPagoJaneiro(row)">{{naojaneiro?.length}}</td>
+  <td mat-icon-button (click)="NaoPagoFevereiro(row)"> {{naofevereiro?.length}}</td>
+  <td mat-icon-button (click)="NaoPagoMarco(row)">{{naomarco?.length}}</td>
+  <td mat-icon-button (click)="NaoPagoAbril(row)">{{naoabril?.length}} </td>
+  <td  mat-icon-button (click)="NaoPagoMaio(row)">{{naomaio?.length}}</td>
+  <td  mat-icon-button (click)="NaoPagoJunho(row)">{{naojunho?.length}}</td>
+  <td  mat-icon-button (click)="NaoPagoJulho(row)">{{naojulho?.length}}</td>
+  <td  mat-icon-button (click)="NaoPagoAgosto(row)">{{naoagosto?.length}}</td>
+  <td  mat-icon-button (click)="NaoPagoSetembro(row)">{{naosetembro?.length}}</td>
+  <td  mat-icon-button (click)="NaoPagoOutubro(row)"> {{naooutubro?.length}}</td>
+  <td  mat-icon-button (click)="NaoPagoNovembro(row)">{{naonovembro?.length}}</td>
+  <td  mat-icon-button (click)="NaoPagoDezembro(row)"> {{naodezembro?.length}}</td>
+  </tr>
+</table>
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!--<div class="example-header">
+
   <mat-form-field>
     <input matInput (keyup)="applyFilter($event.target.value)" placeholder="Pesquisar">
     <mat-icon matSuffix>search</mat-icon>
@@ -10,64 +75,41 @@
 <div class="example-container mat-elevation-z8">
   <mat-table [dataSource]="dataSourse" matSort>
     
-    <!-- Estudante -->
+ 
     <ng-container matColumnDef="estudante">
       <mat-header-cell *matHeaderCellDef mat-sort-header> Estudante </mat-header-cell>
       <mat-cell *matCellDef="let row"> {{row.estudante.nome}}</mat-cell>
     </ng-container> 
     
-    <!-- Turma -->
+
     <ng-container matColumnDef="turma">
       <mat-header-cell *matHeaderCellDef mat-sort-header> Turma </mat-header-cell>
       <mat-cell *matCellDef="let row">{{row.turma.nome}}</mat-cell>
     </ng-container>
 
-    <!-- Mes -->
+ 
     <ng-container matColumnDef="mes">
       <mat-header-cell *matHeaderCellDef mat-sort-header> Mes </mat-header-cell>
       <mat-cell *matCellDef="let row">{{row.mes}}</mat-cell>
     </ng-container>
 
-    <!-- Mes -->
+   
     <ng-container matColumnDef="ano">
       <mat-header-cell *matHeaderCellDef mat-sort-header> Ano </mat-header-cell>
       <mat-cell *matCellDef="let row">{{row.ano}}</mat-cell>
     </ng-container>
 
-    <!-- Mensalidade -->
+
     <ng-container matColumnDef="mensalidade">
       <mat-header-cell *matHeaderCellDef mat-sort-header> Mensalidade </mat-header-cell>
       <mat-cell *matCellDef="let row">{{row.turma.mensalidade}}</mat-cell>
     </ng-container>
-    <!-- Multa -->
-    <ng-container matColumnDef="multa">
-        <mat-header-cell *matHeaderCellDef mat-sort-header> Multa </mat-header-cell>
-        <mat-cell *matCellDef="let row">{{row.multa}}</mat-cell>
-      </ng-container>
-   <!-- Alimentacao -->
-   <ng-container matColumnDef="alimentacao">
-      <mat-header-cell *matHeaderCellDef mat-sort-header> Alimentacao </mat-header-cell>
-      <mat-cell *matCellDef="let row">{{row.turma.alimentacao}}</mat-cell>
-    </ng-container> 
-
-    <!-- Transporte -->
-    <ng-container matColumnDef="transporte">
-      <mat-header-cell *matHeaderCellDef mat-sort-header> Transporte </mat-header-cell>
-      <mat-cell *matCellDef="let row">{{row.turma.transporte}}</mat-cell>
-    </ng-container>
+    
    
-      <!-- Estudo orientado -->
-  <ng-container matColumnDef="estudo_orientado">
-      <mat-header-cell *matHeaderCellDef mat-sort-header> Estudo Orientado </mat-header-cell>
-      <mat-cell *matCellDef="let row">{{row.turma.estudo_orientado}}</mat-cell>
-    </ng-container>
-  
-        
-    <!--Cabecalho da tabela--> 
     <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
     <mat-row *matRowDef="let row; columns: displayedColumns;">
     </mat-row>
   </mat-table>
   <mat-paginator [pageSizeOptions]="[5, 10, 25, 100]"></mat-paginator>
     
-  </div>
+  </div>-->
