@@ -35,7 +35,9 @@ import { TranslateService } from '@ngx-translate/core';
         </a>
         <mat-nav-list class="sub-menu" *ngIf="menuitem.type === 'sub'">
           <mat-list-item *ngFor="let childitem of menuitem.children" routerLinkActive="open">
-            <a [routerLink]="['/', menuitem.state, childitem.state ]" class="relative">{{ childitem.name | translate }}</a>
+        
+            <a [routerLink]="['/', menuitem.state, childitem.state ]" class="relative"><mat-icon>{{  childitem.icon }}</mat-icon>{{ childitem.name | translate }}</a>
+           
           </mat-list-item>
         </mat-nav-list>
       </mat-list-item>
@@ -57,8 +59,8 @@ export class MenuComponent {
       type: 'sub',
       icon: 'trending_flat',
       children: [
-        {state: 'menu', name: 'MENU'},
-        {state: 'timeline', name: 'MENU'}
+        {state: 'menu', name: 'MENU',icon: 'trending_flat',},
+        {state: 'timeline', name: 'MENU',icon: 'trending_flat',}
       ]
     });
   }

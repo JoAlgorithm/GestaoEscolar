@@ -50,7 +50,7 @@
   <input matInput placeholder="Multa" formControlName="multa" [(ngModel)]="mensalidade.multa" required >
 </mat-form-field>
 <div>
-  <button mat-button matStepperNext (click)="prencherpagamento()">SEGUINTE</button>
+  <button  mat-button matStepperNext (click)="prencherpagamento()">SEGUINTE<i class="material-icons">navigate_next</i></button>
   </div>
      </form>
     </mat-step>
@@ -103,16 +103,7 @@
                           <span>{{estudante.turma.alimentacao_estudo_orientado}}</span>
                             </div>
                         </h4>
-                        <h4>Multa: 
-                            <div id="content8" #content8>
-                          <span>{{mensalidade.multa}}</span>
-                            </div>
-                        </h4>
-                        <h4>Total: 
-                            <div id="content9" #content9>
-                          <span>{{total}}</span>
-                            </div>
-                        </h4>
+                       
               </div>
             </div>
 
@@ -130,6 +121,16 @@
                  </div>
                   </h4>
             </div>
+            <h4>Multa: 
+              <div id="content8" #content8>
+            <span>{{mensalidade.multa}}</span>
+              </div>
+          </h4>
+          <h4>Total: 
+              <div id="content9" #content9>
+            <span>{{total}}</span>
+              </div>
+          </h4>
             </div>
           </div>
 
@@ -165,8 +166,8 @@
 
 
         <div>
-            <button mat-button matStepperPrevious>VOLTAR</button>
-          <button mat-button (click)="confirmar()" mat-button (click)="downloadPDF()" [routerLink]="['/financeiro/lista_mensalidades']">CONFIRMAR</button>
+            <button mat-button matStepperPrevious><i class="material-icons">navigate_before</i>VOLTAR</button>
+          <button mat-button (click)="confirmar()" mat-button (click)="downloadPDF()" [routerLink]="['/financeiro/lista_mensalidades']">CONFIRMAR<i class="material-icons">done</i></button>
           </div>
 
           </mat-card>

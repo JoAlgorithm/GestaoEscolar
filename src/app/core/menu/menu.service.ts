@@ -9,6 +9,7 @@ export interface ChildrenItems {
   state: string;
   name: string;
   type?: string;
+  icon: string;
 }
 
 export interface Menu {
@@ -37,9 +38,10 @@ const MENUITEMS:Menu[] = [
       {type: 'red', value: '5'}
     ],*/
     children: [
-      {state: 'cadastro_estudante', name: 'Cadastro'},
-      {state: 'matricula_estudante', name: 'Matrícula'},
-      {state: 'listagem_estudante', name: 'Lista'}
+      {state: 'cadastro_estudante',  name:'Cadastro',icon: 'group_add',
+         },
+      {state: 'matricula_estudante',name: 'Matrícula',icon: 'shopping_cart'},
+      {state: 'listagem_estudante',name: 'Lista',icon: 'contacts'}
     ]
   },
   {
@@ -48,8 +50,8 @@ const MENUITEMS:Menu[] = [
     type: 'sub',
     icon: 'monetization_on',
     children: [
-      {state: 'pagamento_mensalidades', name: 'Mensalidade'},
-      {state: 'lista_mensalidades', name: 'Relatório'}
+      {state: 'pagamento_mensalidades',name: 'Mensalidade',icon: 'euro_symbol'},
+      {state: 'lista_mensalidades',name: 'Relatório',icon: 'import_contacts'}
     ]
   }
   

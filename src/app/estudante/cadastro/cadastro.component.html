@@ -110,7 +110,7 @@
 
 
       <div>
-        <button mat-button matStepperNext>SEGUINTE</button>
+        <button mat-button matStepperNext>SEGUINTE<a class="material-icons">navigate_next</a></button>
         <!--<button mat-raised-button color="primary" matStepperNext>CONTINUAR CADASTRO</button>-->
         
         <!--<button mat-icon-button color="primary" matStepperNext>CADASTRAR
@@ -186,8 +186,8 @@
 
       <div>
           
-        <button mat-button matStepperPrevious>VOLTAR</button>
-        <button mat-button matStepperNext>SEGUINTE</button>
+        <button mat-button matStepperPrevious> <i class="material-icons">navigate_before</i>VOLTAR</button>
+        <button mat-button matStepperNext>SEGUINTE<i class="material-icons">navigate_next</i></button>
 
         <!--<button mat-raised-button color="primary" matStepperPrevious>VOLTAR</button>
         <button mat-raised-button color="primary" matStepperNext>CADASTRAR</button>-->
@@ -207,7 +207,7 @@
       <ng-template matStepLabel>CONFIRMAÇÁO</ng-template>
       <div id="content" #content>
       <mat-card-content>
-        <h4 class="mt-0 mb-1">DADOS PESSOAIS</h4>
+        <h4 class="mt-0 mb-1"> <b>DADOS PESSOAIS</b></h4>
         <div fxLayout="row" layout-align="center">            
 
           <div class="pr-1" fxFlex>
@@ -285,8 +285,8 @@
       </mat-card-content>
       </div>
       <div>
-      <button mat-button matStepperPrevious>VOLTAR</button>
-      <button mat-button (click)="registarEstudante(estudante)" [routerLink]="['/estudante/listagem_estudante']">CADASTRAR</button>
+      <button mat-button matStepperPrevious><i class="material-icons">navigate_before</i>VOLTAR</button>
+      <button mat-button (click)="registarEstudante(estudante)" [routerLink]="['/estudante/listagem_estudante']">CADASTRAR<i class="material-icons">done</i></button>
       <!--[routerLink]="['/estudante/listagem_estudante']
        
       <!--<button mat-button (click)="stepper.reset()">Reset</button>-->

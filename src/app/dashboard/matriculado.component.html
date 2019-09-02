@@ -9,6 +9,10 @@
                     <mat-header-cell *matHeaderCellDef mat-sort-header> Turma </mat-header-cell>
                     <mat-cell *matCellDef="let row"> {{row.turma.nome}}</mat-cell>
                   </ng-container>
+                  <ng-container matColumnDef="ano">
+                    <mat-header-cell *matHeaderCellDef mat-sort-header> Ano </mat-header-cell>
+                    <mat-cell *matCellDef="let row"> {{row.turma.ano}}</mat-cell>
+                  </ng-container>
            
       
               <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>

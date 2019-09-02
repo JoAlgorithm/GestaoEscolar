@@ -54,18 +54,40 @@
           </mat-card>
         </div>
   </div>
-
-    <div fxLayout="row wrap">
+  <div fxLayout="row wrap">
+      <div fxFlex.gt-sm="40" fxFlex.gt-xs="50" fxFlex="100">
+      <mat-card>
+        <mat-card-title class="text-xs-center">NR DE ESTUDANTES POR GENERO</mat-card-title>
+      
+        <mat-card-content>
+          <canvas height="500" 
+          width="500" baseChart
+              [data]="pieChartData"
+              [options]="pieOptions"
+              [colors]="pieChartColors"
+             [labels]="pieChartLabels"
+             [chartType]="pieChartType"></canvas>
+        </mat-card-content>
+      
+      </mat-card>
+      </div>
+      <div fxFlex.gt-sm="40" fxFlex.gt-xs="50" fxFlex="100">
         <mat-card>
-          <mat-card-title class="text-xs-center">NR DE ESTUDANTES POR GENERO</mat-card-title>
+          <mat-card-title class="text-xs-center">MENSALIDADES</mat-card-title>
           <!--<mat-card-subtitle class="text-xs-center"></mat-card-subtitle>-->
           <mat-card-content>
-            <canvas height="220" baseChart
-                [data]="pieChartData"
-                [options]="pieOptions"
-                [colors]="pieChartColors"
-               [labels]="pieChartLabels"
-               [chartType]="pieChartType"></canvas>
+            <canvas height="500" 
+            width="500" baseChart
+            [datasets]="barChartData"
+            [labels]="barChartLabels"
+            [options]="barChartOptions"
+            [legend]="barChartLegend"
+            [chartType]="barChartType"
+            (chartHover)="chartHovered($event)"
+            (chartClick)="chartClicked($event)"
+
+            ></canvas>
+<!--<button class="btn btn-primary btn-block" (click)="randomize()">Update</button>-->
           </mat-card-content>
           <!--<mat-card-content>
             <div fxLayout="row">
@@ -82,5 +104,8 @@
             </div>
           </mat-card-content>-->
         </mat-card>
+        </div>
     </div>
-  
+
+
+ 

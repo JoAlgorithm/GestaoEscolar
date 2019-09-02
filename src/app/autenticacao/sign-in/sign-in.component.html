@@ -11,14 +11,16 @@
             </div>
             <div fxLayout="column" fxLayoutAlign="space-around">
               <div class="pb-1">
-                <mat-form-field style="width: 100%">
-                  <input matInput placeholder="Usuario" [formControl]="form.controls['uname']" [(ngModel)]="uname">
+                 
+                 <mat-form-field style="width: 100%">
+                  <input matInput placeholder="Usuário" [formControl]="form.controls['uname']" [(ngModel)]="uname"> 
+                  
                 </mat-form-field>
                 <small *ngIf="form.controls['uname'].hasError('required') && form.controls['uname'].touched" class="mat-text-warn">Usuário obrigatório</small>
               </div>
               <div class="pb-1">
                 <mat-form-field style="width: 100%">
-                  <input matInput type="password" placeholder="Senha" [formControl]="form.controls['password']" [(ngModel)]="password"> 
+                <input matInput type="password" placeholder="Senha" [formControl]="form.controls['password']" [(ngModel)]="password">
                 </mat-form-field>
                 <small *ngIf="form.controls['password'].hasError('required') && form.controls['password'].touched" class="mat-text-warn">Senha obrigatória</small>
               </div>

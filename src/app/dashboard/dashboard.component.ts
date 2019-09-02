@@ -76,7 +76,8 @@ export class DashboardComponent {
 
   detalhes(aluno){
     const dialogRef = this.dialog.open(DialogOverviewExampleDialog, {
-      width: '1000px',
+      width: '1000px', 
+      
      // data: {nome: aluno.nome}
     });
    
@@ -152,6 +153,57 @@ export class DashboardComponent {
   public pieChartData = [this.estudantesMascu, this.estudantesFemininas];
   public pieChartType = 'pie';
 
+  public barChatOptions: any ={
+
+    scaleShowVerticalLines: false,
+    responsive: true
+  };
+  public barChartLabels: string [] =['Janeiro','Fevereiro','Marco','Abril','Maio','Junho','Julho','Agosto','Setembro','Outubro','Novembro','Dezembro'];
+  public barChartType: string = 'bar';
+  public barChartLegend: boolean=true;
+  public barChartData: any[]=[
+    {data: [65,59,80,81,56,55,40], label: 'Estudantes nao Pago'},
+    {data: [28,48,40,19,86,27,90], label: 'Estudantes Pago'},
+
+  ];
+  public chartClicked(e:any): void{
+    console.log(e);
+  }
+  public chartHovered(e:any): void{
+    console.log(e);
+  }
+public randomize(): void{
+  let data =[
+    Math.round(Math.random() * 100),
+    59,
+    80,
+    (Math.random() * 100),
+    56,
+    (Math.random() * 100),
+    40
+  ];
+  let clone= JSON.parse(JSON.stringify(this.barChartData));
+clone[0].data=data;
+this.barChartData=clone;
+
+
+
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
   
 }
 @Component({
@@ -171,7 +223,7 @@ export class Dialogmatriculado {
   mensalidades: Mensalidade[];
 
   dataSourse: MatTableDataSource<Estudante>;
-  displayedColumns = ['nome','turma'];
+  displayedColumns = ['nome','turma','ano'];
   @ViewChild(MatPaginator) paginator: MatPaginator;
 @ViewChild(MatSort) sort: MatSort;
 
