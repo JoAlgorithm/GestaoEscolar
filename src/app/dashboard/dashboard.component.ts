@@ -58,7 +58,7 @@ export class DashboardComponent {
 
 
       this.pieChartData = [this.estudantesMascu, this.estudantesFemininas];
-      
+  
     })
 
     this.estudanteService.getTurmas().subscribe(data => {
@@ -153,19 +153,30 @@ export class DashboardComponent {
   public pieChartData = [this.estudantesMascu, this.estudantesFemininas];
   public pieChartType = 'pie';
 
-  public barChatOptions: any ={
 
-    scaleShowVerticalLines: false,
-    responsive: true
-  };
+
+  public barChatOptions:any = Object.assign({
+    responsive: true,
+    legend: {
+      display: false,
+      position: 'bottom'
+    },
+    elements: {
+      arc: {
+        borderWidth: 0
+      }
+    }
+  });
+
   public barChartLabels: string [] =['Janeiro','Fevereiro','Marco','Abril','Maio','Junho','Julho','Agosto','Setembro','Outubro','Novembro','Dezembro'];
   public barChartType: string = 'bar';
   public barChartLegend: boolean=true;
-  public barChartData: any[]=[
-    {data: [65,59,80,81,56,55,40], label: 'Estudantes nao Pago'},
-    {data: [28,48,40,19,86,27,90], label: 'Estudantes Pago'},
+  public barChartData=[
+    {data: [65,59,80,81,56,55,40,40,90,15,10,20], label: 'Estudantes nao Pago'},
+    {data: [28,48,40,19,86,27,90,20,40,25,12,20], label: 'Estudantes Pago'},
 
   ];
+
   public chartClicked(e:any): void{
     console.log(e);
   }
@@ -187,25 +198,15 @@ clone[0].data=data;
 this.barChartData=clone;
 
 
-
 }
-
-
-
-
-
-
-
-
-
-
-
 
 
 
 
   
 }
+
+
 @Component({
   selector: 'Dialogmatriculado',
   templateUrl: './matriculado.component.html',
@@ -297,22 +298,6 @@ export class Dialognaomatriculado {
 }
 
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 
