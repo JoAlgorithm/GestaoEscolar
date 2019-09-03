@@ -103,12 +103,12 @@ doc.addImage(img, 'PNG', 200, 290,35, 35);
   doc.setFont("Courier");
   doc.setFontStyle("normal"); 
   doc.setFontSize(12);
-  doc.fromHTML(content.innerHTML, 150, 123,{
+  doc.fromHTML(content.innerHTML, 150, 121,{
     'width':100,
     'elementHandlers': specialElementHandlers,
    
     });
-    doc.fromHTML(content.innerHTML, 150, 383,{
+    doc.fromHTML(content.innerHTML, 150, 381,{
       'width':100,
       'elementHandlers': specialElementHandlers,
      
@@ -123,42 +123,42 @@ doc.addImage(img, 'PNG', 200, 290,35, 35);
         'elementHandlers': specialElementHandlers,
        
         });
-      doc.fromHTML(content2.innerHTML, 320, 137,{
+      doc.fromHTML(content2.innerHTML, 320, 138,{
         'width':100,
         'elementHandlers': specialElementHandlers,
        
         });
-        doc.fromHTML(content2.innerHTML, 320, 392,{
+        doc.fromHTML(content2.innerHTML, 320, 394,{
           'width':100,
           'elementHandlers': specialElementHandlers,
          
           });
-      doc.fromHTML(content3.innerHTML, 330, 123,{
+      doc.fromHTML(content3.innerHTML, 330, 121,{
         'width':100,
         'elementHandlers': specialElementHandlers,
        
         });
-        doc.fromHTML(content3.innerHTML, 330, 383,{
+        doc.fromHTML(content3.innerHTML, 330, 381,{
           'width':100,
           'elementHandlers': specialElementHandlers,
          
           });
-        doc.fromHTML(content4.innerHTML, 180, 137,{
+        doc.fromHTML(content4.innerHTML, 180, 138,{
           'width':100,
           'elementHandlers': specialElementHandlers,
          
           });
-          doc.fromHTML(content4.innerHTML, 180, 392,{
+          doc.fromHTML(content4.innerHTML, 180, 394,{
             'width':100,
             'elementHandlers': specialElementHandlers,
            
             });
-    doc.fromHTML(content5.innerHTML, 85, 137,{
+    doc.fromHTML(content5.innerHTML, 85, 138,{
       'width':100,
       'elementHandlers': specialElementHandlers,
      
       });
-      doc.fromHTML(content5.innerHTML, 85, 392,{
+      doc.fromHTML(content5.innerHTML, 85, 394,{
         'width':100,
         'elementHandlers': specialElementHandlers,
        
@@ -217,33 +217,33 @@ doc.text("ESCOLA PRIMÁRIA COMPLETA NENÉ", 135, 335);
    
     doc.text("Secretaria:", 70, 240);
     doc.text("Secretaria:", 70, 490);
-    doc.text("______________________________", 30, 255);
+    doc.text("______________________________", 30, 269);
     doc.text("______________________________", 30, 525);
    
     doc.text("Nome Do Estudante:", 50, 135);
     doc.text("Nome Do Estudante:", 50, 395);
-    doc.text("Classe:", 50, 150);
-    doc.text("Classe:", 50, 405);
-    doc.text("Turma:", 150, 150);
-    doc.text("Turma:", 150, 405);
-    doc.text("Pagamento do Mês:", 230, 150);
-    doc.text("Pagamento do Mês:", 230, 405);
+    doc.text("Classe:", 50, 152);
+    doc.text("Classe:", 50, 408);
+    doc.text("Turma:", 150, 152);
+    doc.text("Turma:", 150, 408);
+    doc.text("Pagamento do Mês:", 230, 152);
+    doc.text("Pagamento do Mês:", 230, 408);
     doc.text("Ano:", 310, 135);
     doc.text("Ano:", 310, 395);
     doc.text("Taxa de Mensalidade ", 100, 187);
     doc.text("Taxa de Mensalidade", 100, 437);
     doc.text(" Alimentação e Estudos Orientado", 55, 197);
     doc.text(" Alimentação e Estudos Orientado", 55, 447);
-    doc.text("MZN", 295, 187);
-    doc.text("MZN", 295, 197);
-    doc.text("MZN", 295, 207);
-    doc.text("MZN", 295, 217);
-    doc.text("MZN", 295, 437);
-    doc.text("MZN", 295, 447);
-    doc.text("MZN", 295, 457);
-    doc.text("MZN", 295, 467);
-    doc.text("Multa", 100, 207);
-    doc.text("Multa", 100, 457);
+    doc.text("MZN", 295, 189);
+    doc.text("MZN", 295, 199);
+    doc.text("MZN", 295, 209);
+    doc.text("MZN", 295, 219);
+    doc.text("MZN", 295, 439);
+    doc.text("MZN", 295, 449);
+    doc.text("MZN", 295, 459);
+    doc.text("MZN", 295, 469);
+    doc.text("Multa", 100, 209);
+    doc.text("Multa", 100, 459);
     doc.setFontStyle("bold");
     doc.text("Descrição", 110, 177);
     doc.text("Descrição", 110, 427);

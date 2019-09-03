@@ -26,7 +26,37 @@ export class DashboardComponent {
   turmasFilter: any[];
   naoMatriculdos:any =0 ;
 
+
+
+  mensalidades: Mensalidade[];
+
+  janeiro: any = 0;
+  naojaneiro: any = 0;
+  fevereiro: any=0;
+  naofevereiro: any=0;
+  marco: any=0;
+  naomarco: any=0;
+  abril: any=0;
+  naoabril: any=0;
+  maio: any=0;
+  naomaio: any=0;
+  junho: any=0;
+  naojunho: any=0;
+  julho: any=0;
+  naojulho: any=0;
+  agosto: any=0;
+  naoagosto: any=0;
+  setembro: any=0;
+  naosetembro: any=0;
+  outubro: any=0;
+ naooutubro: any=0;
+  novembro: any=0;
+  naonovembro: any=0;
+  dezembro: any=0;
+  naodezembro: any=0;
+
   dataSourse: MatTableDataSource<Estudante>;
+
   displayedColumns = ['nome'];
   @ViewChild(MatPaginator) paginator: MatPaginator;
 @ViewChild(MatSort) sort: MatSort;
@@ -58,9 +88,9 @@ export class DashboardComponent {
 
 
       this.pieChartData = [this.estudantesMascu, this.estudantesFemininas];
+   
   
     })
-
     this.estudanteService.getTurmas().subscribe(data => {
       this.turmas = data.map(e => {
         return {
@@ -69,6 +99,58 @@ export class DashboardComponent {
         } as Turma;
       })       
     })
+    
+    this.estudanteService.getMensalidades().subscribe(data => {
+      this.mensalidades = data.map(e => {
+        return {
+          id: e.payload.doc.id,
+          estudante: e.payload.doc.data()['estudante'] as Estudante,
+          turma: e.payload.doc.data()['turma'] as Turma,
+          ...e.payload.doc.data(),
+        } as Mensalidade;
+      })
+     
+      this.dataSourse.paginator = this.paginator;
+      this.dataSourse.sort = this.sort;
+      this.janeiro = this.mensalidades.filter(e => e.mes == "Janeiro").length;
+      this.naojaneiro = this.mensalidades.filter(e => e.mes != "Janeiro").length;
+      this.fevereiro = this.mensalidades.filter(e => e.mes == "Fevereiro").length;
+      this.naofevereiro = this.mensalidades.filter(e => e.mes != "Fevereiro").length;
+      this.marco = this.mensalidades.filter(e => e.mes == "Marco").length;
+      this.naomarco = this.mensalidades.filter(e => e.mes != "Marco").length;
+      this.abril = this.mensalidades.filter(e => e.mes == "Abril").length;
+      this.naoabril = this.mensalidades.filter(e => e.mes != "Abril").length;
+      this.maio = this.mensalidades.filter(e => e.mes == "Maio").length;
+      this.naomaio = this.mensalidades.filter(e => e.mes != "Maio").length;
+      this.junho = this.mensalidades.filter(e => e.mes == "Junho").length;
+      this.naojunho = this.mensalidades.filter(e => e.mes != "Junho").length;
+      this.julho = this.mensalidades.filter(e => e.mes == "Julho").length;
+      this.naojulho = this.mensalidades.filter(e => e.mes != "Julho").length;
+      this.agosto = this.mensalidades.filter(e => e.mes == "Agosto").length;
+      this.naoagosto = this.mensalidades.filter(e => e.mes != "Agosto").length;
+      this.setembro = this.mensalidades.filter(e => e.mes == "Setembro").length;
+      this.naosetembro = this.mensalidades.filter(e => e.mes != "Setembro").length;
+      this.outubro = this.mensalidades.filter(e => e.mes == "Outubro").length;
+      this.naooutubro = this.mensalidades.filter(e => e.mes != "Outubro").length;
+      this.novembro = this.mensalidades.filter(e => e.mes == "Novembro").length;
+      this.naonovembro = this.mensalidades.filter(e => e.mes != "Novembro").length;
+      this.dezembro = this.mensalidades.filter(e => e.mes == "Dezembro").length;
+      this.naodezembro = this.mensalidades.filter(e => e.mes != "Dezembro").length;
+      this.pieChartData1 = [this.janeiro,this.naojaneiro, this.fevereiro,this.naofevereiro,
+        this.marco,this.naomarco,this.abril,this.naoabril,this.maio, this.naoabril,this.junho,
+        this.naojunho,this.julho,this.naojulho,this.agosto,this.naoagosto,this.setembro,this.naosetembro,
+        this.outubro,this.naooutubro,this.novembro,this.naonovembro,this.dezembro,this.naodezembro];
+    })
+
+
+
+
+
+
+
+
+
+
   } 
 
 
@@ -155,7 +237,16 @@ export class DashboardComponent {
 
 
 
-  public barChatOptions:any = Object.assign({
+  
+
+
+  // Doughnut
+  public pieChartColors1: any[] = [{
+    backgroundColor: ['#4caf50','#f44336', '#4caf50','#f44336','#4caf50','#f44336','#4caf50','#f44336',
+    '#4caf50','#f44336','#4caf50','#f44336','#4caf50','#f44336','#4caf50','#f44336','#4caf50','#f44336',
+    '#4caf50','#f44336','#4caf50','#f44336','#4caf50','#f44336',]
+  }];
+  public pieOptions1: any = Object.assign({
     responsive: true,
     legend: {
       display: false,
@@ -167,42 +258,15 @@ export class DashboardComponent {
       }
     }
   });
-
-  public barChartLabels: string [] =['Janeiro','Fevereiro','Marco','Abril','Maio','Junho','Julho','Agosto','Setembro','Outubro','Novembro','Dezembro'];
-  public barChartType: string = 'bar';
-  public barChartLegend: boolean=true;
-  public barChartData=[
-    {data: [65,59,80,81,56,55,40,40,90,15,10,20], label: 'Estudantes nao Pago'},
-    {data: [28,48,40,19,86,27,90,20,40,25,12,20], label: 'Estudantes Pago'},
-
-  ];
-
-  public chartClicked(e:any): void{
-    console.log(e);
-  }
-  public chartHovered(e:any): void{
-    console.log(e);
-  }
-public randomize(): void{
-  let data =[
-    Math.round(Math.random() * 100),
-    59,
-    80,
-    (Math.random() * 100),
-    56,
-    (Math.random() * 100),
-    40
-  ];
-  let clone= JSON.parse(JSON.stringify(this.barChartData));
-clone[0].data=data;
-this.barChartData=clone;
-
-
-}
+  public pieChartLabels1: string[] = ['Janeiro','', 'Fevereiro','','Marco','',
+  'Abril','','Maio','','Junho','','Julho','','Agosto','','Setembro','','Outubro','','Novembro','','Dezembro',''];
+  public pieChartData1 = [this.janeiro,this.naojaneiro,this.fevereiro,this.naofevereiro,this.marco,this.naomarco,
+    this.abril,this.naoabril,this.maio,this.naomaio,this.junho,this.naojunho,this.julho,this.naojulho,this.agosto,this.naoagosto,this.setembro,this.naosetembro,this.outubro,this.naooutubro,this.novembro,this.naonovembro,this.dezembro,this.naodezembro];
+  public pieChartType1= 'bar';
 
 
 
-
+ 
   
 }
 

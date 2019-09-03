@@ -64,7 +64,7 @@ export class MatriculaComponent implements OnInit {
   doc.setFont("Courier");
   doc.setFontStyle("normal"); 
   doc.setFontSize(12);
-  doc.fromHTML(content.innerHTML, 150, 122,{
+  doc.fromHTML(content.innerHTML, 150, 121,{
     'width':100,
     'elementHandlers': specialElementHandlers,
    
@@ -74,53 +74,53 @@ export class MatriculaComponent implements OnInit {
       'elementHandlers': specialElementHandlers,
      
       });
-      doc.fromHTML(content1.innerHTML, 310, 103,{
+      doc.fromHTML(content1.innerHTML, 310, 101,{
         'width':100,
         'elementHandlers': specialElementHandlers,
        
         });
-        doc.fromHTML(content1.innerHTML, 310, 362,{
+        doc.fromHTML(content1.innerHTML, 310, 361,{
           'width':100,
           'elementHandlers': specialElementHandlers,
          
           });
-          doc.fromHTML(content2.innerHTML, 270, 137,{
+          doc.fromHTML(content2.innerHTML, 268, 136,{
             'width':100,
             'elementHandlers': specialElementHandlers,
            
             });
-            doc.fromHTML(content2.innerHTML, 270, 392,{
+            doc.fromHTML(content2.innerHTML, 268, 391,{
               'width':100,
               'elementHandlers': specialElementHandlers,
              
               });
-      doc.fromHTML(content3.innerHTML, 330, 122,{
+      doc.fromHTML(content3.innerHTML, 330, 121,{
         'width':100,
         'elementHandlers': specialElementHandlers,
        
         });
-        doc.fromHTML(content3.innerHTML, 330, 382,{
+        doc.fromHTML(content3.innerHTML, 330, 381,{
           'width':100,
           'elementHandlers': specialElementHandlers,
          
           });
     
-          doc.fromHTML(content4.innerHTML, 180, 137,{
+          doc.fromHTML(content4.innerHTML, 180, 136,{
             'width':100,
             'elementHandlers': specialElementHandlers,
            
             });
-            doc.fromHTML(content4.innerHTML, 180, 392,{
+            doc.fromHTML(content4.innerHTML, 180, 391,{
               'width':100,
               'elementHandlers': specialElementHandlers,
              
               });
-        doc.fromHTML(content5.innerHTML, 85, 137,{
+        doc.fromHTML(content5.innerHTML, 85, 136,{
           'width':100,
           'elementHandlers': specialElementHandlers,
          
           });
-          doc.fromHTML(content5.innerHTML, 85, 392,{
+          doc.fromHTML(content5.innerHTML, 85, 391,{
             'width':100,
             'elementHandlers': specialElementHandlers,
            
@@ -170,7 +170,7 @@ export class MatriculaComponent implements OnInit {
                    
                     doc.text("Secretaria:", 70, 240);
                     doc.text("Secretaria:", 70, 490);
-                    doc.text("______________________________", 30, 255);
+                    doc.text("______________________________", 30, 269);
                     doc.text("______________________________", 30, 525);
                    
                     doc.text("Nome Do Estudante:", 50, 135);
@@ -187,13 +187,13 @@ export class MatriculaComponent implements OnInit {
                     doc.text("Matricula e 1ª Mensalidade", 80, 437);
                     doc.text(" Alimentação e Estudos Orientado", 55, 197);
                     doc.text(" Alimentação e Estudos Orientado", 55, 447);
-                    doc.text("MZN", 295, 187);
-                    doc.text("MZN", 295, 197);
-                    doc.text("MZN", 295, 207);
+                    doc.text("MZN", 295, 189);
+                    doc.text("MZN", 295, 199);
+                    doc.text("MZN", 295, 209);
                   
-                    doc.text("MZN", 295, 437);
-                    doc.text("MZN", 295, 447);
-                    doc.text("MZN", 295, 457);
+                    doc.text("MZN", 295, 439);
+                    doc.text("MZN", 295, 449);
+                    doc.text("MZN", 295, 459);
                   
                     doc.setFontStyle("bold");
                     doc.text("Descrição", 110, 177);

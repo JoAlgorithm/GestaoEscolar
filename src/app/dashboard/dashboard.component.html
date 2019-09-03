@@ -48,20 +48,19 @@
               </div>
               <div class="pl-0">
                 <h2 mat-card-widget-title>{{naoMatriculdos}}</h2>
-                <p>Ñ Matriculados</p>
+                <p>Não Matriculados</p>
               </div>
             </div>
           </mat-card>
         </div>
   </div>
   <div fxLayout="row wrap">
-      <div fxFlex.gt-sm="40" fxFlex.gt-xs="50" fxFlex="100">
+      <div fxFlex.gt-sm="50" fxFlex.gt-xs="50" fxFlex="100">
       <mat-card>
         <mat-card-title class="text-xs-center">NR DE ESTUDANTES POR GENERO</mat-card-title>
       
         <mat-card-content>
-          <canvas height="500" 
-          width="500" baseChart
+          <canvas  baseChart
               [data]="pieChartData"
               [options]="pieOptions"
               [colors]="pieChartColors"
@@ -71,41 +70,24 @@
       
       </mat-card>
       </div>
-      <div fxFlex.gt-sm="40" fxFlex.gt-xs="50" fxFlex="100">
+     
+        <div fxFlex.gt-sm="50" fxFlex.gt-xs="50" fxFlex="100">
         <mat-card>
           <mat-card-title class="text-xs-center">MENSALIDADES</mat-card-title>
-          <!--<mat-card-subtitle class="text-xs-center"></mat-card-subtitle>-->
+        
           <mat-card-content>
-            <canvas height="500" 
-            width="500" baseChart
-            [datasets]="barChartData"
-            [labels]="barChartLabels"
-            [options]="barChartOptions"
-            [legend]="barChartLegend"
-            [chartType]="barChartType"
-            (chartHover)="chartHovered($event)"
-            (chartClick)="chartClicked($event)"
-
-            ></canvas>
-<!--<button class="btn btn-primary btn-block" (click)="randomize()">Update</button>-->
+            <canvas  baseChart
+                [data]="pieChartData1"
+                [options]="pieOptions1"
+                [colors]="pieChartColors1"
+               [labels]="pieChartLabels1"
+               [chartType]="pieChartType1"></canvas>
           </mat-card-content>
-          <!--<mat-card-content>
-            <div fxLayout="row">
-              <div fxFlex class="pr-xs pl-xs text-xs-right">
-                <h5 class="ma-0">Masculino</h5>
-                <h3 class="ma-0">{{estudantesMascu}}</h3>
-                <span>30%</span>--
-              </div>
-              <div fxFlex class="pl-xs pr-xs">
-                <h5 class="ma-0">Feminino</h5>
-                <h3 class="ma-0">{{estudantesFemininas}}</h3>
-                <!--<span>30%</span>
-              </div>
-            </div>
-          </mat-card-content>-->
+        
         </mat-card>
         </div>
-    </div>
+        </div>
+  
 
 
  
