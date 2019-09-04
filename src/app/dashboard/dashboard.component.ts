@@ -258,7 +258,7 @@ export class DashboardComponent {
       }
     }
   });
-  public pieChartLabels1: string[] = ['Janeiro','', 'Fevereiro','','Marco','',
+  public pieChartLabels1: string[] = ['Janeiro','', 'Fevereiro','','Março','',
   'Abril','','Maio','','Junho','','Julho','','Agosto','','Setembro','','Outubro','','Novembro','','Dezembro',''];
   public pieChartData1 = [this.janeiro,this.naojaneiro,this.fevereiro,this.naofevereiro,this.marco,this.naomarco,
     this.abril,this.naoabril,this.maio,this.naomaio,this.junho,this.naojunho,this.julho,this.naojulho,this.agosto,this.naoagosto,this.setembro,this.naosetembro,this.outubro,this.naooutubro,this.novembro,this.naonovembro,this.dezembro,this.naodezembro];

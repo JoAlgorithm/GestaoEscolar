@@ -103,12 +103,12 @@ doc.addImage(img, 'PNG', 200, 290,35, 35);
   doc.setFont("Courier");
   doc.setFontStyle("normal"); 
   doc.setFontSize(12);
-  doc.fromHTML(content.innerHTML, 150, 121,{
+  doc.fromHTML(content.innerHTML, 150, 122,{
     'width':100,
     'elementHandlers': specialElementHandlers,
    
     });
-    doc.fromHTML(content.innerHTML, 150, 381,{
+    doc.fromHTML(content.innerHTML, 150, 382,{
       'width':100,
       'elementHandlers': specialElementHandlers,
      
@@ -123,42 +123,42 @@ doc.addImage(img, 'PNG', 200, 290,35, 35);
         'elementHandlers': specialElementHandlers,
        
         });
-      doc.fromHTML(content2.innerHTML, 320, 138,{
+      doc.fromHTML(content2.innerHTML, 320, 139,{
         'width':100,
         'elementHandlers': specialElementHandlers,
        
         });
-        doc.fromHTML(content2.innerHTML, 320, 394,{
+        doc.fromHTML(content2.innerHTML, 320, 395,{
           'width':100,
           'elementHandlers': specialElementHandlers,
          
           });
-      doc.fromHTML(content3.innerHTML, 330, 121,{
+      doc.fromHTML(content3.innerHTML, 330, 122,{
         'width':100,
         'elementHandlers': specialElementHandlers,
        
         });
-        doc.fromHTML(content3.innerHTML, 330, 381,{
+        doc.fromHTML(content3.innerHTML, 330, 382,{
           'width':100,
           'elementHandlers': specialElementHandlers,
          
           });
-        doc.fromHTML(content4.innerHTML, 180, 138,{
+        doc.fromHTML(content4.innerHTML, 180, 139,{
           'width':100,
           'elementHandlers': specialElementHandlers,
          
           });
-          doc.fromHTML(content4.innerHTML, 180, 394,{
+          doc.fromHTML(content4.innerHTML, 180, 395,{
             'width':100,
             'elementHandlers': specialElementHandlers,
            
             });
-    doc.fromHTML(content5.innerHTML, 85, 138,{
+    doc.fromHTML(content5.innerHTML, 85, 139,{
       'width':100,
       'elementHandlers': specialElementHandlers,
      
       });
-      doc.fromHTML(content5.innerHTML, 85, 394,{
+      doc.fromHTML(content5.innerHTML, 85, 395,{
         'width':100,
         'elementHandlers': specialElementHandlers,
        

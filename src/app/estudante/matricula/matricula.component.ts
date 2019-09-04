@@ -64,63 +64,63 @@ export class MatriculaComponent implements OnInit {
   doc.setFont("Courier");
   doc.setFontStyle("normal"); 
   doc.setFontSize(12);
-  doc.fromHTML(content.innerHTML, 150, 121,{
+  doc.fromHTML(content.innerHTML, 150, 122,{
     'width':100,
     'elementHandlers': specialElementHandlers,
    
     });
-    doc.fromHTML(content.innerHTML, 150, 381,{
+    doc.fromHTML(content.innerHTML, 150, 382,{
       'width':100,
       'elementHandlers': specialElementHandlers,
      
       });
-      doc.fromHTML(content1.innerHTML, 310, 101,{
+      doc.fromHTML(content1.innerHTML, 310, 102,{
         'width':100,
         'elementHandlers': specialElementHandlers,
        
         });
-        doc.fromHTML(content1.innerHTML, 310, 361,{
+        doc.fromHTML(content1.innerHTML, 310, 362,{
           'width':100,
           'elementHandlers': specialElementHandlers,
          
           });
-          doc.fromHTML(content2.innerHTML, 268, 136,{
+          doc.fromHTML(content2.innerHTML, 268, 137,{
             'width':100,
             'elementHandlers': specialElementHandlers,
            
             });
-            doc.fromHTML(content2.innerHTML, 268, 391,{
+            doc.fromHTML(content2.innerHTML, 268, 392,{
               'width':100,
               'elementHandlers': specialElementHandlers,
              
               });
-      doc.fromHTML(content3.innerHTML, 330, 121,{
+      doc.fromHTML(content3.innerHTML, 330, 122,{
         'width':100,
         'elementHandlers': specialElementHandlers,
        
         });
-        doc.fromHTML(content3.innerHTML, 330, 381,{
+        doc.fromHTML(content3.innerHTML, 330, 382,{
           'width':100,
           'elementHandlers': specialElementHandlers,
          
           });
     
-          doc.fromHTML(content4.innerHTML, 180, 136,{
+          doc.fromHTML(content4.innerHTML, 180, 137,{
             'width':100,
             'elementHandlers': specialElementHandlers,
            
             });
-            doc.fromHTML(content4.innerHTML, 180, 391,{
+            doc.fromHTML(content4.innerHTML, 180, 392,{
               'width':100,
               'elementHandlers': specialElementHandlers,
              
               });
-        doc.fromHTML(content5.innerHTML, 85, 136,{
+        doc.fromHTML(content5.innerHTML, 85, 137,{
           'width':100,
           'elementHandlers': specialElementHandlers,
          
           });
-          doc.fromHTML(content5.innerHTML, 85, 391,{
+          doc.fromHTML(content5.innerHTML, 85, 392,{
             'width':100,
             'elementHandlers': specialElementHandlers,
            
