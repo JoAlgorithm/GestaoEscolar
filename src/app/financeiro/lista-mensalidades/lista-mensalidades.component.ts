@@ -14,7 +14,7 @@ import { Inject} from '@angular/core';
   styleUrls: ['./lista-mensalidades.component.scss']
 })
 export class ListaMensalidadesComponent implements OnInit {
-
+  estudantes: Estudante[];
   mensalidades: Mensalidade[];
   pagamento: Pagamento[];
   janeiro: any = 0;
@@ -41,6 +41,8 @@ export class ListaMensalidadesComponent implements OnInit {
   naonovembro: any=0;
   dezembro: any=0;
   naodezembro: any=0;
+  meses = new Set();
+  mensalidadeFilter: any[];
   
   //Variaveis da tabela
   dataSourse: MatTableDataSource<Mensalidade>;
@@ -53,18 +55,20 @@ export class ListaMensalidadesComponent implements OnInit {
 
   ngOnInit() {
     this.estudanteService.getMensalidades().subscribe(data => {
-      this.mensalidades = data.map(e => {
+      this.mensalidades = data.map(e =>  {
         return {
           id: e.payload.doc.id,
-          estudante: e.payload.doc.data()['estudante'] as Estudante,
           turma: e.payload.doc.data()['turma'] as Turma,
+          estudante: e.payload.doc.data()['estudante'] as Estudante,
           ...e.payload.doc.data(),
         } as Mensalidade;
       })
+      
+  
       this.dataSourse=new MatTableDataSource(this.mensalidades);
       this.dataSourse.paginator = this.paginator;
       this.dataSourse.sort = this.sort;
-      this.janeiro = this.mensalidades.filter(e => e.mes == "Janeiro");
+      this.janeiro = this.mensalidades.filter(e =>e.mes=="Janeiro");
       this.naojaneiro = this.mensalidades.filter(e => e.mes != "Janeiro");
       this.fevereiro = this.mensalidades.filter(e => e.mes == "Fevereiro");
       this.naofevereiro = this.mensalidades.filter(e => e.mes != "Fevereiro");
@@ -88,12 +92,15 @@ export class ListaMensalidadesComponent implements OnInit {
       this.naonovembro = this.mensalidades.filter(e => e.mes != "Novembro");
       this.dezembro = this.mensalidades.filter(e => e.mes == "Dezembro");
       this.naodezembro = this.mensalidades.filter(e => e.mes != "Dezembro");
-  
+     
+      
     })
-
+    
+   
     
   }
-  
+ 
+ 
 
 
   //Metodo para filtrar dados na tabela
@@ -102,8 +109,7 @@ export class ListaMensalidadesComponent implements OnInit {
     filterValue = filterValue.toLowerCase(); // converte dados para letras minusculas
     this.dataSourse.filter = filterValue;
   }
- 
-
+  
   PagoJaneiro(aluno){
     const dialogRef = this.dialog.open(DialogOverviewExampleDialog, {
       width: '1000px',
@@ -489,6 +495,7 @@ export class DialogOverviewExampleDialog {
   janeiro: any[];
   naoMatriculdos:any =0 ;
   mensalidades: Mensalidade[];
+  meses = new Set();
 
   dataSourse: MatTableDataSource<Mensalidade>;
   displayedColumns = ['nome','mes','ano'];
@@ -508,6 +515,7 @@ export class DialogOverviewExampleDialog {
             ...e.payload.doc.data(),
           } as Mensalidade;
         })
+       
         this.dataSourse=new MatTableDataSource( this.mensalidades.filter(e => e.mes == "Janeiro").sort((a, b) => a.ano > b.ano ? 1 : -1));
         this.dataSourse.paginator = this.paginator;
         this.dataSourse.sort = this.sort;

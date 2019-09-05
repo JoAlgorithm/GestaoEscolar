@@ -278,6 +278,7 @@ doc.save(nomepdf);
   constructor(private _formBuilder: FormBuilder, public snackBar: MatSnackBar,
     private estudanteService: EstudanteService, private authService: AuthService) { 
       this.estudante = new Estudante();
+      this.mensalidade = new Mensalidade();
       this.turma = new Turma();
       this.estudante.turma=this.turma;
       this.mensalidade= new Mensalidade();
@@ -350,6 +351,7 @@ if(estudante.alimentacao_checked==false){
     if(estudante.alimentacao_estudo_orientado_checked==false){
       estudante.turma.alimentacao_estudo_orientado=0;}
     }
+
   
   
   confirmar(){
