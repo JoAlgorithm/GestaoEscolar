@@ -165,8 +165,8 @@ export class MatriculaComponent implements OnInit {
                     doc.text("Dados do Estudante:", 50, 375);
                     doc.text("Emitido no dia:", 230, 115);
                     doc.text("Emitido no dia:", 230, 375);
-                    doc.text("RECIBO DE MATRICULA", 160, 90);
-                    doc.text("RECIBO DE MATRICULA", 160, 355);
+                    doc.text("RECIBO DE MATRÍCULA", 160, 90);
+                    doc.text("RECIBO DE MATRÍCULA", 160, 355);
                    
                     doc.text("Secretaria:", 70, 240);
                     doc.text("Secretaria:", 70, 490);
@@ -183,8 +183,8 @@ export class MatriculaComponent implements OnInit {
                     doc.text("Regime:", 230, 405);
                     doc.text("Ano:", 310, 135);
                     doc.text("Ano:", 310, 395);
-                    doc.text("Matricula e 1ª Mensalidade", 80, 187);
-                    doc.text("Matricula e 1ª Mensalidade", 80, 437);
+                    doc.text("Matrícula e 1ª Mensalidade", 80, 187);
+                    doc.text("Matrícula e 1ª Mensalidade", 80, 437);
                     doc.text(" Alimentação e Estudos Orientado", 55, 197);
                     doc.text(" Alimentação e Estudos Orientado", 55, 447);
                     doc.text("MZN", 295, 189);
@@ -397,7 +397,7 @@ export class MatriculaComponent implements OnInit {
     let preco_alimentacao_estudo_orientado = 0;
     this.alimentacao_estudo_orientado_novo=0;
     if (this.estudante.alimentacao_estudo_orientado_checked===true){
-      preco_alimentacao_estudo_orientado =this.estudante.turma.alimentacao_estudo_orientado
+      preco_alimentacao_estudo_orientado =this.turma.alimentacao_estudo_orientado
      this.alimentacao_estudo_orientado_novo=preco_alimentacao_estudo_orientado
     }
     let preco_alimentacao = 0;
@@ -415,8 +415,12 @@ export class MatriculaComponent implements OnInit {
   
     this.pagamentos=[{ 
 "descricao":"Matricula",
-"valor":this.estudante.turma.taxa_matricula
+"valor":this.turma.taxa_matricula
     },
+    { 
+      "descricao":"1ª Mensalidade",
+      "valor":+this.turma.mensalidade
+          },
         
  { 
  "descricao":"Taxa de Estudo orientado",
@@ -424,7 +428,7 @@ export class MatriculaComponent implements OnInit {
    },
    { 
     "descricao":"Total",
-    "valor":this.total=+this.estudante.turma.taxa_matricula+ +preco_alimentacao_estudo_orientado
+    "valor":this.total=+this.turma.taxa_matricula+ +preco_alimentacao_estudo_orientado+ +this.turma.mensalidade
       },
 
   ]

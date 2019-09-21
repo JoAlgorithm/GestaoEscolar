@@ -7,6 +7,7 @@ import { Estudante } from '../../classes/estudante';
 import { Turma } from '../../classes/turma';
 import {MatDialog, MatDialogRef, MAT_DIALOG_DATA} from '@angular/material/dialog';
 import { Inject} from '@angular/core';
+import { RelatorioPagamento } from '../../classes/relatorio_pagamento';
 
 @Component({
   selector: 'app-lista-mensalidades',
@@ -17,7 +18,29 @@ export class ListaMensalidadesComponent implements OnInit {
   estudantes: Estudante[];
   mensalidades: Mensalidade[];
   pagamento: Pagamento[];
-  janeiro: any = 0;
+
+  relatorio_pagamento: RelatorioPagamento;
+  anos = [
+    {value: new Date().getFullYear(), viewValue: new Date().getFullYear()},
+    {value: new Date().getFullYear()+1, viewValue: new Date().getFullYear()+1}
+  ]
+  ano: any = this.anos[0].value;
+  pagoJan: boolean = false;
+  pagoFev: boolean = false;
+  pagoMarc: boolean = false;
+  pagoAbril: boolean = false;
+  pagoMaio: boolean = false;
+  pagoJun: boolean = false;
+  pagoJul: boolean = false;
+  pagoAg: boolean = false;
+  pagoSet: boolean = false;
+  pagoOut: boolean = false;
+  pagoNov: boolean = false;
+  pagoDez: boolean = false;
+
+
+
+janeiro: any = 0;
   naojaneiro: any = 0;
   fevereiro: any=0;
   naofevereiro: any=0;
@@ -45,13 +68,15 @@ export class ListaMensalidadesComponent implements OnInit {
   mensalidadeFilter: any[];
   
   //Variaveis da tabela
-  dataSourse: MatTableDataSource<Mensalidade>;
-  displayedColumns = ['estudante', 'turma', 'mes', 'ano', 'mensalidade'];
+  //dataSourse: MatTableDataSource<Mensalidade>;
+  //displayedColumns = ['estudante', 'turma', 'mes', 'ano', 'mensalidade'];
   //displayedColumns = ['estudante', 'turma', 'mes', 'ano', 'mensalidade', 'transporte','aimentacao', 'estudo_orientado'];
-  @ViewChild(MatPaginator) paginator: MatPaginator;
-  @ViewChild(MatSort) sort: MatSort;
+  //@ViewChild(MatPaginator) paginator: MatPaginator;
+  //@ViewChild(MatSort) sort: MatSort;
 
-  constructor(private estudanteService: EstudanteService, public dialog: MatDialog) { }
+  constructor(private estudanteService: EstudanteService, public dialog: MatDialog) { 
+    this.relatorio_pagamento = new RelatorioPagamento();
+  }
 
   ngOnInit() {
     this.estudanteService.getMensalidades().subscribe(data => {
@@ -63,11 +88,10 @@ export class ListaMensalidadesComponent implements OnInit {
           ...e.payload.doc.data(),
         } as Mensalidade;
       })
-      
-  
-      this.dataSourse=new MatTableDataSource(this.mensalidades);
-      this.dataSourse.paginator = this.paginator;
-      this.dataSourse.sort = this.sort;
+    
+      //this.dataSourse=new MatTableDataSource(this.mensalidades);
+     // this.dataSourse.paginator = this.paginator;
+    // this.dataSourse.sort = this.sort;
       this.janeiro = this.mensalidades.filter(e =>e.mes=="Janeiro");
       this.naojaneiro = this.mensalidades.filter(e => e.mes != "Janeiro");
       this.fevereiro = this.mensalidades.filter(e => e.mes == "Fevereiro");
@@ -96,7 +120,134 @@ export class ListaMensalidadesComponent implements OnInit {
       
     })
     
-   
+    this.estudanteService.getEstudantes().subscribe(data => {
+      this.estudantes = data.map(e =>  {
+        return {
+          id: e.payload.doc.id,
+          turma: e.payload.doc.data()['turma'] as Turma,
+          //mensalidades: e.payload.doc.data()['mensalidades'] as Mensalidade[],
+          ...e.payload.doc.data(),
+        } as Estudante;
+      })
+
+      this.estudantes.forEach(e=>{//Percorrer lista de estudantes para contabilizar pagamentos
+        //if(e.datamatricula){//Verificar se estudante esta matriculado (se nao estiver nao precisamos contabilizar)
+        
+        //console.log("Mensalidades de "+e.nome)
+        //Variaveis que verificam se o estudante pagou para cada mes do ano selecionado
+        this.pagoJan= false;
+        this.pagoFev = false;
+        this.pagoMarc = false;
+        this.pagoAbril = false;
+        this.pagoMaio = false;
+        this.pagoJun = false;
+        this.pagoJul = false;
+        this.pagoAg = false;
+        this.pagoSet = false;
+        this.pagoOut = false;
+        this.pagoNov= false;
+        this.pagoDez = false;
+
+
+        this.mensalidades.filter(m => m.ano == this.ano && m.estudante.id == e.id).sort((a, b) => a.data_pagamento > b.data_pagamento ? 1 : -1).forEach(m => {
+          switch(m.mes){//verifica os meses que o estudante pagou
+              case "Janeiro": this.pagoJan = true; break;
+              case "Fevereiro": this.pagoFev = true; break;
+              case "Marco": this.pagoMarc = true; break;
+              case "Abril": this.pagoAbril = true; break;
+              case "Maio": this.pagoMaio = true; break;
+              case "Junho": this.pagoJun= true; break;
+              case "Julho": this.pagoJul= true; break;
+              case "Agosto": this.pagoAg = true; break;
+              case "Setembro": this.pagoSet = true; break;
+              case "Outubro": this.pagoOut = true; break;
+              case "Novembro": this.pagoNov = true; break;
+              case "Dezembro": this.pagoDez = true; break;
+          }
+        })
+      
+        //para cada mes pago somamos a variavel do mes ou somamos a vaiavel de nao pagamento do mes
+        if(this.pagoJan){
+          this.relatorio_pagamento.janeiro = this.relatorio_pagamento.janeiro+1;
+        }else{
+          this.relatorio_pagamento.naojaneiro = this.relatorio_pagamento.naojaneiro+1;
+        }
+
+        if(this.pagoFev){
+          this.relatorio_pagamento.fevereiro = this.relatorio_pagamento.fevereiro+1;
+        }else{
+          this.relatorio_pagamento.naofevereiro = this.relatorio_pagamento.naofevereiro+1;
+        }
+
+        if(this.pagoMarc){
+          this.relatorio_pagamento.marco = this.relatorio_pagamento.marco+1;
+        }else{
+          this.relatorio_pagamento.naomarco= this.relatorio_pagamento.naomarco+1;
+        }
+
+        if(this.pagoAbril){
+          this.relatorio_pagamento.abril = this.relatorio_pagamento.abril+1;
+        }else{
+          this.relatorio_pagamento.naoabril= this.relatorio_pagamento.naoabril+1;
+        }
+
+        if(this.pagoMaio){
+          this.relatorio_pagamento.maio = this.relatorio_pagamento.maio+1;
+        }else{
+          this.relatorio_pagamento.naomaio= this.relatorio_pagamento.naomaio+1;
+        }
+
+        if(this.pagoJun){
+          this.relatorio_pagamento.junho = this.relatorio_pagamento.junho+1;
+        }else{
+          this.relatorio_pagamento.naojunho= this.relatorio_pagamento.naojunho+1;
+        }
+
+        if(this.pagoJul){
+          this.relatorio_pagamento.julho = this.relatorio_pagamento.julho+1;
+        }else{
+          this.relatorio_pagamento.naojulho= this.relatorio_pagamento.naojulho+1;
+        }
+
+        if(this.pagoAg){
+          this.relatorio_pagamento.agosto = this.relatorio_pagamento.agosto+1;
+        }else{
+          this.relatorio_pagamento.naoagosto= this.relatorio_pagamento.naoagosto+1;
+        }
+
+        if(this.pagoSet){
+          this.relatorio_pagamento.setembro = this.relatorio_pagamento.setembro+1;
+        }else{
+          this.relatorio_pagamento.naosetembro= this.relatorio_pagamento.naosetembro+1;
+        }
+
+        if(this.pagoOut){
+          this.relatorio_pagamento.outubro = this.relatorio_pagamento.outubro+1;
+        }else{
+          this.relatorio_pagamento.naooutubro= this.relatorio_pagamento.naooutubro+1;
+        }
+
+        if(this.pagoNov){
+          this.relatorio_pagamento.novembro = this.relatorio_pagamento.novembro+1;
+        }else{
+          this.relatorio_pagamento.naonovembro= this.relatorio_pagamento.naonovembro+1;
+        }
+
+        if(this.pagoDez){
+          this.relatorio_pagamento.dezembro = this.relatorio_pagamento.dezembro+1;
+        }else{
+          this.relatorio_pagamento.naodezembro= this.relatorio_pagamento.naodezembro+1;
+        }
+
+      })
+      /*console.log("RELATORIO DE PAGAMENTO DE MENSALIDADES")
+      console.log("NR DE PAGAMENTOS DE JANEIRO: "+this.relatorio_pagamento.janeiro)
+      console.log("NR DE PAGAMENTOS DE FEVEREIRO: "+this.relatorio_pagamento.fevereiro)
+      console.log("-----------------------------------------")
+      console.log("NR DE NAO PAGAMENTOS DE JANEIRO: "+this.relatorio_pagamento.naojaneiro)
+      console.log("NR DE NAO PAGAMENTOS DE FEVEREIRO: "+this.relatorio_pagamento.naofevereiro)*/
+    })
+    
     
   }
  
@@ -107,21 +258,47 @@ export class ListaMensalidadesComponent implements OnInit {
   applyFilter(filterValue: string) {
     filterValue = filterValue.trim(); // Remove espacos vazios
     filterValue = filterValue.toLowerCase(); // converte dados para letras minusculas
-    this.dataSourse.filter = filterValue;
+    //this.dataSourse.filter = filterValue;
   }
   
-  PagoJaneiro(aluno){
+ 
+  ListaPagamentos(mes,situacao){
+    let estudantes: Estudante[] = [];
+    let pago = false;
+    //let dataSourse: MatTableDataSource<Estudante> = null;
+    let displayedColumns = ['nome','mes','ano'];
+    let TOT = 0;
+
+    this.estudantes.forEach(e=>{//Percorrer lista de estudantes para contabilizar pagamentos
+      pago = false;
+      TOT = TOT+1;
+      
+      this.mensalidades.filter(m => m.ano == this.ano && m.estudante.id == e.id && m.mes == mes).sort((a, b) => a.data_pagamento > b.data_pagamento ? 1 : -1).forEach(m => {
+        pago =true;
+      })
+ 
+      if(situacao=="Pago"){
+        if(pago){
+          estudantes.push(e);
+        }
+      }else{
+        if(!pago){
+          estudantes.push(e);
+        }
+      }
+
+    })
+    //dataSourse=new MatTableDataSource(estudantes);
+   // this.dataSourse.paginator = this.paginator;
+     // this.dataSourse.sort = this.sort;
+    
+
     const dialogRef = this.dialog.open(DialogOverviewExampleDialog, {
       width: '1000px',
-    
-    data:{    }
+      data:{mes:mes, ano:this.ano, estudantes:estudantes}
     });
-  
-   dialogRef.afterClosed().subscribe(result => {
-    console.log('The dialog was closed');
-    // this.animal = result;
     
-   });
+    dialogRef.afterClosed().subscribe(result => {});
    
   } 
 
@@ -497,16 +674,23 @@ export class DialogOverviewExampleDialog {
   mensalidades: Mensalidade[];
   meses = new Set();
 
-  dataSourse: MatTableDataSource<Mensalidade>;
-  displayedColumns = ['nome','mes','ano'];
-  @ViewChild(MatPaginator) paginator: MatPaginator;
+  //estudantes: Estudante[];
+
+ dataSourse: MatTableDataSource<Estudante>;
+ displayedColumns = ['nome','mes','ano'];
+@ViewChild(MatPaginator) paginator: MatPaginator;
 @ViewChild(MatSort) sort: MatSort;
 
+   
   constructor(
     public dialogRef: MatDialogRef<DialogOverviewExampleDialog>,
-    @Inject(MAT_DIALOG_DATA) public data: DialogData, private estudanteService: EstudanteService ,public dialog: MatDialog,) {
+    @Inject(MAT_DIALOG_DATA) public data, private estudanteService: EstudanteService ,
+    public dialog: MatDialog) {    
 
-      this.estudanteService.getMensalidades().subscribe(data => {
+      //console.log("Esrudantes lido no dialog "+data.estudantes)
+
+
+      /*this.estudanteService.getMensalidades().subscribe(data => {
         this.mensalidades = data.map(e => {
           return {
             id: e.payload.doc.id,
@@ -520,22 +704,36 @@ export class DialogOverviewExampleDialog {
         this.dataSourse.paginator = this.paginator;
         this.dataSourse.sort = this.sort;
         
-      })
-
-
-    
+      })*/
+      
+     
+      this.dataSourse=new MatTableDataSource(data.estudantes);
+     // this.dataSourse.paginator = this.paginator;
+     setTimeout(()=>this.dataSourse.paginator=this.paginator)
+     this.dataSourse.sort = this.sort; 
     }
-   
+    
+       
     
 
   onNoClick(): void {
     this.dialogRef.close();
   }
- 
 
-  
-  
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 @Component({
   selector: 'dialog-naojaneiro',

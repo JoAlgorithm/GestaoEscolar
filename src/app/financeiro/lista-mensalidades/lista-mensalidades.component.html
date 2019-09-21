@@ -20,34 +20,34 @@
         <tr>
 
 <th> Pago</th>
-<td  mat-icon-button (click)="PagoJaneiro(row)">{{janeiro?.length}}</td>
-  <td mat-icon-button (click)="PagoFevereiro(row)"> {{fevereiro?.length}}</td>
-  <td mat-icon-button (click)="PagoMarco(row)">{{marco?.length}}</td>
-  <td mat-icon-button (click)="PagoAbril(row)">{{abril?.length}} </td>
-  <td mat-icon-button (click)="PagoMaio(row)">{{maio?.length}}</td>
-  <td   mat-icon-button (click)="PagoJunho(row)">{{junho?.length}}</td>
-  <td  mat-icon-button (click)="PagoJulho(row)">{{julho?.length}}</td>
-  <td mat-icon-button (click)="PagoAgosto(row)">{{agosto?.length}}</td>
-  <td mat-icon-button (click)="PagoSetembro(row)">{{setembro?.length}}</td>
-  <td mat-icon-button (click)="PagoOutubro(row)"> {{outubro?.length}}</td>
-  <td mat-icon-button (click)="PagoNovembro(row)">{{novembro?.length}}</td>
-  <td mat-icon-button (click)="PagoDezembro(row)"> {{dezembro?.length}}</td>
+<td  mat-icon-button (click)="ListaPagamentos('Janeiro','Pago')">{{relatorio_pagamento.janeiro}}</td>
+  <td mat-icon-button (click)="ListaPagamentos('Fevereiro','Pago')"> {{relatorio_pagamento.fevereiro}}</td>
+  <td mat-icon-button (click)="ListaPagamentos('Marco','Pago')">{{relatorio_pagamento.marco}}</td>
+  <td mat-icon-button (click)="ListaPagamentos('Abril','Pago')">{{relatorio_pagamento.abril}} </td>
+  <td mat-icon-button (click)="ListaPagamentos('Maio','Pago')">{{relatorio_pagamento.maio}}</td>
+  <td   mat-icon-button (click)="ListaPagamentos('Junho','Pago')">{{relatorio_pagamento.junho}}</td>
+  <td  mat-icon-button (click)="ListaPagamentos('Julho','Pago')">{{relatorio_pagamento.julho}}</td>
+  <td mat-icon-button (click)="ListaPagamentos('Agosto','Pago')">{{relatorio_pagamento.agosto}}</td>
+  <td mat-icon-button (click)="ListaPagamentos('Setembro','Pago')">{{relatorio_pagamento.setembro}}</td>
+  <td mat-icon-button (click)="ListaPagamentos('Outubro','Pago')"> {{relatorio_pagamento.outubro}}</td>
+  <td mat-icon-button (click)="ListaPagamentos('Novembro','Pago')">{{relatorio_pagamento.novembro}}</td>
+  <td mat-icon-button (click)="ListaPagamentos('Dezembro','Pago')"> {{relatorio_pagamento.dezembro}}</td>
         </tr>
         <tr>
 
  <th> Não Pago</th>
- <td mat-icon-button (click)="NaoPagoJaneiro(row)">{{naojaneiro?.length}}</td>
-  <td mat-icon-button (click)="NaoPagoFevereiro(row)"> {{naofevereiro?.length}}</td>
-  <td mat-icon-button (click)="NaoPagoMarco(row)">{{naomarco?.length}}</td>
-  <td mat-icon-button (click)="NaoPagoAbril(row)">{{naoabril?.length}} </td>
-  <td  mat-icon-button (click)="NaoPagoMaio(row)">{{naomaio?.length}}</td>
-  <td  mat-icon-button (click)="NaoPagoJunho(row)">{{naojunho?.length}}</td>
-  <td  mat-icon-button (click)="NaoPagoJulho(row)">{{naojulho?.length}}</td>
-  <td  mat-icon-button (click)="NaoPagoAgosto(row)">{{naoagosto?.length}}</td>
-  <td  mat-icon-button (click)="NaoPagoSetembro(row)">{{naosetembro?.length}}</td>
-  <td  mat-icon-button (click)="NaoPagoOutubro(row)"> {{naooutubro?.length}}</td>
-  <td  mat-icon-button (click)="NaoPagoNovembro(row)">{{naonovembro?.length}}</td>
-  <td  mat-icon-button (click)="NaoPagoDezembro(row)"> {{naodezembro?.length}}</td>
+ <td mat-icon-button (click)="ListaPagamentos('Janeiro','NaoPago')">{{relatorio_pagamento.naojaneiro}}</td>
+  <td mat-icon-button (click)="ListaPagamentos('Fevereiro','NaoPago')"> {{relatorio_pagamento.naofevereiro}}</td>
+  <td mat-icon-button (click)="ListaPagamentos('Marco','NaoPago')">{{relatorio_pagamento.naomarco}}</td>
+  <td mat-icon-button (click)="ListaPagamentos('Abril','NaoPago')">{{relatorio_pagamento.naoabril}} </td>
+  <td  mat-icon-button (click)="ListaPagamentos('Maio','NaoPago')">{{relatorio_pagamento.naomaio}}</td>
+  <td  mat-icon-button (click)="ListaPagamentos('Junho','NaoPago')">{{relatorio_pagamento.naojunho}}</td>
+  <td  mat-icon-button (click)="ListaPagamentos('Julho','NaoPago')">{{relatorio_pagamento.naojulho}}</td>
+  <td  mat-icon-button (click)="ListaPagamentos('Agosto','NaoPago')">{{relatorio_pagamento.naoagosto}}</td>
+  <td  mat-icon-button (click)="ListaPagamentos('Setembro','NaoPago')">{{relatorio_pagamento.naosetembro}}</td>
+  <td  mat-icon-button (click)="ListaPagamentos('Outubro','NaoPago')"> {{relatorio_pagamento.naooutubro}}</td>
+  <td  mat-icon-button (click)="ListaPagamentos('Novembro','NaoPago')">{{relatorio_pagamento.naonovembro}}</td>
+  <td  mat-icon-button (click)="ListaPagamentos('Dezembro','NaoPago')"> {{relatorio_pagamento.naodezembro}}</td>
   </tr>
 </table>
 
