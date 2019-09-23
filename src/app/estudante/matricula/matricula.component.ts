@@ -11,6 +11,7 @@ import { Encarregado } from '../../classes/encarregado';
 import { User } from '../../classes/user';
 import { AuthService } from '../../services/auth.service';
 import * as jsPDF from 'jspdf';
+import { Mensalidade } from '../../classes/mensalidade';
 
 
 
@@ -22,6 +23,21 @@ import * as jsPDF from 'jspdf';
 })
 
 export class MatriculaComponent implements OnInit {
+  mensalidade: Mensalidade;
+  meses = [
+    {value: 'Janeiro', viewValue: 'Janeiro'},
+    {value: 'Fevereiro', viewValue: 'Fevereiro'},
+    {value: 'Maio', viewValue: 'Maio'},
+    {value: 'Abril', viewValue: 'Abril'},
+    {value: 'Marco', viewValue: 'Marco'},
+    {value: 'Junho', viewValue: 'Junho'},
+    {value: 'Julho', viewValue: 'Julho'},
+    {value: 'Agosto', viewValue: 'Agosto'},
+    {value: 'Setembro', viewValue: 'Setembro'},
+    {value: 'Outubro', viewValue: 'Outubro'},
+    {value: 'Novembro', viewValue: 'Novembro'},
+    {value: 'Dezembro', viewValue: 'Dezembro'}
+  ]
   alimentacao_estudo_orientado_novo=0;
   total=0;
   @ViewChild('content') content: ElementRef;
@@ -276,7 +292,11 @@ export class MatriculaComponent implements OnInit {
       this.estudante.estudo_orientado_checked = false;
       this.estudante.alimentacao_estudo_orientado_checked= false;
       this.turma = new Turma();
-      
+      this.mensalidade = new Mensalidade();
+      this.turma = new Turma();
+      this.estudante.turma=this.turma;
+      this.mensalidade= new Mensalidade();
+      this.mensalidade.multa=0;
     }
 
   /*filteredOptions: Observable<Estudante[]>;
@@ -294,6 +314,8 @@ export class MatriculaComponent implements OnInit {
       nivel: ['', Validators.required],
       regime: ['', Validators.required],
       turma: ['', Validators.required],
+      mes: ['', Validators.required],
+    
  
     });
 
@@ -378,6 +400,12 @@ export class MatriculaComponent implements OnInit {
     let data = Object.assign({}, this.estudante);
     
     this.estudanteService.updateEstudante(data);
+    this.mensalidade.ano=this.estudante.turma.ano;
+    this.mensalidade.data_pagamento= new Date();
+   this.mensalidade.estudante = Object.assign({},this.estudante);
+    this.mensalidade.turma= Object.assign({},this.estudante.turma);
+    let data1 = Object.assign({}, this.mensalidade);
+    this.estudanteService.createMensalidade(data1)
     this.estudanteService.addEstudanteTurma(this.turma.id, data)
     .then( res => {
       this.openSnackBar("Estudante Matriculado com sucesso");
