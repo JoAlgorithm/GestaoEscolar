@@ -315,7 +315,6 @@ export class MatriculaComponent implements OnInit {
       regime: ['', Validators.required],
       turma: ['', Validators.required],
       mes: ['', Validators.required],
-    
  
     });
 

@@ -120,7 +120,7 @@ estudante: Estudante;
  detalhes(aluno){
   const dialogRef = this.dialog.open(DialogOverviewExampleDialog, {
     width: '1000px',
-    data: { taxa_matricula: aluno.turma.taxa_matricula, datamatricula: aluno.datamatricula, nome: aluno.nome, genero: aluno.genero, documento: aluno.documento_identificacao,nacionalidade: aluno.nacionalidade,nr_documento: aluno.nr_documento,
+    data: {datamatricula: aluno.datamatricula, nome: aluno.nome, genero: aluno.genero, documento: aluno.documento_identificacao,nacionalidade: aluno.nacionalidade,nr_documento: aluno.nr_documento,
       local_emissao: aluno.local_emissao,nome_encarregado: aluno.encarregado.nome,datanascimento: aluno.data_nascimento}
   });
 
