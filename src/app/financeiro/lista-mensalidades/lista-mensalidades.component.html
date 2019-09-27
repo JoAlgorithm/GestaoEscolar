@@ -1,5 +1,13 @@
 
 <h3 align="center"> <b>RELATÓRIO DE MENSALIDADE</b></h3>
+<mat-form-field style="width: 20%">
+  <mat-select [(ngModel)]="mensalidade" required >
+      <mat-option *ngFor="let ano of anos" [value]="ano.value">
+          {{ano.viewValue}}
+      </mat-option>
+  </mat-select>
+</mat-form-field>
+
  <table table style="width:100%" border="1">
     
   <tr>

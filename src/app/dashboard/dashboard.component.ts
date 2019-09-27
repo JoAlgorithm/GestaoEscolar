@@ -112,7 +112,7 @@ export class DashboardComponent {
      
       this.dataSourse.paginator = this.paginator;
       this.dataSourse.sort = this.sort;
-      this.janeiro = this.mensalidades.filter(e => e.mes == "Janeiro").length;
+      this.janeiro = this.mensalidades.filter(e =>e.mes == "Janeiro").length;
       this.naojaneiro = this.mensalidades.filter(e => e.mes != "Janeiro").length;
       this.fevereiro = this.mensalidades.filter(e => e.mes == "Fevereiro").length;
       this.naofevereiro = this.mensalidades.filter(e => e.mes != "Fevereiro").length;
@@ -335,7 +335,7 @@ export class Dialognaomatriculado {
   mensalidades: Mensalidade[];
 
   dataSourse: MatTableDataSource<Estudante>;
-  displayedColumns = ['nome'];
+  displayedColumns = ['nome','genero'];
   @ViewChild(MatPaginator) paginator: MatPaginator;
 @ViewChild(MatSort) sort: MatSort;
 

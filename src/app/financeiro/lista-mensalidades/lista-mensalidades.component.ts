@@ -168,7 +168,7 @@ janeiro: any = 0;
       
         //para cada mes pago somamos a variavel do mes ou somamos a vaiavel de nao pagamento do mes
         if(this.pagoJan){
-          this.relatorio_pagamento.janeiro = this.relatorio_pagamento.janeiro+1;
+        this.relatorio_pagamento.janeiro = this.relatorio_pagamento.janeiro+1;
         }else{
           this.relatorio_pagamento.naojaneiro = this.relatorio_pagamento.naojaneiro+1;
         }
@@ -265,8 +265,9 @@ janeiro: any = 0;
   ListaPagamentos(mes,situacao){
     let estudantes: Estudante[] = [];
     let pago = false;
-    //let dataSourse: MatTableDataSource<Estudante> = null;
-    let displayedColumns = ['nome','mes','ano'];
+ 
+ //let dataSourse: MatTableDataSource<Estudante> = null;
+ let displayedColumns = ['nome','mes','ano'];
     let TOT = 0;
 
     this.estudantes.forEach(e=>{//Percorrer lista de estudantes para contabilizar pagamentos

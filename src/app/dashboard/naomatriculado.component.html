@@ -5,7 +5,10 @@
                 <mat-header-cell *matHeaderCellDef mat-sort-header> Nome </mat-header-cell>
                 <mat-cell *matCellDef="let row"> {{row.nome}}</mat-cell>
               </ng-container>
-           
+              <ng-container matColumnDef="genero">
+                <mat-header-cell *matHeaderCellDef mat-sort-header> Genero </mat-header-cell>
+                <mat-cell *matCellDef="let row"> {{row.genero}}</mat-cell>
+              </ng-container>
       
               <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
             <mat-row *matRowDef="let row; columns: displayedColumns;">
