@@ -1,24 +1,24 @@
 
-<h3 align="center"> <b>RELATÓRIO DE MENSALIDADE</b></h3>
+<h3 align="center"> <b>RELATÓRIO DE MENSALIDADES</b></h3>
 <mat-form-field style="width: 20%">
-  <mat-select [(ngModel)]="mensalidade" required >
+  <mat-select placeholder="Ano"  [(ngModel)]="mensalidade" required >
       <mat-option *ngFor="let ano of anos" [value]="ano.value">
           {{ano.viewValue}}
       </mat-option>
   </mat-select>
 </mat-form-field>
 
- <table table style="width:100%" border="1">
+ <table  width="100%" border="1px">
     
   <tr>
       <th> </th>
   <th >Janeiro</th>
-  <th> Fevereiro</th>
-  <th>Marco </th>
-  <th> Abril</th>
-  <th>Maio</th>
-  <th> Junho</th>
-  <th>Julho </th>
+  <th > Fevereiro</th>
+  <th >Marco </th>
+  <th > Abril</th>
+  <th >Maio</th>
+  <th > Junho</th>
+  <th >Julho </th>
   <th> Agosto</th>
   <th>Setembro</th>
   <th> Outubro</th>

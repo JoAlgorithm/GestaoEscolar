@@ -40,7 +40,7 @@ const MENUITEMS:Menu[] = [
     children: [
       {state: 'cadastro_estudante',  name:'Cadastro',icon: 'group_add',
          },
-      {state: 'matricula_estudante',name: 'Matrícula',icon: 'shopping_cart'},
+      {state: 'matricula_estudante',name: 'Matrícula',icon: 'add'},
       {state: 'listagem_estudante',name: 'Lista',icon: 'contacts'}
     ]
   },
