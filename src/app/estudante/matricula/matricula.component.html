@@ -228,12 +228,61 @@
             </tr>
           </table>
         </div>-->
+        <h3>CONFIRMAÇÃO DE MATRÍCULA</h3>
+<table border="1">
 
-       <h4 class="mt-0 mb-1">DADOS PESSOAIS</h4>
+  <tr>
+<th >Nome</th>
+<th > Turma</th>
+<th >Regime </th>
+<th > Ano</th>
+<th >Classe</th>
+<th >Data</th>
+<th >Matricula e Mensalidade</th>
+<th >Alimentação</th>
+<th >Total</th>
+      </tr>  
+
+      <tr>
+    <td id="content" #content> 
+     {{estudante.nome}}
+      </td>
+    <td id="content4" #content4>
+      {{turma.nome}}</td>
+    <td id="content2" #content2>
+      {{turma.regime}}</td>
+    <td id="content3" #content3>
+      {{turma.ano}}</td>
+    <td id="content5" #content5>
+      {{turma.nivel}}</td>
+      <td id="content1" #content1>
+        {{datatual | date:'dd/MM/yyyy HH:mm:ss'}}</td>
+           
+          <td id="content6" #content6>
+            {{+turma.taxa_matricula + +turma.mensalidade }}</td>
+
+            <td id="content7" #content7>
+              {{alimentacao_estudo_orientado_novo }}</td>
+
+              <td id="content8" #content8>
+                {{total}}</td>
+
+          </tr>
+</table>
+
+
+
+
+
+
+
+
+
+
+
       
-        <div fxLayout="row" layout-align="center">
 
-            <div class="pr-1" fxFlex>
+          <!-- <div class="pr-1" fxFlex>
                 <div fxLayout="column" class="mb-1">
                   <span class="text-md">ESTUDANTE</span>
                   <div id="content" #content>
@@ -299,9 +348,9 @@
               <strong>{{total}}</strong>
           
               </div>
-         </div>
-              </div> 
-        </div> 
+         </div>-->
+             
+     
 
      </mat-card-content>
      

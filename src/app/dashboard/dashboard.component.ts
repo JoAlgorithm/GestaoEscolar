@@ -265,9 +265,6 @@ export class DashboardComponent {
   public pieChartType1= 'bar';
 
 
-
- 
-  
 }
 
 

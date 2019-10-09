@@ -163,6 +163,7 @@ export interface DialogData {
 @Component({
   selector: 'dialog-overview-example-dialog',
   templateUrl: './detalhes.component.html',
+  styleUrls: ['./detalhes.component.scss']
 })
 
 

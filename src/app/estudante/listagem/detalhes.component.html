@@ -28,43 +28,43 @@
             <h3 class="modal-title" align="center">DADOS DO ESTUDANTE</h3>
         </div>
         <div class="modal-body">
-          <table table style="width:100%" border="1">
+          <table >
     
             <tr>
-            <th>Nome</th>
+            <th>NOME</th>
             <td>{{data.nome}}</td>  
                   </tr>  
                   <tr>
-            <th>Data de Nascimento</th>
+            <th>DATA DE NASCIMENTO</th>
             <td>{{data.datanascimento.toDate() | date: 'dd/MM/yyyy'}}</td>  
                   </tr> 
 <tr>
-              <th>Genero</th>
+              <th>GENERO</th>
               <td>{{data.genero}}</td>   
 </tr>
 <tr>
-              <th>Documento</th> 
+              <th>DOCUMENTO</th> 
               <td>{{data.documento}}</td>
 </tr>
 <tr>
-              <th>Numero do documento</th>
+              <th>NUMERO DE DOCUMENTO</th>
               <td>{{data.nr_documento}}</td>
 </tr>
 <tr>
-              <th>Local de Emissao</th>
+              <th>LOCAL DE EMISSAO</th>
               <td>{{data.local_emissao}}</td>
 </tr>
 <tr>
-                    <th>Nacionalidade</th>
+                    <th>NACIONALIDADE</th>
                     <td>{{data.nacionalidade}}</td>
 
                     </tr>
                     <tr>
-                    <th>Nome do Encarregado</th>
+                    <th>ENCARREGADO</th>
                     <td>{{data.nome_encarregado}}</td>         
       </tr>
       <tr>
-        <th>Data matricula</th>
+        <th>DATA DE MATRICULA</th>
         <td>{{data.datamatricula.toDate() | date: 'dd/MM/yyyy'}}</td>         
 </tr>
 <!--<tr>
@@ -76,7 +76,7 @@
         </div>
         <div class="modal-footer">
                    
-            <button mat-button class="waves-effect waves-light btn" data-dismiss="modal" (click)="closeModal()">FECHAR<i class="large material-icons">close</i></button>
+            <button mat-button class="waves-effect waves-light btn" data-dismiss="modal" (click)="closeModal()">SAIR<i class="large material-icons">close</i></button>
         </div>
     </div>
 </div>
