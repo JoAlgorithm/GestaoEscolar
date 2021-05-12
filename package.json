@@ -36,7 +36,7 @@
     "angular-pdf-generator": "^0.1.0",
     "angular-tree-component": "7.0.1",
     "angularfire2": "^5.2.1",
-    "chart.js": "2.7.2",
+    "chart.js": "2.9.4",
     "core-js": "2.5.3",
     "d3": "4.13.0",
     "dragula": "3.7.2",
